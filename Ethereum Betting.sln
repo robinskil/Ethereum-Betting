@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.329
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ethereum Betting", "Ethereum Betting\Ethereum Betting.csproj", "{FFC04E2B-ECC1-4BD5-AAB6-709B2A5D744C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FFC04E2B-ECC1-4BD5-AAB6-709B2A5D744C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FFC04E2B-ECC1-4BD5-AAB6-709B2A5D744C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FFC04E2B-ECC1-4BD5-AAB6-709B2A5D744C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FFC04E2B-ECC1-4BD5-AAB6-709B2A5D744C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8A24A513-758D-4A6A-97DE-97D9923C8CA4}
+	EndGlobalSection
+EndGlobal
