@@ -5,6 +5,14 @@ VisualStudioVersion = 15.0.28307.329
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ethereum Betting", "Ethereum Betting\Ethereum Betting.csproj", "{FFC04E2B-ECC1-4BD5-AAB6-709B2A5D744C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unit Testing Ethereum Betting", "Unit Testing Ethereum Betting\Unit Testing Ethereum Betting.csproj", "{0CABB21C-5610-4D1C-8D0B-52D3138975B0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InteractorLayer", "InteractorLayer\InteractorLayer.csproj", "{1DE40FED-070D-4DF2-A724-DA82002F6A07}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DomainLayer", "DomainLayer\DomainLayer.csproj", "{40F76363-EC6B-4B90-8F21-2E0966BF0222}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccesLayer", "DataAccesLayer\DataAccesLayer.csproj", "{E6765BEC-C840-48D6-8449-7847455E971B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +23,22 @@ Global
 		{FFC04E2B-ECC1-4BD5-AAB6-709B2A5D744C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FFC04E2B-ECC1-4BD5-AAB6-709B2A5D744C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FFC04E2B-ECC1-4BD5-AAB6-709B2A5D744C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0CABB21C-5610-4D1C-8D0B-52D3138975B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0CABB21C-5610-4D1C-8D0B-52D3138975B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0CABB21C-5610-4D1C-8D0B-52D3138975B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0CABB21C-5610-4D1C-8D0B-52D3138975B0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1DE40FED-070D-4DF2-A724-DA82002F6A07}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1DE40FED-070D-4DF2-A724-DA82002F6A07}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1DE40FED-070D-4DF2-A724-DA82002F6A07}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1DE40FED-070D-4DF2-A724-DA82002F6A07}.Release|Any CPU.Build.0 = Release|Any CPU
+		{40F76363-EC6B-4B90-8F21-2E0966BF0222}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{40F76363-EC6B-4B90-8F21-2E0966BF0222}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{40F76363-EC6B-4B90-8F21-2E0966BF0222}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{40F76363-EC6B-4B90-8F21-2E0966BF0222}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E6765BEC-C840-48D6-8449-7847455E971B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E6765BEC-C840-48D6-8449-7847455E971B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E6765BEC-C840-48D6-8449-7847455E971B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E6765BEC-C840-48D6-8449-7847455E971B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
