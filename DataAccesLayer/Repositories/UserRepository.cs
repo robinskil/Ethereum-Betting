@@ -15,7 +15,7 @@ namespace DataAccesLayer.Repositories
 
         public bool ChangePassword(string userId, string newPassword)
         {
-            
+            throw new NotImplementedException();
         }
 
         public bool CreateUser(User user)
@@ -35,7 +35,8 @@ namespace DataAccesLayer.Repositories
 
         public User GetUser(string address)
         {
-            return Context.Users.FirstOrDefault(u => u.Address == address);
+            //return Context.Users.FirstOrDefault(u => u.Address == address);
+            throw new NotImplementedException();
         }
 
         public IList<User> GetUserSuggestion(string user)

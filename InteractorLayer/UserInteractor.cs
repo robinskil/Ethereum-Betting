@@ -27,7 +27,7 @@ namespace InteractorLayer
 
         public bool Login(LoginRequestModel loginModel)
         {
-            
+            throw new NotImplementedException();   
         }
     }
 }

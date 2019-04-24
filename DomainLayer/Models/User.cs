@@ -8,7 +8,7 @@ namespace DomainLayer.Models
     public class User
     {
         [Key]
-        public string Address { get; set; }
+        public string UserAddress { get; set; }
         public string GeneratedName { get; set; }
         public IList<Bet> OwnedBets { get; set; }
     }

@@ -9,7 +9,7 @@ namespace DomainLayer.Models
     {
         [Key]
         public string BetAddress { get; set; }
-        public string OwnerAddress { get; set; }
+        public string UserAddress { get; set; }
         public virtual User Owner { get; set; }
     }
 }
