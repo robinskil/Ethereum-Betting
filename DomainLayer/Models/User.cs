@@ -10,7 +10,6 @@ namespace DomainLayer.Models
         [Key]
         public string UserAddress { get; set; }
         public string Password { get; set; }
-
         public string GeneratedName { get; set; }
         public IList<Bet> OwnedBets { get; set; }
     }

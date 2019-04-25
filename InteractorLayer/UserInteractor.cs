@@ -82,7 +82,5 @@ namespace InteractorLayer
                 new Claim(ClaimTypes.Role, "GeneralUser")
             };
         }
-
-
     }
 }
