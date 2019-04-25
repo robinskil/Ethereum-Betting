@@ -18,6 +18,9 @@ namespace DataAccesLayer.EF
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             //To define multi keys etc.
+
+            //Generated name has to be unique
+            modelBuilder.Entity<User>().HasIndex(u => u.GeneratedName).IsUnique();
         }
 
     }

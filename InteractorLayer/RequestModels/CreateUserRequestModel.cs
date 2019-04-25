@@ -9,5 +9,7 @@ namespace InteractorLayer.RequestModels
     {
         [Required]
         public string Address { get; set; }
+        [Required]
+        public string Password { get; set; }
     }
 }

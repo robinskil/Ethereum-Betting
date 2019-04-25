@@ -4,6 +4,7 @@ using System.Text;
 using DataAccesLayer.EF;
 using DomainLayer.Models;
 using System.Linq;
+using Microsoft.EntityFrameworkCore;
 
 namespace DataAccesLayer.Repositories
 {
@@ -18,25 +19,31 @@ namespace DataAccesLayer.Repositories
             throw new NotImplementedException();
         }
 
+        public bool CheckIfNameExist(string name)
+        {
+            return Context.Users.Any(u => u.GeneratedName == name);
+        }
+
         public bool CreateUser(User user)
         {
             throw new NotImplementedException();
         }
 
-        public bool DeleteUser(string userId)
+        public bool DeleteUser(string address)
         {
-            throw new NotImplementedException();
+            Context.Entry(new User() { UserAddress = address }).State = EntityState.Deleted;
+            Context.SaveChanges();
+            return true;
         }
 
-        public IList<User> GetFriends(string userId)
+        public IList<User> GetFriends(string address)
         {
             throw new NotImplementedException();
         }
 
         public User GetUser(string address)
         {
-            //return Context.Users.FirstOrDefault(u => u.Address == address);
-            throw new NotImplementedException();
+            return Context.Users.FirstOrDefault(u => u.UserAddress == address);
         }
 
         public IList<User> GetUserSuggestion(string user)
