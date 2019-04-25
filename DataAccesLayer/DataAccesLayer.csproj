@@ -6,6 +6,18 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.2.4" />
+    <PackageReference Include="Nethereum.ABI" Version="3.3.0" />
+    <PackageReference Include="Nethereum.Accounts" Version="3.3.0" />
+    <PackageReference Include="Nethereum.Contracts" Version="3.3.0" />
+    <PackageReference Include="Nethereum.Geth" Version="3.3.0" />
+    <PackageReference Include="Nethereum.Hex" Version="3.3.0" />
+    <PackageReference Include="Nethereum.JsonRpc.Client" Version="3.3.0" />
+    <PackageReference Include="Nethereum.JsonRpc.RpcClient" Version="3.3.0" />
+    <PackageReference Include="Nethereum.KeyStore" Version="3.3.0" />
+    <PackageReference Include="Nethereum.RPC" Version="3.3.0" />
+    <PackageReference Include="Nethereum.Signer" Version="3.3.0" />
+    <PackageReference Include="Nethereum.Util" Version="3.3.0" />
+    <PackageReference Include="Nethereum.Web3" Version="3.3.0" />
   </ItemGroup>
 
   <ItemGroup>

@@ -67,7 +67,7 @@ namespace Ethereum_Betting
 
             app.UseSpa(spa =>
             {
-                spa.Options.SourcePath = "ClientApp";
+                spa.Options.SourcePath = "ClientApp/client";
 
                 if (env.IsDevelopment())
                 {
