@@ -58,7 +58,7 @@ namespace Ethereum_Betting.Controllers
     /// <summary>
     /// Useractions
     /// </summary>
-    public partial class UserController : ControllerBase
+    public partial class UserController
     {
         /// <summary>
         /// Creates an user account.

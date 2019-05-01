@@ -4,7 +4,7 @@ using System.Text;
 
 namespace InteractorLayer
 {
-    public static class BCryptHash
+    public static class Hashing
     {
         public static string HashText(string text)
         {

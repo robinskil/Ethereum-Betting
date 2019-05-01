@@ -31,7 +31,7 @@ namespace InteractorLayer
             return UserRepository.CreateUser(new User()
             {
                 UserAddress = createModel.Address,
-                Password = BCryptHash.HashText(createModel.Password),
+                Password = Hashing.HashText(createModel.Password),
                 //Add support for generating name
                 GeneratedName = RandomNameGenerator.GenerateName(s => CheckIfNameExists(s))
             });
@@ -60,7 +60,7 @@ namespace InteractorLayer
         public bool Login(LoginRequestModel loginModel, out ClaimsIdentity claimsID)
         {
             User u = UserRepository.GetUser(loginModel.Address);
-            if (BCryptHash.ValidateText(loginModel.Password, u.Password))
+            if (Hashing.ValidateText(loginModel.Password, u.Password))
             {
                 claimsID = new ClaimsIdentity(GetLoginClaims(u), CookieAuthenticationDefaults.AuthenticationScheme);
                 return true;

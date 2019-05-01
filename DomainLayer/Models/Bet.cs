@@ -5,11 +5,11 @@ using System.Text;
 
 namespace DomainLayer.Models
 {
-    public class Bet
+    public sealed class Bet
     {
         [Key]
         public string BetAddress { get; set; }
         public string UserAddress { get; set; }
-        public virtual User Owner { get; set; }
+        public User Owner { get; set; }
     }
 }

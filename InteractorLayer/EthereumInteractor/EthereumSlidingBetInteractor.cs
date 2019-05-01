@@ -6,9 +6,11 @@ using InteractorLayer.SlidingPuzzleBet;
 
 namespace InteractorLayer.EthereumInteractor
 {
-    public class EthereumSlidingPuzzleBet : EthereumBetInteractor, IEthereumSlidingPuzzleBet
+    public class EthereumSlidingBetInteractor : EthereumBetInteractor, IEthereumSlidingBetInteractor
     {
-        public SlidingPuzzle GetPuzzle()
+        //In memory cached bets with each a cache of user addresses with their respective puzzle.
+        static Dictionary<string, Dictionary<string, SlidingPuzzle>> BetsWithPuzzles { get; }
+        public SlidingPuzzle GetPuzzle(string addressUser)
         {
             throw new NotImplementedException();
         }
@@ -29,6 +31,11 @@ namespace InteractorLayer.EthereumInteractor
         }
 
         public SlidingPuzzleMoveResponse MoveUp(SlidingPuzzleMoveModel moveModel)
+        {
+            throw new NotImplementedException();
+        }
+
+        public SlidingPuzzle StartPuzzleBet(string addressUser)
         {
             throw new NotImplementedException();
         }

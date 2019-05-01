@@ -6,6 +6,6 @@ namespace DataAccesLayer.EthereumConnector
 {
     public interface IEthereumBetRepository
     {
-
+        bool UserJoinedBet(string addressUser, string addressBetContract);
     }
 }
