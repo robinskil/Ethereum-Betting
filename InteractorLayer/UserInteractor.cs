@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Security.Claims;
 using System.Text;
+using System.Threading.Tasks;
 using DataAccesLayer.EF;
 using DataAccesLayer.Repositories;
 using DomainLayer.Models;
@@ -81,6 +82,16 @@ namespace InteractorLayer
                 new Claim("Nickname" , user.GeneratedName),
                 new Claim(ClaimTypes.Role, "GeneralUser")
             };
+        }
+
+        /// <summary>
+        /// Should call the database layer to translate names to addresses
+        /// </summary>
+        /// <param name="addresses"></param>
+        /// <returns></returns>
+        public Task<IEnumerable<string>> AddressesToName(IEnumerable<string> addresses)
+        {
+            throw new NotImplementedException();
         }
     }
 }

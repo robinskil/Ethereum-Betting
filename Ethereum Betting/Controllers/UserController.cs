@@ -16,29 +16,13 @@ namespace Ethereum_Betting.Controllers
     [Route("api/[controller]")]
     //Added for development purposes, TO BE REMOVED WHEN RELEASING
     [ApiController]
-    public class UserController : ControllerBase
+    public partial class UserController : ControllerBase
     {
         IUserInteractor UserInteractor { get; }
         public UserController(EthereumBettingContext context)
         {
             UserInteractor = new UserInteractor(context);
         }
-
-        /// <summary>
-        /// Creates an user account.
-        /// TODO: Create async request to database.
-        /// </summary>
-        /// <param name="createModel"></param>
-        /// <returns></returns>
-        public async Task<IActionResult> CreateUser(CreateUserRequestModel createModel)
-        {
-            if (ModelState.IsValid && UserInteractor.CreateUser(createModel))
-            {
-                return Ok();
-            }
-            return Forbid();
-        }
-
         /// <summary>
         /// Logs an user onto our server
         /// </summary>
@@ -68,6 +52,36 @@ namespace Ethereum_Betting.Controllers
         {
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
             return Ok();
+        }
+    }
+
+    /// <summary>
+    /// Useractions
+    /// </summary>
+    public partial class UserController : ControllerBase
+    {
+        /// <summary>
+        /// Creates an user account.
+        /// TODO: Create async request to database.
+        /// </summary>
+        /// <param name="createModel"></param>
+        /// <returns></returns>
+        public async Task<IActionResult> CreateUser(CreateUserRequestModel createModel)
+        {
+            if (ModelState.IsValid && UserInteractor.CreateUser(createModel))
+            {
+                return Ok();
+            }
+            return Forbid();
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="addresses"></param>
+        /// <returns></returns>
+        public async Task<IActionResult> AddressesToName(IEnumerable<string> addresses)
+        {
+            return Ok(await UserInteractor.AddressesToName(addresses));
         }
     }
 }

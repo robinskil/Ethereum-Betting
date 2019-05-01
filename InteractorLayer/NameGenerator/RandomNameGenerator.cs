@@ -3009,6 +3009,13 @@ namespace InteractorLayer.NameGenerator
 "zone",
         };
         private const int WordAmountInName = 3;
+        /// <summary>
+        /// Generates a random 3 word name from the list of words and checks if it is available
+        /// through the FUNC pointer that is supposed to check if the name is availabe or not.
+        /// If Exists => True it will generate another one and keep trying to find an unique name.
+        /// </summary>
+        /// <param name="Exists"></param>
+        /// <returns></returns>
         public static string GenerateName(Func<string,bool> Exists)
         {
             string generator()
