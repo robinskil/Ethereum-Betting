@@ -10,6 +10,12 @@ namespace InteractorLayer.EthereumInteractor
     {
         //In memory cached bets with each a cache of user addresses with their respective puzzle.
         static Dictionary<string, Dictionary<string, SlidingPuzzle>> BetsWithPuzzles { get; }
+
+        /// <summary>
+        /// Gets or creates a bet from our in memory cached BetsWithPuzzles
+        /// </summary>
+        /// <param name="addressUser"></param>
+        /// <returns></returns>
         public SlidingPuzzle GetPuzzle(string addressUser)
         {
             throw new NotImplementedException();

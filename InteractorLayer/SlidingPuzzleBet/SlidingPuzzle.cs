@@ -1,4 +1,5 @@
-﻿using System;
+﻿using InteractorLayer.RequestModels;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Text;
@@ -16,6 +17,11 @@ namespace InteractorLayer.SlidingPuzzleBet
             GenerateRandomPuzzle();
             Time = new Stopwatch();
             Time.Start();
+        }
+
+        public bool DoMove(SlidingPuzzleMoveModel moveModel)
+        {
+            throw new NotImplementedException();
         }
 
         public bool TryFinish()

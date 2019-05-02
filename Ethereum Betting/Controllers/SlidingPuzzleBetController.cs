@@ -16,7 +16,7 @@ namespace Ethereum_Betting.Controllers
         IEthereumSlidingBetInteractor SlidingBetInteractor { get; set; }
         public SlidingPuzzleBetController()
         {
-            SlidingBetInteractor = new EthereumBetInteractor();
+            SlidingBetInteractor = new EthereumSlidingBetInteractor();
         }
         public async Task<IActionResult> GetPuzzle()
         {

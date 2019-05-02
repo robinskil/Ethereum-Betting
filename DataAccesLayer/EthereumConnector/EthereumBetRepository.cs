@@ -4,18 +4,12 @@ using System.Text;
 
 namespace DataAccesLayer.EthereumConnector
 {
-    public class EthereumBetRepository : EthereumRepository , IEthereumBetRepository , IEthereumSlidingPuzzleBetRepository
+    public class EthereumBetRepository : EthereumRepository , IEthereumBetRepository
     {
         public EthereumBetRepository() : base()
         {
 
         }
-
-        public bool SetWin(string addressUser, string addressContract, double timeToComplete)
-        {
-            throw new NotImplementedException();
-        }
-
         public bool UserJoinedBet(string addressUser, string addressBetContract)
         {
             throw new NotImplementedException();
