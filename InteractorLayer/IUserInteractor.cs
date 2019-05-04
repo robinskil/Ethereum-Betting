@@ -1,4 +1,5 @@
-﻿using InteractorLayer.RequestModels;
+﻿using InteractorLayer.AuthenticationService;
+using InteractorLayer.RequestModels;
 using System;
 using System.Collections.Generic;
 using System.Security.Claims;
@@ -7,10 +8,9 @@ using System.Threading.Tasks;
 
 namespace InteractorLayer
 {
-    public interface IUserInteractor
+    public interface IUserInteractor : IUserAuthenticationInteractor
     {
         bool CheckIfNameExists(string name);
-        bool Login(LoginRequestModel loginModel, out ClaimsIdentity claimsID);
         bool CreateUser(CreateUserRequestModel createModel);
         bool DeleteUser(DeleteUserRequestModel deleteModel);
         Task<IEnumerable<string>> AddressesToName(IEnumerable<string> addresses);

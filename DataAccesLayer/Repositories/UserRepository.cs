@@ -49,7 +49,6 @@ namespace DataAccesLayer.Repositories
         public IList<User> GetUserSuggestion(string user)
         {
             throw new NotImplementedException();
-            return null;
         }
     }
 }

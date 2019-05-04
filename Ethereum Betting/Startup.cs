@@ -1,4 +1,5 @@
 using DataAccesLayer.EF;
+using Ethereum_Betting.Chatting;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -9,6 +10,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json;
+using System;
 
 namespace Ethereum_Betting
 {
@@ -36,8 +38,11 @@ namespace Ethereum_Betting
                 options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
             });
             string connection = this.Configuration.GetConnectionString("DbConnectionString");
+            string ethNetwork = this.Configuration.GetConnectionString("LocalEth");
             services.AddDbContext<EthereumBettingContext>(options => options.UseSqlServer(connection));
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie();
+
+            services.AddSignalR();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -57,6 +62,14 @@ namespace Ethereum_Betting
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseSpaStaticFiles();
+
+            app.UseSignalR(routes =>
+            {
+                routes.MapHub<ChatHub>("/Chat");
+                //throw new NotImplementedException("No hub route set");
+            });
+
+
             app.UseAuthentication();
             app.UseMvc(routes =>
             {

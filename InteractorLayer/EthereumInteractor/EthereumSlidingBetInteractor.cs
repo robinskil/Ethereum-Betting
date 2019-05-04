@@ -21,22 +21,7 @@ namespace InteractorLayer.EthereumInteractor
             throw new NotImplementedException();
         }
 
-        public SlidingPuzzleMoveResponse MoveDown(SlidingPuzzleMoveModel moveModel)
-        {
-            throw new NotImplementedException();
-        }
-
-        public SlidingPuzzleMoveResponse MoveLeft(SlidingPuzzleMoveModel moveModel)
-        {
-            throw new NotImplementedException();
-        }
-
-        public SlidingPuzzleMoveResponse MoveRight(SlidingPuzzleMoveModel moveModel)
-        {
-            throw new NotImplementedException();
-        }
-
-        public SlidingPuzzleMoveResponse MoveUp(SlidingPuzzleMoveModel moveModel)
+        public SlidingPuzzleMoveResponse Move(SlidingPuzzleMoveModel moveModel)
         {
             throw new NotImplementedException();
         }

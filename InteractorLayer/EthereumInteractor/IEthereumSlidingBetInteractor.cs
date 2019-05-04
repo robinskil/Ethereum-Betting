@@ -10,9 +10,6 @@ namespace InteractorLayer.EthereumInteractor
     {
         SlidingPuzzle StartPuzzleBet(string addressUser);
         SlidingPuzzle GetPuzzle(string addressUser);
-        SlidingPuzzleMoveResponse MoveRight(SlidingPuzzleMoveModel moveModel);
-        SlidingPuzzleMoveResponse MoveLeft(SlidingPuzzleMoveModel moveModel);
-        SlidingPuzzleMoveResponse MoveUp(SlidingPuzzleMoveModel moveModel);
-        SlidingPuzzleMoveResponse MoveDown(SlidingPuzzleMoveModel moveModel);
+        SlidingPuzzleMoveResponse Move(SlidingPuzzleMoveModel moveModel);
     }
 }
