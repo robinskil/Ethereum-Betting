@@ -65,7 +65,8 @@ namespace Ethereum_Betting
 
             app.UseSignalR(routes =>
             {
-                routes.MapHub<ChatHub>("/Chat");
+                routes.MapHub<FriendChat>("/FriendChat");
+                routes.MapHub<BetChat>("/BetChat");
                 //throw new NotImplementedException("No hub route set");
             });
 

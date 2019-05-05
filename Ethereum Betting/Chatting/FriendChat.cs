@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Ethereum_Betting.Chatting
 {
-    [Authorize]
+
     public class FriendChat : Hub
     {
         private static IList<string> Id = new List<string>();

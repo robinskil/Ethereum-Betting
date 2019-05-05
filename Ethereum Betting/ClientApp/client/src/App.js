@@ -3,6 +3,7 @@ import SimpleStorageContract from "./contracts/SimpleStorage.json";
 import getWeb3 from "./utils/getWeb3";
 
 import "./App.css";
+import BetChatComponent from "./Chatting/BetChatComponent.js";
 
 class App extends Component {
   state = { storageValue: 0, web3: null, accounts: null, contract: null };
@@ -64,7 +65,8 @@ class App extends Component {
         <p>
           Try changing the value stored on <strong>line 40</strong> of App.js.
         </p>
-        <div>The stored value is: {this.state.storageValue}</div>
+            <div>The stored value is: {this.state.storageValue}</div>
+            <BetChatComponent betAddress={"123"} web3={this.state.web3} />
       </div>
     );
   }
