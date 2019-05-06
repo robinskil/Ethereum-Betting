@@ -12,7 +12,7 @@ namespace InteractorLayer.AuthenticationService
 {
     public class UserAuthenticationService : UserManager , IUserAuthenticationInteractor
     {
-        private IUserRepository UserRepository { get; }
+        protected IUserRepository UserRepository { get; }
         public UserAuthenticationService(IUserRepository repository)
         {
             UserRepository = repository;

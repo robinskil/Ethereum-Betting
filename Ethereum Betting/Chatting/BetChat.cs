@@ -34,6 +34,7 @@ namespace Ethereum_Betting.Chatting
 
         public async Task LeaveBetChat(string addressUser ,string betAddress)
         {
+            //ToDo: Check if bet exists
             if (true)
             {
                 await Groups.RemoveFromGroupAsync(Context.ConnectionId, betAddress);

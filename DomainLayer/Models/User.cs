@@ -13,6 +13,7 @@ namespace DomainLayer.Models
         public string GeneratedName { get; set; }
         public IList<UserAchievement> Achievements { get; set; }
         public IList<Bet> OwnedBets { get; set; }
-
+        public IList<Friend> Friends { get; set; }
+        public IList<FriendRequest> FriendRequests { get; set; }
     }
 }

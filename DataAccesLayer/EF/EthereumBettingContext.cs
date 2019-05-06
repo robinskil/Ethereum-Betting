@@ -17,6 +17,8 @@ namespace DataAccesLayer.EF
         public DbSet<Bet> Bets { get; set; }
         public DbSet<Achievement> Achievements { get; set; }
         public DbSet<UserAchievement> UserAchievements { get; set; }
+        public DbSet<Friend> Friends { get; set; }
+        public DbSet<FriendRequest> FriendRequests { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -28,8 +30,9 @@ namespace DataAccesLayer.EF
             }
             //Generated name has to be unique
             modelBuilder.Entity<User>().HasIndex(u => u.GeneratedName).IsUnique();
-            modelBuilder.Entity<UserAchievement>().HasKey(p => new { p.AchievementId, p.UserId }); 
+            modelBuilder.Entity<UserAchievement>().HasKey(p => new { p.AchievementId, p.UserId });
+            modelBuilder.Entity<Friend>().HasKey(p => new { p.UserId, p.UserFriendId });
+            modelBuilder.Entity<FriendRequest>().HasKey(p => new { p.UserCallerId, p.UserReceiverId });
         }
-
     }
 }

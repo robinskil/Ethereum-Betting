@@ -15,11 +15,10 @@ namespace InteractorLayer
 {
     public class UserInteractor : UserAuthenticationService, IUserInteractor
     {
-        public IUserRepository UserRepository { get; set; }
-        public UserInteractor(EthereumBettingContext context) : base(null)
+        public UserInteractor(EthereumBettingContext context) : base(new UserRepository(context))
         {
             //DI this object
-            UserRepository = new UserRepository(context);
+            //UserRepository = new UserRepository(context);
             throw new NotImplementedException("No DI into the Authentication service");
         }
 
