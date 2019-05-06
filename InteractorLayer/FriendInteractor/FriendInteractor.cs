@@ -11,12 +11,12 @@ namespace InteractorLayer.FriendInteractor
         {
 
         }
-        public Task AddFriend(string addressUser, string addressFriend)
+        public async Task AddFriend(string addressUser, string addressFriend)
         {
             throw new NotImplementedException();
         }
 
-        public Task RemoveFriend(string addressUser, string addressFriend)
+        public async Task RemoveFriend(string addressUser, string addressFriend)
         {
             throw new NotImplementedException();
         }
