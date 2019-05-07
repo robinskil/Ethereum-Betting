@@ -1,4 +1,6 @@
-﻿using System;
+﻿using DataAccesLayer.EF;
+using DataAccesLayer.Repositories;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
@@ -7,9 +9,10 @@ namespace InteractorLayer.FriendInteractor
 {
     public class FriendInteractor : IFriendInteractor
     {
-        public FriendInteractor()
+        IFriendRepository Repository { get; }
+        public FriendInteractor(EthereumBettingContext context)
         {
-
+            Repository = new FriendRepository(context);
         }
         public bool AddFriend(string addressUser, string addressFriend)
         {
