@@ -26,6 +26,16 @@ namespace DataAccesLayer.Repositories
             throw new NotImplementedException();
         }
 
+        public IEnumerable<Friend> GetFriends(Guid userId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<IEnumerable<Friend>> GetFriendsAsync(Guid userId)
+        {
+            throw new NotImplementedException();
+        }
+
         public bool RemoveFriend(Friend friend)
         {
             throw new NotImplementedException();

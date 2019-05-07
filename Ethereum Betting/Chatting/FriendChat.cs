@@ -10,7 +10,7 @@ namespace Ethereum_Betting.Chatting
 
     public class FriendChat : Hub
     {
-        private static IList<string> Id = new List<string>();
+        private static readonly IList<string> Id = new List<string>();
         public override Task OnConnectedAsync()
         {
             Id.Add(Context.ConnectionId);
