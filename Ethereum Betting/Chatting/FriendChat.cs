@@ -8,12 +8,15 @@ using System.Threading.Tasks;
 namespace Ethereum_Betting.Chatting
 {
 
+    [Authorize]
     public class FriendChat : Hub
     {
-        private static readonly IList<string> Id = new List<string>();
+        public FriendChat()
+        {
+
+        }
         public override Task OnConnectedAsync()
         {
-            Id.Add(Context.ConnectionId);
             return base.OnConnectedAsync();
         }
 
