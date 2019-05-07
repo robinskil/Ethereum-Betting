@@ -8,7 +8,9 @@ namespace InteractorLayer.FriendInteractor
 {
     public interface IFriendInteractor
     {
-        Task AddFriend(string addressUser, string addressFriend);
-        Task RemoveFriend(string addressUser, string addressFriend);
+        bool AddFriend(string addressUser, string addressFriend);
+        bool RemoveFriend(string addressUser, string addressFriend);
+        Task<bool> AddFriendAsync(string addressUser, string addressFriend);
+        Task<bool> RemoveFriendAsync(string addressUser, string addressFriend);
     }
 }
