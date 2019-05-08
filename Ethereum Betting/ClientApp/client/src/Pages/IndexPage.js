@@ -7,8 +7,7 @@ import {
     Link
 } from 'react-router-dom'
 import MenuBar from "../Components/MenuBar";
-
-
+import CreateBet from "../Pages/CreateBetPage";
 import BetChatComponent from "../Chatting/BetChatComponent";
 
 class Wrapper extends Component {
@@ -65,6 +64,9 @@ class Wrapper extends Component {
                     <div className="container">
                         <MenuBar />
                         <Route exact path="/" component={IndexPage} />
+                        <Route path="/about" component={null} />
+                        <Route path="/topics" component={null} />
+                        <Route path="/CreateBet" component={() => { return (<CreateBet web3={this.state.web3} />) }} />
                
                     </div>
                 </Router>

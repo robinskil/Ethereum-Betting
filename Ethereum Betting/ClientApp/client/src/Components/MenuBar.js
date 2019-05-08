@@ -18,6 +18,29 @@ export default class MenuBar extends Component {
                     <span className="navbar-toggler-icon"></span>
                 </button>
 
+                <div className="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
+                    <ul className="navbar-nav">
+                        <li className="nav-item">
+                            <Link className="nav-link" to="/GettinStarted">Getting Started</Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link className="nav-link" to="/Profile">Profile</Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link className="nav-link" to="/Login">Login</Link>
+                        </li>
+                        <li className="nav-item dropdown">
+                            <a className="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Bets
+                            </a>
+                            <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <Link className="dropdown-item" to="/CreateBet">Create a bet</Link>
+                         
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
    
                
             </nav>
@@ -25,26 +48,5 @@ export default class MenuBar extends Component {
     }
 }
 
-//<div className="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
-//    <ul className="navbar-nav">
-//        <li className="nav-item">
-//            <Link className="nav-link" to="/GettinStarted">Getting Started</Link>
-//        </li>
-//        <li className="nav-item">
-//            <Link className="nav-link" to="/Profile">Profile</Link>
-//        </li>
-//        <li className="nav-item">
-//            <Link className="nav-link" to="/Login">Login</Link>
-//        </li>
-//        <li className="nav-item dropdown">
-//            <a className="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-//                Bets
-//                            </a>
-//            <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-//                <Link className="dropdown-item" to="/CreateBet">Create a bet</Link>
-//                <Link className="dropdown-item" to="/JoinBet">Join a bet</Link>
-//                <Link className="dropdown-item" to="/ViewBets">View your bets</Link>
-//            </div>
-//        </li>
-//    </ul>
-//</div>
+//<Link className="dropdown-item" to="/JoinBet">Join a bet</Link>
+//    <Link className="dropdown-item" to="/ViewBets">View your bets</Link>
