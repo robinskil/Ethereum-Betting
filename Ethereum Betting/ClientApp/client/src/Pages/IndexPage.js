@@ -9,6 +9,8 @@ import {
 import MenuBar from "../Components/MenuBar";
 import CreateBet from "../Pages/CreateBetPage";
 import BetChatComponent from "../Chatting/BetChatComponent";
+import PuzzlePage from "../Pages/PuzzlePage";
+
 
 class Wrapper extends Component {
     state = { storageValue: 0, web3: null, accounts: null, contract: null };
@@ -66,7 +68,8 @@ class Wrapper extends Component {
                         <Route exact path="/" component={IndexPage} />
                         <Route path="/about" component={null} />
                         <Route path="/topics" component={null} />
-                        <Route path="/CreateBet" component={() => { return (<CreateBet web3={this.state.web3} />) }} />
+                        <Route exact path="/PuzzlePage" component={PuzzlePage} />
+
                
                     </div>
                 </Router>

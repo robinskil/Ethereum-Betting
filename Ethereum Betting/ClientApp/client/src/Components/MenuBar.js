@@ -35,6 +35,7 @@ export default class MenuBar extends Component {
                             </a>
                             <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                                 <Link className="dropdown-item" to="/CreateBet">Create a bet</Link>
+                                <Link className="dropdown-item" to="/PuzzlePage">Puzzle</Link>
                          
                             </div>
                         </li>
