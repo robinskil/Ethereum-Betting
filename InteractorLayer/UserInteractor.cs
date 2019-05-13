@@ -13,13 +13,46 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 
 namespace InteractorLayer
 {
-    public class UserInteractor : UserAuthenticationService, IUserInteractor
+    public class UserInteractor : IUserInteractor
     {
-        public UserInteractor(EthereumBettingContext context) : base(new UserRepository(context))
+        IUserRepository UserRepository { get; }
+        public UserInteractor(EthereumBettingContext context)
         {
             //DI this object
-            //UserRepository = new UserRepository(context);
-            throw new NotImplementedException("No DI into the Authentication service");
+            UserRepository = new UserRepository(context);
+            //throw new NotImplementedException("No DI into the Authentication service");
+        }
+
+        /// <summary>
+        /// Validates a user given address and password with our database.
+        /// </summary>
+        /// <param name="loginModel"></param>
+        /// <returns>True if valid details given, false if failed or invalid details</returns>
+        public bool Login(LoginRequestModel loginModel, out ClaimsIdentity claimsID)
+        {
+            User u = UserRepository.GetUser(loginModel.Address);
+            if (Hashing.ValidateText(loginModel.Password, u.Password))
+            {
+                claimsID = new ClaimsIdentity(GetLoginClaims(u), CookieAuthenticationDefaults.AuthenticationScheme);
+                return true;
+            }
+            claimsID = default;
+            return false;
+        }
+        /// <summary>
+        /// Generates security claims for a general user
+        /// </summary>
+        /// <param name="user"></param>
+        /// <returns></returns>
+        private IList<Claim> GetLoginClaims(User user)
+        {
+            return new Claim[]
+            {
+                new Claim(ClaimTypes.Sid,user.UserAddress),
+                new Claim("Nickname" , user.GeneratedName),
+                new Claim(ClaimTypes.Role, "GeneralUser"),
+                new Claim(ClaimTypes.NameIdentifier,user.UserAddress)
+            };
         }
 
         /// <summary>

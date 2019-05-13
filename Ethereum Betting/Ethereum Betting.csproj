@@ -31,7 +31,6 @@
 
   <ItemGroup>
     <Folder Include="ClientApp\client\src\signalRLib\" />
-    <Folder Include="ClientApp\migrations\" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">

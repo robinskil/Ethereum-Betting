@@ -8,8 +8,9 @@ using System.Threading.Tasks;
 
 namespace InteractorLayer
 {
-    public interface IUserInteractor : IUserAuthenticationInteractor
+    public interface IUserInteractor
     {
+        bool Login(LoginRequestModel loginModel, out ClaimsIdentity claimsID);
         bool CheckIfNameExists(string name);
         bool CreateUser(CreateUserRequestModel createModel);
         bool DeleteUser(DeleteUserRequestModel deleteModel);

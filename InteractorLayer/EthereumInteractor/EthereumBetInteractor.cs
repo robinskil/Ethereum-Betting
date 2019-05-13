@@ -4,6 +4,7 @@ using InteractorLayer.SlidingPuzzleBet;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace InteractorLayer.EthereumInteractor
 {
@@ -15,9 +16,9 @@ namespace InteractorLayer.EthereumInteractor
             BetRepository = new EthereumBetRepository();
         }
 
-        public bool JoinedBet(string addressUser, string addressBetContract)
+        public async Task<bool> JoinedBet(string addressUser, string addressBetContract)
         {
-            throw new NotImplementedException();
+            return await BetRepository.UserJoinedBet(addressUser, addressBetContract);
         }
     }
 }

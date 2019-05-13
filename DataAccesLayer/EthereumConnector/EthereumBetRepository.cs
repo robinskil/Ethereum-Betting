@@ -1,6 +1,9 @@
-﻿using System;
+﻿using DataAccesLayer.EthereumContractInteractionFunctions;
+using Nethereum.Web3;
+using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace DataAccesLayer.EthereumConnector
 {
@@ -10,9 +13,15 @@ namespace DataAccesLayer.EthereumConnector
         {
 
         }
-        public bool UserJoinedBet(string addressUser, string addressBetContract)
+        public async Task<bool> UserJoinedBet(string addressUser, string addressBetContract)
         {
-            throw new NotImplementedException();
+            var joinedFunction = new UserAlreadyJoinedFunction()
+            {
+                Address = addressUser
+            };
+            var joinedHandler = Web3.Eth.GetContractQueryHandler<UserAlreadyJoinedFunction>();
+            bool joined = await joinedHandler.QueryAsync<bool>(addressBetContract, joinedFunction);
+            return joined;
         }
     }
 }

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace InteractorLayer.AuthenticationService
+namespace InteractorLayer.FriendChatManager
 {
     public enum UserStatus
     {
