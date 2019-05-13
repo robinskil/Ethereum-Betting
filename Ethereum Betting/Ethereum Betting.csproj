@@ -30,6 +30,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="ClientApp\client\src\contracts\" />
     <Folder Include="ClientApp\client\src\signalRLib\" />
   </ItemGroup>
 

@@ -1,0 +1,11 @@
+﻿.board {
+    padding: 5px;
+    background-color: white;
+    border-radius: 10px;
+}
+
+.board-row {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+}

@@ -3,8 +3,9 @@ import * as signalR from '@aspnet/signalr';
 
 export default class FriendChat extends React.Component {
     constructor(props) {
-        super(props)
+        super(props);
         this.ConnectToServer()
+
     }
 
     ConnectToServer = async () => {
@@ -22,4 +23,8 @@ export default class FriendChat extends React.Component {
 
             )
     }
+}
+
+class FriendChatComponent extends React.Component {
+    
 }
