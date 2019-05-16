@@ -14,6 +14,9 @@ import PuzzlePage from "../Pages/PuzzlePage";
 import { ViewBetsPage } from "./ViewBetsPage.js";
 import { FriendPage } from "./FriendPage.js";
 
+import LoginIndex from "../Pages/LoginIndex";
+import JoinBetPage from "../Pages/JoinBetPage";
+
 class Wrapper extends Component {
     state = { storageValue: 0, web3: null, accounts: null, contract: null };
 
@@ -77,6 +80,9 @@ class Wrapper extends Component {
                         <Route path="/CreateBet" component={() => { return (<CreateBet web3={this.state.web3} />) }} />
                         <Route path="/view-bets" component={ViewBetsPage} />
                         <Route path="/friends" component={FriendPage} />
+
+                        <Route path="/Login" component={() => { return (<LoginIndex web3={this.state.web3} />) }} />
+                        <Route path="/JoinBet" component={() => { return (<JoinBetPage web3={this.state.web3} />) }} />
 
                     </div>
                 </Router>
