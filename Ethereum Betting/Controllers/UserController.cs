@@ -28,6 +28,8 @@ namespace Ethereum_Betting.Controllers
         /// </summary>
         /// <param name="loginModel"></param>
         /// <returns></returns>
+        [HttpPost]
+        [Route("login")]
         public async Task<IActionResult> Login(LoginRequestModel loginModel)
         {
             if(ModelState.IsValid && UserInteractor.Login(loginModel, out ClaimsIdentity claimsID))
@@ -66,6 +68,9 @@ namespace Ethereum_Betting.Controllers
         /// </summary>
         /// <param name="createModel"></param>
         /// <returns></returns>
+
+        [HttpPost]
+        [Route("register")]
         public async Task<IActionResult> CreateUser(CreateUserRequestModel createModel)
         {
             if (ModelState.IsValid && UserInteractor.CreateUser(createModel))

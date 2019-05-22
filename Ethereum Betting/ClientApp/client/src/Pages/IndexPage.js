@@ -16,6 +16,7 @@ import { FriendPage } from "./FriendPage.js";
 
 import LoginIndex from "../Pages/LoginIndex";
 import JoinBetPage from "../Pages/JoinBetPage";
+import { RegisterPage } from "./RegisterPage.js";
 
 class Wrapper extends Component {
     state = { storageValue: 0, web3: null, accounts: null, contract: null };
@@ -52,7 +53,7 @@ class Wrapper extends Component {
         const { accounts, contract } = this.state;
 
         // Stores a given value, 5 by default.
-        await contract.methods.set(5).send({ from: accounts[0] });
+        // await contract.methods.set(5).send({ from: accounts[0] });
 
         // Get the value from the contract to prove it worked.
         const response = await contract.methods.get().call();
@@ -83,6 +84,7 @@ class Wrapper extends Component {
 
                         <Route path="/Login" component={() => { return (<LoginIndex web3={this.state.web3} />) }} />
                         <Route path="/JoinBet" component={() => { return (<JoinBetPage web3={this.state.web3} />) }} />
+                        <Route path="/Register" component={() => { return (<RegisterPage web3={this.state.web3} />) }} />
 
                     </div>
                 </Router>

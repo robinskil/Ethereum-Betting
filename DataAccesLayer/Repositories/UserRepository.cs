@@ -26,7 +26,9 @@ namespace DataAccesLayer.Repositories
 
         public bool CreateUser(User user)
         {
-            throw new NotImplementedException();
+            // throw new NotImplementedException();
+            Context.Add(user);
+            return true;
         }
 
         public bool DeleteUser(string address)
