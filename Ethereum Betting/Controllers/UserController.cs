@@ -21,7 +21,7 @@ namespace Ethereum_Betting.Controllers
         IUserInteractor UserInteractor { get; }
         public UserController(EthereumBettingContext context)
         {
-            UserInteractor = new UserInteractor(context);
+            //UserInteractor = new UserInteractor(context);
         }
         /// <summary>
         /// Logs an user onto our server
