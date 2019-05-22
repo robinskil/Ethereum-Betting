@@ -26,7 +26,7 @@ namespace Ethereum_Betting.Chatting
         IClientManager ClientManager { get; }
         public FriendChat(EthereumBettingContext context)
         {
-            ClientManager = new ActiveClientManager(new FriendInteractor(context));
+            //ClientManager = new ActiveClientManager(new FriendInteractor(context));
         }
         public override Task OnConnectedAsync()
         {
