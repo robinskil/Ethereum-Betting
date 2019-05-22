@@ -36,6 +36,7 @@ namespace DataAccesLayer.EF
             modelBuilder.Entity<FriendRequest>().HasKey(p => new { p.UserCallerId, p.UserReceiverId });
             modelBuilder.Entity<Friend>().HasOne(p => p.User).WithMany(p => p.Friends);
             modelBuilder.Entity<FriendRequest>().HasOne(p => p.UserCaller).WithMany(p => p.FriendRequests);
+            modelBuilder.Entity<FriendRequest>().HasOne(p => p.UserReceiver).WithMany(p => p.FriendRequests);
         }
     }
 }
