@@ -554,8 +554,13 @@
       "transactionHash": "0xf2ebdb1e245bdda9ca0d44e0488b227971efda84a64c0197f4c62d18eef9703b"
     }
   },
+<<<<<<< HEAD
   "schemaVersion": "3.0.2",
   "updatedAt": "2019-05-22T15:42:41.155Z",
+=======
+  "schemaVersion": "3.0.8",
+  "updatedAt": "2019-05-23T12:21:29.751Z",
+>>>>>>> master
   "devdoc": {
     "methods": {}
   },

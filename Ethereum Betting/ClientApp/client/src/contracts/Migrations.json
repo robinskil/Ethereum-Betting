@@ -1379,8 +1379,13 @@
       "transactionHash": "0xe8aeb5f64b60dcf6d5b625401b4a7b25369f10766808222b2d61893ff46eceda"
     }
   },
+<<<<<<< HEAD
   "schemaVersion": "3.0.2",
   "updatedAt": "2019-05-22T15:42:41.158Z",
+=======
+  "schemaVersion": "3.0.8",
+  "updatedAt": "2019-05-23T12:21:29.765Z",
+>>>>>>> master
   "devdoc": {
     "methods": {}
   },
