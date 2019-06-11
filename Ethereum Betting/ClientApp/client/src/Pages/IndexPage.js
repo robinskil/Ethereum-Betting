@@ -10,7 +10,7 @@ import MenuBar from "../Components/MenuBar";
 import CreateBet from "../Pages/CreateBetPage";
 import BetChatComponent from "../Chatting/BetChatComponent";
 import PuzzlePage from "../Pages/PuzzlePage";
-
+import FriendChat from "../Chatting/FriendChat";
 import { ViewBetsPage } from "./ViewBetsPage.js";
 import { FriendPage } from "./FriendPage.js";
 
@@ -83,6 +83,7 @@ class Wrapper extends Component {
  
                 
                 <BetChatComponent betAddress={"123"} web3={this.state.web3} />
+                <FriendChat/>
             </div>
         );
     }

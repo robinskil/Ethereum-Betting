@@ -1,10 +1,10 @@
 ﻿import React, { Component } from "react";
-import "../../css/loading.css"
+import "../css/loading.css"
 import PropTypes from 'prop-types';
-import ethereumGreenIcon from "../../images/EthereumGreenIcon.png"
-import "../../css/shake.css"
-import "../../css/fade.css"
-import "../../css/createBetPage.css"
+import ethereumGreenIcon from "../images/EthereumGreenIcon.png"
+import "../css/shake.css"
+import "../css/fade.css"
+import "../css/createBetPage.css"
 import { setTimeout } from "timers";
 
 export default class LoadingComponent extends Component {
