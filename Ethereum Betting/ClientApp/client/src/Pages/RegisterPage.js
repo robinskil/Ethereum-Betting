@@ -45,7 +45,6 @@ export class RegisterForm extends Component {
         this.handleConfirmPasswordChange = this.handleConfirmPasswordChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleCheck = this.handleCheck.bind(this);
-        this.testSubmit = this.testSubmit.bind(this);
     }
 
     componentDidMount = async () => {
@@ -66,11 +65,6 @@ export class RegisterForm extends Component {
         }
     }
 
-    testSubmit (event) {
-        event.preventDefault();
-        alert("Accounts: " + this.state.accounts)
-    }
-
     handleUserNameChange(event) {
         this.setState({ 
             userName: event.target.value
@@ -89,17 +83,36 @@ export class RegisterForm extends Component {
         });
     }
     
-    handleSubmit(event) {
+    async handleSubmit(event) {
         event.preventDefault()
-        console.log('userValues: '  + this.state.accounts + ", " + this.state.isActive + ", " + this.state.userName + ", " + this.state.password + ", " + this.state.confirmPassword);
         let userAdress = this.state.accounts[0];
         let userPassword = this.state.password;
-        console.log(userAdress + ", " + userPassword);
-        if(this.state.confirmPassword != this.state.password)
+        let userName = this.state.userName;
+        var charNumberRegex = /^[a-zA-Z0-9-]+$/;
+
+        let adressExists = await userApi.CreatUser
+
+        if(this.state.confirmPassword != this.state.password || userPassword == null)
         {
             alert("Password should be the same in both fields!");
-        } else if(this.state.isActive == true && userAdress != null && userPassword != null){
-            userApi.CreatUser(userAdress, userPassword);
+        } 
+        else if(this.state.isActive == true && userAdress != null && userPassword != null)
+        {
+            let createUser = await userApi.CreatUser(userAdress, userPassword);
+            alert(createUser.msg);
+        }
+        else if(this.state.isActive == false && userAdress != null && userPassword != null)
+        {
+            if(userName != null && !userName.match(charNumberRegex))
+            {
+                alert("Username and/or password should only exist of letters and numbers and '-'");
+            }
+            else 
+            {
+                let createUser = await userApi.CreatUser(userAdress, userPassword, userName);
+                alert(createUser.msg);         
+            }
+            
         }
 
     }
@@ -123,26 +136,29 @@ export class RegisterForm extends Component {
             <form>
                 <div className="form-group">
                     <label for="username">Username</label>
-                    <input type="username" className="form-control" id="username" value={this.state.userName} onChange={this.handleUserNameChange} disabled = {this.state.isActive} />
+                    <input type="username" className="form-control" id="username" 
+                    value={this.state.userName} 
+                    onChange={this.handleUserNameChange} 
+                    disabled = {this.state.isActive} />
                 </div>
                 <div className="form-group form-check">
-                        <input type="checkbox" className="form-check-input" id="checkbox" onChange={this.handleCheck} />
+                        <input type="checkbox" className="form-check-input" id="checkbox" 
+                        onChange={this.handleCheck} />
                         <label className="form-check-label" for="checkbox">Random Generated Username</label>
                 </div>
                 <div className="form-group">
                     <label for="password">Password</label>
-                    <input type="password" className="form-control" id="password" value={this.state.password} onChange={this.handlePasswordChange} />
+                    <input type="password" className="form-control" id="password" 
+                    value={this.state.password} 
+                    onChange={this.handlePasswordChange} />
                 </div>
                 <div className="form-group">
                     <label for="confirmPassword">Confirm password</label>
-                    <input type="password" className="form-control" id="confirmPassword" color="#72A4D2" value={this.state.confirmPassword} onChange={this.handleConfirmPasswordChange} />
-                </div>
-                <div className="form-group form-check">
-                        <input type="checkbox" className    ="form-check-input" id="exampleCheck1" />
-                        <label className="form-check-label" for="exampleCheck1">I agree with <a href="/">the terms of agreement</a></label>
+                    <input type="password" className="form-control" id="confirmPassword" 
+                    value={this.state.confirmPassword} 
+                    onChange={this.handleConfirmPasswordChange} />
                 </div>
                 <button className="btn btn-primary" onClick={this.handleSubmit}>Register</button>
-                <button className="btn btn-primary" onClick={this.testSubmit}>Get Accounts</button>
             </form>
         </div>
         )

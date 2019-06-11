@@ -14,6 +14,8 @@ namespace DomainLayer.Models
         public IList<UserAchievement> Achievements { get; set; }
         public IList<Bet> OwnedBets { get; set; }
         public IList<Friend> Friends { get; set; }
-        public IList<FriendRequest> FriendRequests { get; set; }
+        public IList<Friend> SelfFriends { get; set; }
+        public IList<FriendRequest> ReceivedFriendRequests { get; set; }
+        public IList<FriendRequest> SentFriendRequests { get; set; }
     }
 }

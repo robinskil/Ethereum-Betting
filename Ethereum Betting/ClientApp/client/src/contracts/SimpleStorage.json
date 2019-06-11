@@ -32,15 +32,14 @@
       "signature": "0x6d4ce63c"
     }
   ],
-  "metadata": "{\"compiler\":{\"version\":\"0.5.0+commit.1d4f565a\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"constant\":false,\"inputs\":[{\"name\":\"x\",\"type\":\"uint256\"}],\"name\":\"set\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"get\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/C/Users/Cindy/Documents/GitHub/Ethereum-Betting/Ethereum Betting/ClientApp/contracts/SimpleStorage.sol\":\"SimpleStorage\"},\"evmVersion\":\"byzantium\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/C/Users/Cindy/Documents/GitHub/Ethereum-Betting/Ethereum Betting/ClientApp/contracts/SimpleStorage.sol\":{\"keccak256\":\"0x3e8028452dfe85ed4bb5fb1c44ae5d74ac6ccdb49fe468172152ed507132effa\",\"urls\":[\"bzzr://76b728d540de160830290d00293f7e3dae33773bf81a3d7d68c97cf4cfdfb0f3\"]}},\"version\":1}",
-  "bytecode": "0x608060405234801561001057600080fd5b5060ec8061001f6000396000f3fe6080604052600436106049576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff16806360fe47b114604e5780636d4ce63c146085575b600080fd5b348015605957600080fd5b50608360048036036020811015606e57600080fd5b810190808035906020019092919050505060ad565b005b348015609057600080fd5b50609760b7565b6040518082815260200191505060405180910390f35b8060008190555050565b6000805490509056fea165627a7a72305820ba8652c605fff946859f493a254aa357fcaa46a14f1bf56bf4de3389157c00030029",
-  "deployedBytecode": "0x6080604052600436106049576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff16806360fe47b114604e5780636d4ce63c146085575b600080fd5b348015605957600080fd5b50608360048036036020811015606e57600080fd5b810190808035906020019092919050505060ad565b005b348015609057600080fd5b50609760b7565b6040518082815260200191505060405180910390f35b8060008190555050565b6000805490509056fea165627a7a72305820ba8652c605fff946859f493a254aa357fcaa46a14f1bf56bf4de3389157c00030029",
+  "bytecode": "0x608060405234801561001057600080fd5b5060ec8061001f6000396000f3fe6080604052600436106049576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff16806360fe47b114604e5780636d4ce63c146085575b600080fd5b348015605957600080fd5b50608360048036036020811015606e57600080fd5b810190808035906020019092919050505060ad565b005b348015609057600080fd5b50609760b7565b6040518082815260200191505060405180910390f35b8060008190555050565b6000805490509056fea165627a7a72305820c1475beca68d618aebb50ff468d30423a883df7da14b6a9e2a65293098fefea40029",
+  "deployedBytecode": "0x6080604052600436106049576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff16806360fe47b114604e5780636d4ce63c146085575b600080fd5b348015605957600080fd5b50608360048036036020811015606e57600080fd5b810190808035906020019092919050505060ad565b005b348015609057600080fd5b50609760b7565b6040518082815260200191505060405180910390f35b8060008190555050565b6000805490509056fea165627a7a72305820c1475beca68d618aebb50ff468d30423a883df7da14b6a9e2a65293098fefea40029",
   "sourceMap": "27:186:1:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;27:186:1;;;;;;;",
   "deployedSourceMap": "27:186:1:-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;77:55;;8:9:-1;5:2;;;30:1;27;20:12;5:2;77:55:1;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;77:55:1;;;;;;;;;;;;;;;;;;;;138:72;;8:9:-1;5:2;;;30:1;27;20:12;5:2;138:72:1;;;;;;;;;;;;;;;;;;;;;;;77:55;125:1;112:10;:14;;;;77:55;:::o;138:72::-;174:4;194:10;;187:17;;138:72;:::o",
   "source": "pragma solidity ^0.5.0;\r\n\r\ncontract SimpleStorage {\r\n  uint storedData;\r\n\r\n  function set(uint x) public {\r\n    storedData = x;\r\n  }\r\n\r\n  function get() public view returns (uint) {\r\n    return storedData;\r\n  }\r\n}\r\n",
-  "sourcePath": "C:/Users/Cindy/Documents/GitHub/Ethereum-Betting/Ethereum Betting/ClientApp/contracts/SimpleStorage.sol",
+  "sourcePath": "C:/Users/Maru/Documents/School/Project D/Application/Ethereum-Betting/Ethereum Betting/clientapp/contracts/SimpleStorage.sol",
   "ast": {
-    "absolutePath": "/C/Users/Cindy/Documents/GitHub/Ethereum-Betting/Ethereum Betting/ClientApp/contracts/SimpleStorage.sol",
+    "absolutePath": "/C/Users/Maru/Documents/School/Project D/Application/Ethereum-Betting/Ethereum Betting/clientapp/contracts/SimpleStorage.sol",
     "exportedSymbols": {
       "SimpleStorage": [
         79
@@ -292,7 +291,7 @@
     "src": "0:215:1"
   },
   "legacyAST": {
-    "absolutePath": "/C/Users/Cindy/Documents/GitHub/Ethereum-Betting/Ethereum Betting/ClientApp/contracts/SimpleStorage.sol",
+    "absolutePath": "/C/Users/Maru/Documents/School/Project D/Application/Ethereum-Betting/Ethereum Betting/clientapp/contracts/SimpleStorage.sol",
     "exportedSymbols": {
       "SimpleStorage": [
         79
@@ -551,12 +550,21 @@
     "5777": {
       "events": {},
       "links": {},
-      "address": "0x99E3158fA087E2265A9F955aE7A8417A420AeA2f",
-      "transactionHash": "0x3a6c055bebd3290b0cb551548853d5c2848d611795fb6bf7b180c25a70043d40"
+      "address": "0xc9cb3b79bdC5CAA54e7D7B1e733918CAa9473817",
+      "transactionHash": "0xf2ebdb1e245bdda9ca0d44e0488b227971efda84a64c0197f4c62d18eef9703b"
     }
   },
+<<<<<<< HEAD
+  "schemaVersion": "3.0.2",
+  "updatedAt": "2019-05-22T15:42:41.155Z",
+=======
   "schemaVersion": "3.0.8",
+<<<<<<< HEAD
+  "updatedAt": "2019-06-11T08:33:54.547Z",
+=======
   "updatedAt": "2019-05-23T12:21:29.751Z",
+>>>>>>> master
+>>>>>>> 0bd946e043b758323c8a9f2c153aa8b8c6b6e407
   "devdoc": {
     "methods": {}
   },

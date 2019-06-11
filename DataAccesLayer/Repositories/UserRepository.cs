@@ -24,10 +24,16 @@ namespace DataAccesLayer.Repositories
             return Context.Users.Any(u => u.GeneratedName == name);
         }
 
+        public bool CheckIfAddressExists(string address) 
+        {
+            return Context.Users.Any(u => u.UserAddress == address);
+        }
+
         public bool CreateUser(User user)
         {
             // throw new NotImplementedException();
             Context.Add(user);
+            Context.SaveChanges();
             return true;
         }
 

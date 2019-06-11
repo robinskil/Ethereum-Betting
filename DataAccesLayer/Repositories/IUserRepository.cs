@@ -22,5 +22,6 @@ namespace DataAccesLayer.Repositories
         bool DeleteUser(string address);
         bool ChangePassword(string address, string newPassword);
         bool CheckIfNameExist(string name);
+        bool CheckIfAddressExists(string address);
     }
 }
