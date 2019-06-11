@@ -62,18 +62,36 @@ namespace InteractorLayer
         /// <returns></returns>
         public bool CreateUser(CreateUserRequestModel createModel)
         {
-            return UserRepository.CreateUser(new User()
+            if(createModel.Username != null)
             {
-                UserAddress = createModel.Address,
-                Password = Hashing.HashText(createModel.Password),
-                //Add support for generating name
-                GeneratedName = RandomNameGenerator.GenerateName(s => CheckIfNameExists(s))
-            });
+                return UserRepository.CreateUser(new User()
+                {
+                    UserAddress = createModel.Address,
+                    Password = Hashing.HashText(createModel.Password),
+                    //Add support for generating name
+                    GeneratedName = createModel.Username
+                });
+            }
+            else
+            {
+                return UserRepository.CreateUser(new User()
+                {
+                    UserAddress = createModel.Address,
+                    Password = Hashing.HashText(createModel.Password),
+                    //Add support for generating name
+                    GeneratedName = RandomNameGenerator.GenerateName(s => CheckIfNameExists(s))
+                });
+            }
         }
 
         public bool CheckIfNameExists(string name)
         {
             return UserRepository.CheckIfNameExist(name);
+        }
+
+        public bool CheckIfAddressExists(string address)
+        {
+            return UserRepository.CheckIfAddressExists(address);
         }
 
         /// <summary>

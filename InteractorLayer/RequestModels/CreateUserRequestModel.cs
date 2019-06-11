@@ -11,5 +11,6 @@ namespace InteractorLayer.RequestModels
         public string Address { get; set; }
         [Required]
         public string Password { get; set; }
+        public string Username { get; set; }
     }
 }

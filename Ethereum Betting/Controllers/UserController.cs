@@ -22,12 +22,14 @@ namespace Ethereum_Betting.Controllers
         public UserController(EthereumBettingContext context)
         {
             UserInteractor = new UserInteractor(context);
-        }
+        } 
         /// <summary>
         /// Logs an user onto our server
         /// </summary>
         /// <param name="loginModel"></param>
         /// <returns></returns>
+        [HttpPost]
+        [Route("login")]
         public async Task<IActionResult> Login(LoginRequestModel loginModel)
         {
             if(ModelState.IsValid && UserInteractor.Login(loginModel, out ClaimsIdentity claimsID))
@@ -66,13 +68,25 @@ namespace Ethereum_Betting.Controllers
         /// </summary>
         /// <param name="createModel"></param>
         /// <returns></returns>
+
+        [HttpPost]
+        [Route("register")]
         public async Task<IActionResult> CreateUser(CreateUserRequestModel createModel)
         {
-            if (ModelState.IsValid && UserInteractor.CreateUser(createModel))
-            {
-                return Ok();
-            }
-            return Forbid();
+                if(UserInteractor.CheckIfAddressExists(createModel.Address))
+                {
+                    return BadRequest( new {success = false, msg = "Address already exists!" });
+                }
+                else if(UserInteractor.CheckIfNameExists(createModel.Username))
+                {
+                    return BadRequest( new {success = false, msg = "Username already exists!"});
+                }
+                else if (ModelState.IsValid && UserInteractor.CreateUser(createModel))
+                {
+                    return Ok( new {success = true, msg = "User succesfully created!"});
+                }
+                return Forbid();
+
         }
         /// <summary>
         /// 

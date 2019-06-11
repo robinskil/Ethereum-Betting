@@ -11,6 +11,7 @@ namespace DataAccesLayer.EF
     {
         public EthereumBettingContext(DbContextOptions<EthereumBettingContext> options) : base(options)
         {
+            
         }
 
         public DbSet<User> Users { get; set; }
@@ -33,6 +34,10 @@ namespace DataAccesLayer.EF
             modelBuilder.Entity<UserAchievement>().HasKey(p => new { p.AchievementId, p.UserId });
             modelBuilder.Entity<Friend>().HasKey(p => new { p.UserId, p.UserFriendId });
             modelBuilder.Entity<FriendRequest>().HasKey(p => new { p.UserCallerId, p.UserReceiverId });
+            modelBuilder.Entity<Friend>().HasOne(p => p.User).WithMany(p => p.Friends);
+            modelBuilder.Entity<Friend>().HasOne(p => p.UserFriend).WithMany(p => p.SelfFriends);
+            modelBuilder.Entity<FriendRequest>().HasOne(p => p.UserCaller).WithMany(p => p.ReceivedFriendRequests);
+            modelBuilder.Entity<FriendRequest>().HasOne(p => p.UserReceiver).WithMany(p => p.SentFriendRequests);
         }
     }
 }

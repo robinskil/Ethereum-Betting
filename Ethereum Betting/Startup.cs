@@ -39,7 +39,7 @@ namespace Ethereum_Betting
             });
             string connection = this.Configuration.GetConnectionString("DbConnectionString");
             string ethNetwork = this.Configuration.GetConnectionString("LocalEth");
-            services.AddDbContext<EthereumBettingContext>(options => options.UseSqlServer(connection));
+            services.AddDbContext<EthereumBettingContext>(options => options.UseSqlServer(connection, b => b.MigrationsAssembly("Ethereum Betting")));
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie();
 
             services.AddSignalR();

@@ -29,12 +29,16 @@ export default class MenuBar extends Component {
                         <li className="nav-item">
                             <Link className="nav-link" to="/Login">Login</Link>
                         </li>
+                        <li className="nav-item">
+                            <Link className="nav-link" to="/Register">Register</Link>
+                        </li>
                         <li className="nav-item dropdown">
                             <a className="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Bets
                             </a>
                             <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                <Link className="dropdown-item" to="/CreateBet">Create a bet</Link>
+                                <Link className="dropdown-item" to="/CreateBet">Create a bet</Link>  
+                                <Link className="dropdown-item" to="/JoinBet">Join a bet</Link>
                                 <Link className="dropdown-item" to="/PuzzlePage">Puzzle</Link>
                          
                             </div>
