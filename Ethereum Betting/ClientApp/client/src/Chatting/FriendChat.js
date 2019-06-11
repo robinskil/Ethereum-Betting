@@ -32,8 +32,7 @@ export default class FriendsChat extends React.Component {
 
     render() {
         return (
-            <div> TEst
-
+            <div>
                       <button class="open-button" type="button" onClick={this.Toggle}>Friends</button>
                       {this.state.Toggled ? <FriendsList />: null}
                 

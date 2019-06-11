@@ -3,10 +3,3 @@
     height: auto;
     border-radius: unset !important;
 }
-
-.profile-card {
-    background-color: #fff !important;
-    height: auto;
-    border-radius: unset !important;
-    border: 1px solid rgba(0,0,0,.125);
-}
