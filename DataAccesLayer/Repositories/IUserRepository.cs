@@ -19,8 +19,8 @@ namespace DataAccesLayer.Repositories
         User GetUser(string address);
         IList<User> GetUserSuggestion(string user);
         IList<User> GetFriends(string address);
-        bool DeleteUser(string address);
-        bool ChangePassword(string address, string newPassword);
+        bool DeleteUser(User user);
+        bool ChangePassword(User user);
         bool CheckIfNameExist(string name);
         bool CheckIfAddressExists(string address);
     }

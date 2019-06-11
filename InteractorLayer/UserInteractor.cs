@@ -84,6 +84,21 @@ namespace InteractorLayer
             }
         }
 
+        public bool ChangePassword(ChangePasswordRequestModel changePasswordModel)
+        {
+            User user = UserRepository.GetUser(changePasswordModel.Address);
+            if(user != null)
+            {
+                if(Hashing.ValidateText(changePasswordModel.OldPassword, user.Password))
+                {
+                    user.Password = Hashing.HashText(changePasswordModel.NewPassword);
+                    return UserRepository.ChangePassword(user);  
+                }
+            }   
+
+            return false;
+        }
+
         public bool CheckIfNameExists(string name)
         {
             return UserRepository.CheckIfNameExist(name);
@@ -101,7 +116,12 @@ namespace InteractorLayer
         /// <returns></returns>
         public bool DeleteUser(DeleteUserRequestModel deleteModel)
         {
-            return UserRepository.DeleteUser(deleteModel.Address);
+            User user = UserRepository.GetUser(deleteModel.Address);
+            if(Hashing.ValidateText(deleteModel.Password, user.Password))
+            {
+                return UserRepository.DeleteUser(user);
+            }
+            return false;
         }
 
         /// <summary>

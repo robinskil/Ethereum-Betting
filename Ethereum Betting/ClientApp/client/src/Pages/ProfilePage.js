@@ -8,51 +8,70 @@ import {
     Route,
     Link
 } from 'react-router-dom'
-import MenuBar from "../Components/MenuBar";
+import MenuBar from "../Components/MenuBar";   
+import { ExportedProfileLayout } from "../Components/Layouts/ProfileLayout";
+import { ExportedBetHistoryLayout } from "../Components/Layouts/BetHistoryLayout";
+import { ExportedAchievementsLayout } from "../Components/Layouts/AchievementsLayout.js";
+import { ExportedUserSettingsLayout } from "../Components/Layouts/UserSettingsLayout";
 import { type } from "os";
 
-export class ProfilePAge extends Component{
+
+export class ProfilePage extends Component{
         constructor(props) {
         super(props);
         this.state = {
+            layout: <ExportedProfileLayout/>
         }
+
+        this.handleClick = this.handleClick.bind(this);
+    }
+
+    handleClick(event) {
+        if(event.target.getAttribute('href') == "#profile")
+        {
+            this.setState({
+                layout: <ExportedProfileLayout/>
+            })
+        }
+        else if (event.target.getAttribute('href') == "#bethistory")
+        {
+            this.setState({
+                layout: <ExportedBetHistoryLayout/>
+            })
+        }
+        else if (event.target.getAttribute('href') == "#achievements")
+        {
+            this.setState({
+                layout: <ExportedAchievementsLayout/>
+            })
+        }
+        else if (event.target.getAttribute('href') == "#usersettings")
+        {
+            this.setState({
+                layout: <ExportedUserSettingsLayout/>
+            })
+        }
+
+        this.render();
     }
 
     render() {
         return (
-            <div>
-                <div className="jumbotron" style={{ padding: "2rem" }}>
-                    <h1 className="display-4">Create your account</h1>
-                    <p className="lead">Enter your username and your password to create your account.</p>
-                    <hr className="my-4" />          
+            <div>   
+                <div class="row">
+                        <div class="col-3">
+                        <div class="list-group">
+                        <a href="#profile" class="list-group-item list-group-item-action" onClick={this.handleClick}>Profile</a>
+                        <a href="#bethistory" class="list-group-item list-group-item-action" onClick={this.handleClick}>Bet History</a>
+                        <a href="#achievements" class="list-group-item list-group-item-action disabled" onClick={this.handleClick} >Achievements</a>
+                        <a href="#friends" class="list-group-item list-group-item-action disabled" onClick={this.handleClick} >Friends</a>
+                        <a href="#usersettings" class="list-group-item list-group-item-action" onClick={this.handleClick}>User Settings</a>
                 </div>
-                <form>
-                    <div className="form-group">
-                        <label for="username">Username</label>
-                        <input type="username" className="form-control" id="username" 
-                        value={this.state.userName} 
-                        onChange={this.handleUserNameChange} 
-                        disabled = {this.state.isActive} />
+                </div>
+                    <div class="col-9">
+                        {this.state.layout}
                     </div>
-                    <div className="form-group form-check">
-                            <input type="checkbox" className="form-check-input" id="checkbox" 
-                            onChange={this.handleCheck} />
-                            <label className="form-check-label" for="checkbox">Random Generated Username</label>
-                    </div>
-                    <div className="form-group">
-                        <label for="password">Password</label>
-                        <input type="password" className="form-control" id="password" 
-                        value={this.state.password} 
-                        onChange={this.handlePasswordChange} />
-                    </div>
-                    <div className="form-group">
-                        <label for="confirmPassword">Confirm password</label>
-                        <input type="password" className="form-control" id="confirmPassword" 
-                        value={this.state.confirmPassword} 
-                        onChange={this.handleConfirmPasswordChange} />
-                    </div>
-                    <button className="btn btn-primary" onClick={this.handleSubmit}>Register</button>
-                </form>
+                </div>
             </div>
             )
    }

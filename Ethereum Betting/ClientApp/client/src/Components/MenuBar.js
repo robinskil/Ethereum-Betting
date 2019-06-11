@@ -4,6 +4,7 @@ import {
     Route,
     Link
 } from 'react-router-dom'
+import * as userApi from './../helpers/UserApi'
 
 export default class MenuBar extends Component {
     
@@ -26,12 +27,18 @@ export default class MenuBar extends Component {
                         <li className="nav-item">
                             <Link className="nav-link" to="/Profile">Profile</Link>
                         </li>
-                        <li className="nav-item">
-                            <Link className="nav-link" to="/Login">Login</Link>
-                        </li>
-                        <li className="nav-item">
-                            <Link className="nav-link" to="/Register">Register</Link>
-                        </li>
+                        {
+                            userApi.IsAuthenticated &&
+                            <li className="nav-item">
+                                <Link className="nav-link" to="/Login">Login</Link>
+                            </li> 
+                        }
+                        {
+                            userApi.IsAuthenticated &&
+                            <li className="nav-item">
+                                <Link className="nav-link" to="/Register">Register</Link>
+                            </li>
+                        }
                         <li className="nav-item dropdown">
                             <a className="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Bets
