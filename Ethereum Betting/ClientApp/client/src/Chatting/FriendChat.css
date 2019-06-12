@@ -33,8 +33,6 @@
 
 
 .open-button {
-    background-color: #555;
-    color: white;
     padding: 16px 20px;
     border: none;
     cursor: pointer;
@@ -53,8 +51,8 @@
     position: fixed;
     bottom: -3%;
     right: 0%;
-    width: 500px;
-    height: 1000px;
+    width: 20%;
+    height: 50%;
     overflow: auto;
     border-radius: 15px !important;
 }
@@ -325,7 +323,7 @@
                 background-color: rgba(0,0,0,0.2);
             }
 
-@media(max-width: 576px) {
+/*@media(max-width: 576px) {
     .contacts_card {
         margin-bottom: 15px !important;
         overflow: auto;
@@ -352,4 +350,4 @@ input {
 .container {
     background: rgba(255, 255, 255, 0.65);
     overflow: auto;
-}
+}*/
