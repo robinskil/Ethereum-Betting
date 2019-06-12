@@ -32,8 +32,10 @@ export default class FriendsChat extends React.Component {
 
     render() {
         return (
-            <div>
-                      <button class="open-button" type="button" onClick={this.Toggle}>Friends</button>
+            <div> TEst
+
+                      <button class="btn btn-primary open-button" type="button" onClick={this.Toggle}>Friends</button>
+
                       {this.state.Toggled ? <FriendsList />: null}
                 
      
@@ -202,7 +204,7 @@ class SearchBar extends React.Component {
 
     render() {
         return (
-            <div className = "col-md-12">
+            <div>
             <form>
                 <input
                     className="form-control"
@@ -240,9 +242,10 @@ class NewContactRow extends React.Component {
         return (
 
             <form className="form-inline" onSubmit={this.handleSubmit}>
-                <div className="form-group row">
-                    <div className="col-md-3">
+                <div>
+                    <div >
                         <input type="text" name="name" className="form-control" id="nameInput" placeholder="add friend" />
+                        <button type="submit" className="btn btn-primary"><i className="fa fa-fw fa-plus"></i>Add</button>
                     </div>
                
            

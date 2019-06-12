@@ -30,8 +30,6 @@
 
 
 .open-button {
-    background-color: #555;
-    color: white;
     padding: 16px 20px;
     border: none;
     cursor: pointer;
@@ -50,7 +48,7 @@
     position: fixed;
     bottom: -3%;
     right: 0%;
-    width: 25%;
+    width: 20%;
     height: 50%;
     overflow: auto;
     border-radius: 15px !important;
@@ -320,31 +318,3 @@
                 background-color: rgba(0,0,0,0.2);
             }
 
-@media(max-width: 576px) {
-    .contacts_card {
-        margin-bottom: 15px !important;
-        overflow: auto;
-    }
-}
-
-/* body {
-    padding: 40px 20% 20px 10%;
-    overflow: auto;
-}
-
-
-.table, .form-inline {
-    margin-top: 20px;
-    overflow: auto;
- 
-}
-
-input {
-    margin: 0 12px 0 0;
-    overflow: auto;
-}
-
-.container {
-    background: rgba(255, 255, 255, 0.65);
-    overflow: auto;
-} */
