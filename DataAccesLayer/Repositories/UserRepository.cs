@@ -14,9 +14,11 @@ namespace DataAccesLayer.Repositories
         {
         }
 
-        public bool ChangePassword(string userId, string newPassword)
+        public bool ChangePassword(User user)
         {
-            throw new NotImplementedException();
+            Context.Users.Update(user);
+            Context.SaveChanges();
+            return true;
         }
 
         public bool CheckIfNameExist(string name)
@@ -37,9 +39,9 @@ namespace DataAccesLayer.Repositories
             return true;
         }
 
-        public bool DeleteUser(string address)
+        public bool DeleteUser(User user)
         {
-            Context.Entry(new User() { UserAddress = address }).State = EntityState.Deleted;
+            Context.Users.Remove(user);
             Context.SaveChanges();
             return true;
         }

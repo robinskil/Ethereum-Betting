@@ -1,7 +1,4 @@
-﻿
-
-
-.slide-top {
+﻿.slide-top {
     -webkit-animation: slide-top 0.5s cubic-bezier(0.755, 0.050, 0.855, 0.060) forwards;
     animation: slide-top 0.5s cubic-bezier(0.755, 0.050, 0.855, 0.060) forwards;
 }
@@ -70,9 +67,7 @@
 }
 
 .card {
-    height: 500px;
     border-radius: 15px !important;
-    background-color: rgba(0,0,0,0.4) !important;
 }
 
 .contacts_body {
@@ -323,31 +318,3 @@
                 background-color: rgba(0,0,0,0.2);
             }
 
-/*@media(max-width: 576px) {
-    .contacts_card {
-        margin-bottom: 15px !important;
-        overflow: auto;
-    }
-}
-
-body {
-    padding: 40px 20% 20px 10%;
-    overflow: auto;
-}
-
-
-.table, .form-inline {
-    margin-top: 20px;
-    overflow: auto;
- 
-}
-
-input {
-    margin: 0 12px 0 0;
-    overflow: auto;
-}
-
-.container {
-    background: rgba(255, 255, 255, 0.65);
-    overflow: auto;
-}*/

@@ -32,6 +32,10 @@ namespace Ethereum_Betting.Controllers
         [Route("login")]
         public async Task<IActionResult> Login(LoginRequestModel loginModel)
         {
+            if(!UserInteractor.CheckIfAddressExists(loginModel.Address))
+            {
+                return BadRequest( new {success = false, msg = "Address does not exists!" });
+            }
             if(ModelState.IsValid && UserInteractor.Login(loginModel, out ClaimsIdentity claimsID))
             {
                 AuthenticationProperties authenticationProperties = new AuthenticationProperties()
@@ -41,11 +45,54 @@ namespace Ethereum_Betting.Controllers
                     ExpiresUtc = DateTime.Now.AddHours(1)
                 };
                 await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsID), authenticationProperties);
-                return Ok();
+                return Ok(new {success = true, msg = "User is logged in!" });
+            } else {
+                return BadRequest( new {succes = false, msg = "Address/password is wrong!"});
             }
-            return Forbid();
+        }
+        [HttpPost]
+        [Route("delete")]
+        public async Task<IActionResult> DeleteUser(DeleteUserRequestModel deleteModel)
+        {
+            if(!UserInteractor.CheckIfAddressExists(deleteModel.Address))
+            {
+                return BadRequest( new {success = false, msg = "Address does not exists!" });
+            }
+            if(ModelState.IsValid && UserInteractor.DeleteUser(deleteModel))
+            {
+                return Ok(new {success = true, msg = "User succesfuly deleted!" });
+            } else {
+                return BadRequest( new {succes = false, msg = "User could not be deleted!"});
+            }
         }
 
+        [HttpPost]
+        [Route("changepassword")]
+        public async Task<IActionResult> ChangePassword(ChangePasswordRequestModel changePasswordModel)
+        {
+            if(!UserInteractor.CheckIfAddressExists(changePasswordModel.Address))
+            {
+                return BadRequest( new {success = false, msg = "Address does not exists!" });
+            }
+            if(ModelState.IsValid && UserInteractor.ChangePassword(changePasswordModel))
+            {
+                return Ok(new {success = true, msg = "Password succesfully changed" });
+            } else {
+                return BadRequest( new {succes = false, msg = "Could not change password!"});
+            }
+        }
+
+
+        [HttpGet]
+        [Route("isAuthenticated")]
+        public async Task<IActionResult> isAuthenticated(){
+            if(HttpContext.User.Identity.IsAuthenticated)
+            {
+                return Ok(new {success = true, msg = "User has now logged in!" });
+            }
+
+            return BadRequest(new {success = false, msg = "User is not logged in!" });
+        }
         /// <summary>
         /// Logs an user out of our server
         /// </summary>
