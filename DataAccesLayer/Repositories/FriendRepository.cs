@@ -41,7 +41,10 @@ namespace DataAccesLayer.Repositories
 
         public bool RemoveFriend(Friend friend)
         {
-            throw new NotImplementedException();
+            Context.Friends.Remove(friend);
+            Context.SaveChanges();
+            return true;
+            //throw new NotImplementedException();
         }
 
         public Task<bool> RemoveFriendAsync(Friend friend)
