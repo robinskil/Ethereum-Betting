@@ -20,14 +20,15 @@
       "type": "function"
     }
   ],
+  "metadata": "",
   "bytecode": "0x",
   "deployedBytecode": "0x",
   "sourceMap": "",
   "deployedSourceMap": "",
   "source": "pragma solidity ^0.5.0;\r\n\r\ninterface IWinner {\r\n    struct Winners {address[] users;}\r\n    function GetWinners() external;\r\n    function AddWinner() external;\r\n}",
-  "sourcePath": "C:/Users/Steve/OneDrive/Documenten/GitHub/Ethereum-Betting/Ethereum Betting/ClientApp/contracts/IWinner.sol",
+  "sourcePath": "C:/Users/Oscar Druiventak/Desktop/code/Ethereum-Betting/Ethereum Betting/ClientApp/contracts/IWinner.sol",
   "ast": {
-    "absolutePath": "/C/Users/Steve/OneDrive/Documenten/GitHub/Ethereum-Betting/Ethereum Betting/ClientApp/contracts/IWinner.sol",
+    "absolutePath": "/C/Users/Oscar Druiventak/Desktop/code/Ethereum-Betting/Ethereum Betting/ClientApp/contracts/IWinner.sol",
     "exportedSymbols": {
       "IWinner": [
         425
@@ -170,7 +171,7 @@
     "src": "0:161:2"
   },
   "legacyAST": {
-    "absolutePath": "/C/Users/Steve/OneDrive/Documenten/GitHub/Ethereum-Betting/Ethereum Betting/ClientApp/contracts/IWinner.sol",
+    "absolutePath": "/C/Users/Oscar Druiventak/Desktop/code/Ethereum-Betting/Ethereum Betting/ClientApp/contracts/IWinner.sol",
     "exportedSymbols": {
       "IWinner": [
         425
@@ -317,8 +318,8 @@
     "version": "0.5.0+commit.1d4f565a.Emscripten.clang"
   },
   "networks": {},
-  "schemaVersion": "3.0.2",
-  "updatedAt": "2019-06-13T10:28:28.583Z",
+  "schemaVersion": "3.0.8",
+  "updatedAt": "2019-06-13T11:49:22.034Z",
   "devdoc": {
     "methods": {}
   },

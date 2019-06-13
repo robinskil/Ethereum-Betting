@@ -205,14 +205,15 @@
       "type": "function"
     }
   ],
+  "metadata": "",
   "bytecode": "0x",
   "deployedBytecode": "0x",
   "sourceMap": "",
   "deployedSourceMap": "",
   "source": "pragma solidity ^0.5.0;\r\n\r\n//TODO import oracles through oraclize\r\nimport \"./oraclizeAPI.sol\";\r\n\r\ncontract Bet is usingOraclize {\r\n\r\n    struct BetStruct {\r\n        //time of creation of the bet\r\n        uint creationTime;\r\n        //betting length in days.\r\n        uint betLength;\r\n        address owner;\r\n        address[] participators;\r\n        //Winners should be defined through the IWinner interface\r\n        address[] winners;\r\n        uint betAmount;\r\n        uint maxParticipators;\r\n        bool open;\r\n        bool friendsOnly;\r\n        bool finished;\r\n    }\r\n    BetStruct bet;\r\n        modifier onlyOwner {\r\n        require(\r\n            msg.sender == bet.owner,\r\n            \"Only owner can call this function.\"\r\n        );\r\n        _;\r\n    }\r\n\r\n    //Guard to define whether a bet has finished.\r\n    modifier betFinished{\r\n        require(bet.finished == true,\"Bet has already finished\");\r\n        _;\r\n    }\r\n\r\n    //guard to define whether a sender is participating.\r\n    modifier participating{\r\n        require(userAlreadyJoined(msg.sender) == true,\"You have to join this bet first.\");\r\n        _;\r\n    }\r\n    \r\n    //todo check if user is already in list....\r\n    function join() public payable{\r\n        require(msg.value == bet.betAmount * 1 ether,\"Requires Ether.\");\r\n        require(bet.open == true,\"Bet is not open\");\r\n        require(userAlreadyJoined(msg.sender) == false,\"User has already joined this bet\");\r\n        bet.participators.push(msg.sender);\r\n    }\r\n\r\n    function userAlreadyJoined(address userAddress) private view returns (bool) {\r\n        for (uint index = 0 ; index < bet.participators.length; index++) {\r\n            if(bet.participators[index] == userAddress) return true;\r\n        }\r\n        return false;\r\n    }\r\n\r\n    function checkJoined() public view returns(bool) {\r\n        return userAlreadyJoined(msg.sender);\r\n    }\r\n\r\n    function isOpen() public view returns(bool) {\r\n        return bet.open;\r\n    }\r\n\r\n    function friendsOnly() public onlyOwner view returns(bool) {\r\n        return bet.friendsOnly;\r\n    }\r\n\r\n    function finished() public view returns(bool) {\r\n        return bet.finished;\r\n    }\r\n\r\n    function getParticipators() public view returns  (address[] memory) {\r\n        return bet.participators;\r\n    }\r\n\r\n    function getBetAmount() public view returns (uint) {\r\n        return bet.betAmount;\r\n    }\r\n\r\n    function getOwner() public view returns (address) {\r\n        return bet.owner;\r\n    }\r\n\r\n    function getStoredBalance() public view returns (uint256) {\r\n        return address(this).balance;\r\n    }\r\n    \r\n    //Add modifier\r\n    function getWinners() public betFinished view returns(address[] memory) {\r\n        return bet.winners;\r\n    }\r\n\r\n    function getCreationTime() public view returns(uint) {\r\n        return bet.creationTime;\r\n    }\r\n\r\n    //returns time left in seconds for bet to end\r\n    function timeLeft() public view returns(uint) {\r\n        return (bet.creationTime - now) / (bet.betLength * 1 minutes);\r\n    }\r\n    \r\n    /*ABSTRACT FUNCTIONS*/\r\n    //Functions that need to be implemented by inherited contracts.\r\n    function defineWinners() private returns (address[] memory);\r\n    function divideWinnings() private;\r\n}",
-  "sourcePath": "C:\\Users\\Steve\\OneDrive\\Documenten\\GitHub\\Ethereum-Betting\\Ethereum Betting\\ClientApp\\contracts\\Bet.sol",
+  "sourcePath": "C:\\Users\\Oscar Druiventak\\Desktop\\code\\Ethereum-Betting\\Ethereum Betting\\ClientApp\\contracts\\Bet.sol",
   "ast": {
-    "absolutePath": "/C/Users/Steve/OneDrive/Documenten/GitHub/Ethereum-Betting/Ethereum Betting/ClientApp/contracts/Bet.sol",
+    "absolutePath": "/C/Users/Oscar Druiventak/Desktop/code/Ethereum-Betting/Ethereum Betting/ClientApp/contracts/Bet.sol",
     "exportedSymbols": {
       "Bet": [
         271
@@ -233,7 +234,7 @@
         "src": "0:23:0"
       },
       {
-        "absolutePath": "/C/Users/Steve/OneDrive/Documenten/GitHub/Ethereum-Betting/Ethereum Betting/ClientApp/contracts/oraclizeAPI.sol",
+        "absolutePath": "/C/Users/Oscar Druiventak/Desktop/code/Ethereum-Betting/Ethereum Betting/ClientApp/contracts/oraclizeAPI.sol",
         "file": "./oraclizeAPI.sol",
         "id": 2,
         "nodeType": "ImportDirective",
@@ -3576,7 +3577,7 @@
     "src": "0:3222:0"
   },
   "legacyAST": {
-    "absolutePath": "/C/Users/Steve/OneDrive/Documenten/GitHub/Ethereum-Betting/Ethereum Betting/ClientApp/contracts/Bet.sol",
+    "absolutePath": "/C/Users/Oscar Druiventak/Desktop/code/Ethereum-Betting/Ethereum Betting/ClientApp/contracts/Bet.sol",
     "exportedSymbols": {
       "Bet": [
         271
@@ -3597,7 +3598,7 @@
         "src": "0:23:0"
       },
       {
-        "absolutePath": "/C/Users/Steve/OneDrive/Documenten/GitHub/Ethereum-Betting/Ethereum Betting/ClientApp/contracts/oraclizeAPI.sol",
+        "absolutePath": "/C/Users/Oscar Druiventak/Desktop/code/Ethereum-Betting/Ethereum Betting/ClientApp/contracts/oraclizeAPI.sol",
         "file": "./oraclizeAPI.sol",
         "id": 2,
         "nodeType": "ImportDirective",
@@ -6944,8 +6945,8 @@
     "version": "0.5.0+commit.1d4f565a.Emscripten.clang"
   },
   "networks": {},
-  "schemaVersion": "3.0.2",
-  "updatedAt": "2019-06-13T10:28:28.579Z",
+  "schemaVersion": "3.0.8",
+  "updatedAt": "2019-06-13T11:49:22.021Z",
   "devdoc": {
     "methods": {}
   },
