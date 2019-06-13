@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DataAccesLayer.EF;
@@ -29,9 +30,11 @@ namespace DataAccesLayer.Repositories
             throw new NotImplementedException();
         }
 
-        public IEnumerable<Friend> GetFriends(Guid userId)
+        public IEnumerable<Friend> GetFriends(string userId)
         {
-            throw new NotImplementedException();
+            var u = Context.Users.Find(userId);
+
+            return u.Friends.ToArray();
         }
 
         public Task<IEnumerable<Friend>> GetFriendsAsync(Guid userId)
@@ -44,7 +47,6 @@ namespace DataAccesLayer.Repositories
             Context.Friends.Remove(friend);
             Context.SaveChanges();
             return true;
-            //throw new NotImplementedException();
         }
 
         public Task<bool> RemoveFriendAsync(Friend friend)
