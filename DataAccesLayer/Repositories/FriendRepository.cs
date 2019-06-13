@@ -18,7 +18,10 @@ namespace DataAccesLayer.Repositories
         }
         public bool AddFriend(Friend friend)
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException
+            Context.Friends.Add(friend);
+            Context.SaveChanges();
+            return true;
         }
 
         public Task<bool> AddFriendAsync(Friend friend)

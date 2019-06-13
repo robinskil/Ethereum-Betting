@@ -118,10 +118,13 @@ namespace InteractorLayer
         {
             //GetUser can return null, MARU , CHECK THIS!
             User user = UserRepository.GetUser(deleteModel.Address);
-            if (Hashing.ValidateText(deleteModel.Password, user.Password))
+            if(user != null)
             {
-                //Delete user requires an address is string form not an object.
-                return UserRepository.DeleteUser(user);
+                if (Hashing.ValidateText(deleteModel.Password, user.Password))
+                {
+                    //Delete user requires an address is string form not an object.
+                    return UserRepository.DeleteUser(user);
+                }
             }
             return false;
         }
