@@ -1,5 +1,6 @@
 ﻿using DataAccesLayer.EF;
 using DataAccesLayer.Repositories;
+using DomainLayer.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -16,7 +17,12 @@ namespace InteractorLayer.FriendInteractor
         }
         public bool AddFriend(string addressUser, string addressFriend)
         {
-            throw new NotImplementedException();
+            Friend relation = new Friend()
+            {
+                UserIdAddress = addressUser,
+                UserFriendAddress = addressFriend
+            };
+            return Repository.AddFriend(relation);
         }
 
         public Task<bool> AddFriendAsync(string addressUser, string addressFriend)
