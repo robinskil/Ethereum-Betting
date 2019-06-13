@@ -12,9 +12,9 @@ contract BettingFactory {
     //     bets.push(betAddress);
     //     return betAddress;
     // } 
-    
+
     //Instantiates a new PuzzleBet
-    function createRandomNumberBet(uint _value, uint _maxParticipators, bool _open, bool _friendsOnly, uint _betLength) public returns (address) {
+    function createPuzzleBet(uint _value, uint _maxParticipators, bool _open, bool _friendsOnly, uint _betLength) public returns (address) {
         address betAddress = address(new PuzzleBet(msg.sender , _value , _maxParticipators , _open , _friendsOnly , _betLength));
         bets.push(betAddress);
         return betAddress;
