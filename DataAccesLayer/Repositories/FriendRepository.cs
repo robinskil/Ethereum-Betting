@@ -37,7 +37,7 @@ namespace DataAccesLayer.Repositories
             return u.Friends.ToArray();
         }
 
-        public Task<IEnumerable<Friend>> GetFriendsAsync(Guid userId)
+        public Task<IEnumerable<Friend>> GetFriendsAsync(string userId)
         {
             throw new NotImplementedException();
         }
