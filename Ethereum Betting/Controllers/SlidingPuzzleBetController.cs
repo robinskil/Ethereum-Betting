@@ -27,5 +27,17 @@ namespace Ethereum_Betting.Controllers
         {
             throw new NotImplementedException();
         }
+
+        [HttpGet]
+        public async Task<string> GetWinners(string addressPuzzleBet)
+        {
+            return "0x341b9290f9083D7f08882b0d311006564D2a35E7@0x01C4AD590009b3c54b3FCe3770D98DB04bBBcD8b";
+        }
+        [HttpGet]
+        [Route("GetWinners")]
+        public async Task<string> GetWinners()
+        {
+            return "0x341b9290f9083D7f08882b0d311006564D2a35E7@0x01C4AD590009b3c54b3FCe3770D98DB04bBBcD8b";
+        }
     }
 }

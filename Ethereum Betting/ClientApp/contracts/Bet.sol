@@ -4,7 +4,7 @@ pragma solidity ^0.5.0;
 import "./oraclizeAPI.sol";
 
 contract Bet is usingOraclize {
-
+    mapping(address => uint) pendingWithdrawals;
     struct BetStruct {
         //time of creation of the bet
         uint creationTime;
@@ -49,9 +49,16 @@ contract Bet is usingOraclize {
         bet.participators.push(msg.sender);
     }
 
-    function userAlreadyJoined(address userAddress) private view returns (bool) {
+    function userAlreadyJoined(address userAddress) internal view returns (bool) {
         for (uint index = 0 ; index < bet.participators.length; index++) {
             if(bet.participators[index] == userAddress) return true;
+        }
+        return false;
+    }
+
+        function userAlreadyWinner(address userAddress) internal view returns (bool) {
+        for (uint index = 0 ; index < bet.winners.length; index++) {
+            if(bet.winners[index] == userAddress) return true;
         }
         return false;
     }
@@ -89,7 +96,7 @@ contract Bet is usingOraclize {
     }
     
     //Add modifier
-    function getWinners() public betFinished view returns(address[] memory) {
+    function getWinners() public /*betFinished*/ view returns(address[] memory) {
         return bet.winners;
     }
 
@@ -101,9 +108,16 @@ contract Bet is usingOraclize {
     function timeLeft() public view returns(uint) {
         return (bet.creationTime - now) / (bet.betLength * 1 minutes);
     }
+
+    function withdraw() public {
+        uint amount = pendingWithdrawals[msg.sender];
+        // Remember to zero the pending refund before
+        // sending to prevent re-entrancy attacks
+        pendingWithdrawals[msg.sender] = 0;
+        msg.sender.transfer(amount);
+    }
     
     /*ABSTRACT FUNCTIONS*/
     //Functions that need to be implemented by inherited contracts.
-    function defineWinners() private returns (address[] memory);
     function divideWinnings() private;
 }
