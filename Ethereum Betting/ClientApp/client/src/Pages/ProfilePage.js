@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import SimpleStorageContract from "../contracts/SimpleStorage.json";
-import {CreateUser} from "../helpers/UserApi";
-import * as userApi from "../helpers/UserApi";
+import * as userApi from "../Components/ApiHelpers/UserApi";
 import Web3 from "web3";
 import {
     BrowserRouter as Router,
