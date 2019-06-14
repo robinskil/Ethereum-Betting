@@ -1,6 +1,6 @@
 ﻿import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import * as userApi from "./../helpers/UserApi";
+import * as userApi from "../Components/ApiHelpers/UserApi";
 import { StateContext } from "../state";
 import { login } from "../reducers/auth";
 

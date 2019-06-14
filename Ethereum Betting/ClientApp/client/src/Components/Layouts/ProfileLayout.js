@@ -5,7 +5,7 @@ import {
     Link,
     withRouter
 } from 'react-router-dom'
-import * as userApi from '../../helpers/UserApi'
+import * as userApi from '../ApiHelpers/UserApi'
 import Web3 from 'web3'
 import {Card} from '../Card/Card'
 
