@@ -36,7 +36,7 @@ export class ProfilePage extends Component{
         else if (event.target.getAttribute('href') == "#bethistory")
         {
             this.setState({
-                layout: <ExportedBetHistoryLayout/>
+                layout: <ExportedBetHistoryLayout web3={this.props.web3}/>
             })
         }
         else if (event.target.getAttribute('href') == "#friends")

@@ -16,7 +16,7 @@ class BetHistoryLayout extends React.Component {
         super(props);
         this.state = {
             accounts: null,
-            contract: null,
+            factoryContract: null,
             bets: null,
             rows: [            
                 { betID: 1, created: '01-Jun-2019', end: '01-Jun-2019', stake: '1000',  result: "Won"},
@@ -35,21 +35,15 @@ class BetHistoryLayout extends React.Component {
 
     getBets = async () => {
         try {
-            const web3 = new Web3(Web3.givenProvider, null);
+            const web3 = this.props.web3;
             const accounts = await web3.eth.getAccounts();
             const networkId = await web3.eth.net.getId();
             const deployedNetwork = BettingFactory.networks[networkId];
-            const contract = await new web3.eth.Contract(
+            const instance = new web3.eth.Contract(
                 BettingFactory.abi,
                 deployedNetwork && deployedNetwork.address,
             );
-            const bets = await betFactory.getOwnedBets(accounts[0]);
-            console.log("Bets: " + bets + " / deployadNetwork: " + deployedNetwork + " / contract: " + contract);
-            this.setState({ 
-                accounts,
-                bets,
-                contract
-             });
+            this.setState({ accounts, factoryContract: instance });
         }
         catch (error) {
             alert(error);
