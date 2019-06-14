@@ -1,7 +1,7 @@
 ﻿import React, { Component } from "react";
 import BettingFactory from "../contracts/BettingFactory.json";
-import { createRandomNumberBet, getOwnedBets } from "../helpers/BettingFactory";
-import { getBetAmount, getParticipators, instantiateWeatherContract, joinBet } from "../helpers/BetContract";
+import { createPuzzleBet } from "../helpers/BettingFactory";
+//import { getBetAmount, getParticipators, instantiateWeatherContract, joinBet } from "../helpers/BetContract";
 import ethereumGreenIcon from "../images/EthereumGreenIcon.png"
 import "../css/createBetPage.css"
 import LoadingComponent from "../Components/LoadingComponent.js";
@@ -133,7 +133,7 @@ class CreateBetForm extends Component {
                                     <div class="form-group">
                                         <label class="custom-select-label" for="customSelect">Type of Bet</label>
                                         <select class="custom-select" id="customSelect" onChange={this.onChangeBetType} value={this.state.betType} required>
-                                            <option value="RandomNumber">Random Number</option>
+                                            <option value="Puzzle">Sliding puzzle</option>
                                         </select>
 
                                         <div class="invalid-feedback">Select a option.</div>
@@ -209,7 +209,7 @@ class CreateBetForm extends Component {
 
     buildContract = async () => {
         console.log(this.state);
-        await createRandomNumberBet(this.props.account, this.props.factoryContract, this.state.etherAmount,
+        await createPuzzleBet(this.props.account, this.props.factoryContract, this.state.etherAmount,
             this.state.amountOfParticipators, (this.state.openOnInit === "true"),
             (this.state.friendsOnly === "true"), this.state.betLength)
         //alert("succesfully created contract.");
