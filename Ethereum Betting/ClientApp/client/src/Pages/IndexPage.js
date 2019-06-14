@@ -7,7 +7,7 @@ import {
     Link,
     NavLink
 } from 'react-router-dom'
-import MenuBar from "../Components/MenuBar";
+import { ExportedMenuBar } from "../Components/MenuBar";
 import CreateBet from "../Pages/CreateBetPage";
 import BetChatComponent from "../Chatting/BetChatComponent";
 import PuzzlePage from "../Pages/PuzzlePage";
@@ -19,6 +19,7 @@ import LoginIndex from "../Pages/LoginIndex";
 import JoinBetPage from "../Pages/JoinBetPage";
 import { RegisterPage } from "./RegisterPage.js";
 import { ProfilePage } from "./ProfilePage.js";
+import ViewAllBets  from "./ViewAllBetsPage";
 
 
 class Wrapper extends Component {
@@ -73,7 +74,7 @@ class Wrapper extends Component {
             <div className="App">
                 <Router>
                     <div className="container">
-                        <MenuBar />
+                        <ExportedMenuBar />
                         <Route exact path="/" component={IndexPage} />
                         <Route path="/about" component={null} />
                         <Route path="/topics" component={null} />
@@ -89,6 +90,7 @@ class Wrapper extends Component {
                         <Route path="/JoinBet" component={() => { return (<JoinBetPage web3={this.state.web3} />) }} />
                         <Route path="/Register" component={() => { return (<RegisterPage web3={this.state.web3} />) }} />
                         <Route path="/Profile" component={() => { return (<ProfilePage web3={this.state.web3} />) }} />
+                        <Route path="/ViewAllBets" component={() => { return (<ViewAllBets web3={this.state.web3} />) }} />
 
                     </div>
                 </Router>

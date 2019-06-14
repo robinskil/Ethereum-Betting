@@ -20,6 +20,10 @@ contract BettingFactory {
         return betAddress;
     }
 
+    function getAllBets() public view returns (address[] memory) {
+        return bets;
+    }
+
     //Gets all current bets that a user has.
     function getOwnedBets(address ownerAddress) public view returns (address[] memory) {
         address[] memory allBets = new address[](bets.length);
@@ -28,12 +32,12 @@ contract BettingFactory {
             Bet bet = Bet(bets[index]);
             if (bet.getOwner() == ownerAddress) {
                 allBets[currentIndice] = address(bet);
-                currentIndice++;  
+                currentIndice++; 
             }
         }
         address[] memory ownedBets = new address[](currentIndice);
         for (uint256 index = 0 ; index < currentIndice; index++) {
-            ownedBets[index] = allBets[index]; 
+            ownedBets[index] = allBets[index];
         }
         return ownedBets;
     }

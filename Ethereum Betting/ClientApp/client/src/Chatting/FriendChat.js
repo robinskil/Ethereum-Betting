@@ -17,7 +17,7 @@ export default class FriendsChat extends React.Component {
     }
     Toggle = () => {
         this.setState({ Toggled: !this.state.Toggled });
-        console.log(this.state);
+        console.log(this.state.Toggled);
     }
 
 
@@ -31,12 +31,19 @@ export default class FriendsChat extends React.Component {
     }
 
     render() {
+        if (this.state.Toggled == true) {
+            return (
+                <div>
+                    <FriendsList />
+                    <button class="btn btn-primary open-button" type="button" onClick={this.Toggle}>Friends</button>
+                    </div>
+                )
+        }
         return (
-            <div> TEst
-
+            <div>
                       <button class="btn btn-primary open-button" type="button" onClick={this.Toggle}>Friends</button>
 
-                      {this.state.Toggled ? <FriendsList />: null}
+                
                 
      
             </div>
@@ -60,10 +67,7 @@ class FriendsList extends React.Component {
 
         return (
 
-            <div className="Friends-List-Body slide-top">
-                <div class="card-header">
-                    friends online
-                </div>
+            <div className="Friends-List-Body swing-in-right-fwd">
                 <div >
                     <FilterableContactTable contacts={CONTACTS} />
                 </div>
@@ -143,10 +147,16 @@ class ContactRow extends React.Component {
 
 
     render() {
-       
+        if (this.state.open == true) {
+            return (
+                <ChatBody FriendsName={this.props.contact.name} ToggleChat={this.openChat} />
+                )
+        }
             return (
                 <tr>
                     <td onClick={this.openChat} >{this.props.contact.name}</td>
+                    
+                    
                 
                 </tr>
 
@@ -159,6 +169,94 @@ class ContactRow extends React.Component {
 
     }
 }
+class ChatBody extends React.Component {
+
+
+    render() {
+        return (
+            <div className="card chat_positionz">
+           
+                <div className="card-header">
+                    <div className="button-position">
+                        <button className="button" onClick={this.props.ToggleChat}></button>
+                    </div>
+                    Chat with : {this.props.FriendsName}
+                  
+                </div>  
+                <div class="card-body msg_card_body ">
+                  test
+                </div>
+                <div class="card-footer">
+                    <SendTextArea SendFunction={this.SendMessage} />
+                </div>
+            </div>
+         
+        )
+    }
+
+}
+
+
+class SendTextArea extends React.Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            text: ""
+        }
+        console.log(this.props.SendFunction);
+    }
+
+    Type = (e) => {
+        this.setState({ text: e.target.value })
+    }
+
+    SendMessage = () => {
+        this.props.SendFunction(this.state.text);
+        this.setState({ text: "" });
+    }
+
+    EnterKey = (e) => {
+        if (e.keyCode == 13) { this.SendMessage(); }
+    }
+
+    render() {
+        return (
+            <div class="input-group">
+                <textarea onChange={this.Type} name="" value={this.state.text} class="form-control type_msg" placeholder="Type your message..." onKeyUp={this.EnterKey}></textarea>
+                <div class="input-group-append" onClick={this.SendMessage} >
+                    <span class="input-group-text send_btn"><i class="fas fa-location-arrow"></i></span>
+                </div>
+            </div>
+        )
+    }
+}
+
+//class ReceivedChatMessage extends React.Component {
+//    render() {
+//        return (
+//            <div class="d-flex justify-content-start mb-4 slide-in-blurred-left" style={{ marginRight: "10px" }}>
+//                <div class="msg_cotainer" style={{ minWidth: 100 }}>
+//                    {this.props.message}
+//                    <span class="msg_time">{this.props.time.getHours() + ":" + this.props.time.getMinutes() + " by " + this.props.sender}</span>
+//                </div>
+//            </div>
+//        )
+//    }
+//}
+
+//class SendChatMessage extends React.Component {
+//    render() {
+//        return (
+//            <div class="d-flex justify-content-end mb-4 slide-in-blurred-right" style={{ marginLeft: "10px" }}>
+//                <div class="msg_cotainer_send" style={{ minWidth: 100 }}>
+//                    {this.props.message}
+//                    <span class="msg_time_send">{this.props.time.getHours() + ":" + this.props.time.getMinutes() + " by " + this.props.sender}</span>
+//                </div>
+//            </div>
+//        )
+//    }
+//}
+
 
 class ContactTable extends React.Component {
 
@@ -182,7 +280,7 @@ class ContactTable extends React.Component {
             <table className='table table-hover'>
                 <thead>
                     <tr>
-                        <th><i className="fa fa-fw fa-user"></i>Name</th>
+                        <th><i className="fa fa-fw fa-user"></i>Friends</th>
                     </tr>
                 </thead>
                 <tbody>{rows}</tbody>

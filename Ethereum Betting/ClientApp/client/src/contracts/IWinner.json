@@ -20,25 +20,24 @@
       "type": "function"
     }
   ],
-  "metadata": "",
   "bytecode": "0x",
   "deployedBytecode": "0x",
   "sourceMap": "",
   "deployedSourceMap": "",
   "source": "pragma solidity ^0.5.0;\r\n\r\ninterface IWinner {\r\n    struct Winners {address[] users;}\r\n    function GetWinners() external;\r\n    function AddWinner() external;\r\n}",
-  "sourcePath": "C:/Users/Oscar Druiventak/Desktop/code/Ethereum-Betting/Ethereum Betting/ClientApp/contracts/IWinner.sol",
+  "sourcePath": "C:/Users/Maru/Documents/School/Project D/Application/Ethereum-Betting/Ethereum Betting/clientapp/contracts/IWinner.sol",
   "ast": {
-    "absolutePath": "/C/Users/Oscar Druiventak/Desktop/code/Ethereum-Betting/Ethereum Betting/ClientApp/contracts/IWinner.sol",
+    "absolutePath": "/C/Users/Maru/Documents/School/Project D/Application/Ethereum-Betting/Ethereum Betting/clientapp/contracts/IWinner.sol",
     "exportedSymbols": {
       "IWinner": [
-        425
+        489
       ]
     },
-    "id": 426,
+    "id": 490,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 414,
+        "id": 478,
         "literals": [
           "solidity",
           "^",
@@ -54,23 +53,23 @@
         "contractKind": "interface",
         "documentation": null,
         "fullyImplemented": false,
-        "id": 425,
+        "id": 489,
         "linearizedBaseContracts": [
-          425
+          489
         ],
         "name": "IWinner",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "canonicalName": "IWinner.Winners",
-            "id": 418,
+            "id": 482,
             "members": [
               {
                 "constant": false,
-                "id": 417,
+                "id": 481,
                 "name": "users",
                 "nodeType": "VariableDeclaration",
-                "scope": 418,
+                "scope": 482,
                 "src": "68:15:2",
                 "stateVariable": false,
                 "storageLocation": "default",
@@ -80,7 +79,7 @@
                 },
                 "typeName": {
                   "baseType": {
-                    "id": 415,
+                    "id": 479,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "68:7:2",
@@ -90,7 +89,7 @@
                       "typeString": "address"
                     }
                   },
-                  "id": 416,
+                  "id": 480,
                   "length": null,
                   "nodeType": "ArrayTypeName",
                   "src": "68:9:2",
@@ -105,32 +104,32 @@
             ],
             "name": "Winners",
             "nodeType": "StructDefinition",
-            "scope": 425,
+            "scope": 489,
             "src": "52:33:2",
             "visibility": "public"
           },
           {
             "body": null,
             "documentation": null,
-            "id": 421,
+            "id": 485,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "GetWinners",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 419,
+              "id": 483,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "110:2:2"
             },
             "returnParameters": {
-              "id": 420,
+              "id": 484,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "121:0:2"
             },
-            "scope": 425,
+            "scope": 489,
             "src": "91:31:2",
             "stateMutability": "nonpayable",
             "superFunction": null,
@@ -139,49 +138,49 @@
           {
             "body": null,
             "documentation": null,
-            "id": 424,
+            "id": 488,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "AddWinner",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 422,
+              "id": 486,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "146:2:2"
             },
             "returnParameters": {
-              "id": 423,
+              "id": 487,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "157:0:2"
             },
-            "scope": 425,
+            "scope": 489,
             "src": "128:30:2",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "external"
           }
         ],
-        "scope": 426,
+        "scope": 490,
         "src": "27:134:2"
       }
     ],
     "src": "0:161:2"
   },
   "legacyAST": {
-    "absolutePath": "/C/Users/Oscar Druiventak/Desktop/code/Ethereum-Betting/Ethereum Betting/ClientApp/contracts/IWinner.sol",
+    "absolutePath": "/C/Users/Maru/Documents/School/Project D/Application/Ethereum-Betting/Ethereum Betting/clientapp/contracts/IWinner.sol",
     "exportedSymbols": {
       "IWinner": [
-        425
+        489
       ]
     },
-    "id": 426,
+    "id": 490,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 414,
+        "id": 478,
         "literals": [
           "solidity",
           "^",
@@ -197,23 +196,23 @@
         "contractKind": "interface",
         "documentation": null,
         "fullyImplemented": false,
-        "id": 425,
+        "id": 489,
         "linearizedBaseContracts": [
-          425
+          489
         ],
         "name": "IWinner",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "canonicalName": "IWinner.Winners",
-            "id": 418,
+            "id": 482,
             "members": [
               {
                 "constant": false,
-                "id": 417,
+                "id": 481,
                 "name": "users",
                 "nodeType": "VariableDeclaration",
-                "scope": 418,
+                "scope": 482,
                 "src": "68:15:2",
                 "stateVariable": false,
                 "storageLocation": "default",
@@ -223,7 +222,7 @@
                 },
                 "typeName": {
                   "baseType": {
-                    "id": 415,
+                    "id": 479,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "68:7:2",
@@ -233,7 +232,7 @@
                       "typeString": "address"
                     }
                   },
-                  "id": 416,
+                  "id": 480,
                   "length": null,
                   "nodeType": "ArrayTypeName",
                   "src": "68:9:2",
@@ -248,32 +247,32 @@
             ],
             "name": "Winners",
             "nodeType": "StructDefinition",
-            "scope": 425,
+            "scope": 489,
             "src": "52:33:2",
             "visibility": "public"
           },
           {
             "body": null,
             "documentation": null,
-            "id": 421,
+            "id": 485,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "GetWinners",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 419,
+              "id": 483,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "110:2:2"
             },
             "returnParameters": {
-              "id": 420,
+              "id": 484,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "121:0:2"
             },
-            "scope": 425,
+            "scope": 489,
             "src": "91:31:2",
             "stateMutability": "nonpayable",
             "superFunction": null,
@@ -282,32 +281,32 @@
           {
             "body": null,
             "documentation": null,
-            "id": 424,
+            "id": 488,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "AddWinner",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 422,
+              "id": 486,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "146:2:2"
             },
             "returnParameters": {
-              "id": 423,
+              "id": 487,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "157:0:2"
             },
-            "scope": 425,
+            "scope": 489,
             "src": "128:30:2",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "external"
           }
         ],
-        "scope": 426,
+        "scope": 490,
         "src": "27:134:2"
       }
     ],
@@ -318,8 +317,8 @@
     "version": "0.5.0+commit.1d4f565a.Emscripten.clang"
   },
   "networks": {},
-  "schemaVersion": "3.0.8",
-  "updatedAt": "2019-06-13T11:49:22.034Z",
+  "schemaVersion": "3.0.2",
+  "updatedAt": "2019-06-14T11:09:31.130Z",
   "devdoc": {
     "methods": {}
   },
