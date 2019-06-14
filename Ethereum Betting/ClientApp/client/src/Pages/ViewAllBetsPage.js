@@ -132,7 +132,7 @@ class BetInfo extends Component {
     }
 
     async loadData() {
-        const instance = await instantiateContract(this.props.web3, this.props.bet);
+        const instance = await instantiateContract(this.props.web3, PuzzleBet, this.props.bet);
         const betAmount = await getBetAmount(instance);
         const participators = await getParticipators(instance);
 
