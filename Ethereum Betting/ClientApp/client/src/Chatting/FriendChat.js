@@ -40,8 +40,7 @@ export default class FriendsChat extends React.Component {
                 )
         }
         return (
-            <div> TEst
-
+            <div>
                       <button class="btn btn-primary open-button" type="button" onClick={this.Toggle}>Friends</button>
 
                 

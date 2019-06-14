@@ -11,8 +11,8 @@ class FriendsLayout extends React.Component {
                 { id: 1, username: 'Antonijn' },
                 { id: 2, username: 'Robijn' },
                 { id: 3, username: 'Cindy' },
-                { id: 4, username: 'stefano' },
-                { id: 5, username: 'maru' }
+                { id: 4, username: 'Stefano' },
+                { id: 5, username: 'Marijuana' }
             ]
         }
 

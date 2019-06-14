@@ -7,7 +7,7 @@ import {
     Link,
     NavLink
 } from 'react-router-dom'
-import MenuBar from "../Components/MenuBar";
+import { ExportedMenuBar } from "../Components/MenuBar";
 import CreateBet from "../Pages/CreateBetPage";
 import BetChatComponent from "../Chatting/BetChatComponent";
 import PuzzlePage from "../Pages/PuzzlePage";
@@ -74,7 +74,7 @@ class Wrapper extends Component {
             <div className="App">
                 <Router>
                     <div className="container">
-                        <MenuBar />
+                        <ExportedMenuBar />
                         <Route exact path="/" component={IndexPage} />
                         <Route path="/about" component={null} />
                         <Route path="/topics" component={null} />

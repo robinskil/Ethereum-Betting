@@ -23,6 +23,10 @@ export function setLoggedIn() {
     localStorage.setItem("loggedIn", "true");
 }
 
+export function setLoggedOut() {
+    localStorage.removeItem("loggedIn");
+}
+
 export function IsAuthenticated(){
     return Boolean(localStorage.getItem("loggedIn"));
 }

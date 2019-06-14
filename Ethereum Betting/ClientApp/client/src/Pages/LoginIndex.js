@@ -5,6 +5,7 @@ import {
     Link
 } from 'react-router-dom'
 import { ExportedLoginForm } from '../Components/Forms/LoginForm'
+import { StateContext } from "../state";
 
 
 export default class LoginIndex extends React.Component {
@@ -13,11 +14,23 @@ export default class LoginIndex extends React.Component {
         this.state = {
         }
     }
+    
+    static contextType = StateContext;
 
     render() {
+        const [
+            {
+              auth: { isAuthenticated }
+            }
+          ] = this.context;
         return (
             <div>
-                <ExportedLoginForm />
+                {!isAuthenticated &&
+                    <ExportedLoginForm />
+                }
+                {isAuthenticated &&
+                    <h1>You are already logged in!</h1>
+                }
             </div>
         );
     }
