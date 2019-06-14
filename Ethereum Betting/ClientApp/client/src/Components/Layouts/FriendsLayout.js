@@ -10,7 +10,7 @@ class FriendsLayout extends React.Component {
             rows: [            
                 { id: 1, username: 'Antonijn' },
                 { id: 2, username: 'Robijn' },
-                { id: 3, username: 'Cindy' },
+                { id: 3, username: 'Sin(θ) = dee' },
                 { id: 4, username: 'Stefano' },
                 { id: 5, username: 'Marijuana' }
             ]
