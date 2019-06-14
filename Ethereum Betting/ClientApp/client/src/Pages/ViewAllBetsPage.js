@@ -1,13 +1,14 @@
-﻿import { Card } from "../Components/Card/Card";
+﻿
 import React, { Component } from "react";
 import { Link } from 'react-router-dom'
 import BettingFactory from "../contracts/BettingFactory.json";
 //import WeatherBet from "../contracts/WeatherBet.json";
-
-import { createContract, getOwnedBets } from "../helpers/BettingFactory";
+import { instantiateContract, getBetAmount, getParticipators, joinBet } from "../helpers/Bet";
+import { getAllBets } from "../helpers/BettingFactory";
+import PuzzleBet from "../contracts/PuzzleBet.json";
 //import { getRandomNumber , getBetAmount, getParticipators, instantiateWeatherContract, joinBet, createRandomNumber } from "../helpers/BetContract";
-import { instantiateContract, getBetAmount, getParticipators, joinBet } from "../helpers/Bet.js";
-import { betApi } from "../helpers/BetApi";
+
+
 
 
 class ViewAllBets extends Component {
@@ -81,7 +82,7 @@ class AllBets extends Component {
     }
 
     componentDidMount = async () => {
-        const bets = await getOwnedBets(this.props.factoryContract, this.props.account);
+        const bets = await getAllBets(this.props.factoryContract);
         this.setState({ allBets: bets, loading: false });
         console.log("all bets amount:" + bets.length)
         //const bets = await betApi.getMyBets();
@@ -102,30 +103,15 @@ class AllBets extends Component {
             </div>
             )
         }
-        //const { bets } = this.state;
+  
     
         return (
-            //<div>
-            //    <h1>My bets</h1>
-            //    <div className="container">
-            //        <div className="row">
-            //            {
-            //                bets.map(bet =>
-            //                    <div className="col-sm">
-            //                        <Card title={bet.title}>
-            //                            <p className="card-text">Amount: {bet.amount} <br /> Duration: {bet.duration}</p>
-            //                            <Link to="">View bet</Link>
-            //                        </Card>
-            //                    </div>
-            //                )
-            //            }
-            //        </div>
-            //    </div>
-            //</div>
+
             <div>
-                {this.state.bets.map(bet => {
+                {this.state.allBets.map(bet => {
                     return (
                         <BetInfo account={this.props.account} web3={this.props.web3} bet={bet} />
+                     
                     )
                 })}
             </div>

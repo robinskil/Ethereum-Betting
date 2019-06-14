@@ -22,6 +22,10 @@ export async function createRandomNumberBet(account, factoryContract, betAmount,
     return await factoryContract.methods.createRandomNumberBet(betAmount, maxParticipators, open, friendsOnly, betLength).send({ from: account });
 }
 
+export async function createPuzzleBet(account, factoryContract, betAmount, maxParticipators, open, friendsOnly, betLength) {
+    return await factoryContract.methods.createPuzzleBet(betAmount, maxParticipators, open, friendsOnly, betLength).send({ from: account });
+}
+
 export async function getAllBets(contract){
     return await contract.methods.getAllBets().call();
 }
