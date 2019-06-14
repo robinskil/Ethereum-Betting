@@ -12,8 +12,8 @@ namespace DataAccesLayer.Repositories
         bool RemoveFriend(Friend friend);
         Task<bool> AddFriendAsync(Friend friend);
         Task<bool> RemoveFriendAsync(Friend friend);
-        IEnumerable<Friend> GetFriends(Guid userId);
-        Task<IEnumerable<Friend>> GetFriendsAsync(Guid userId);
+        IEnumerable<Friend> GetFriends(string userId);
+        Task<IEnumerable<Friend>> GetFriendsAsync(string userId);
 
     }
 }
