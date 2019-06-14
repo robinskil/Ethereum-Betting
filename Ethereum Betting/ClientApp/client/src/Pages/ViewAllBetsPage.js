@@ -153,7 +153,7 @@ class BetInfo extends Component {
                     <div className="card-body">
                         <nav>
                             <div className="nav nav-tabs" id="nav-tab" role="tablist" style={{ marginBottom: "15px" }}>
-                                <a className="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href={"#nav-main" + this.props.bet} role="tab" aria-controls="nav-home" aria-selected="true">Weather Bet</a>
+                                <a className="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href={"#nav-main" + this.props.bet} role="tab" aria-controls="nav-home" aria-selected="true">All bets</a>
                                 <a className="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href={"#nav-participants" + this.props.bet} role="tab" aria-controls="nav-profile" aria-selected="false">Participants</a>
                                 <a className="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href={"#nav-actions" + this.props.bet} role="tab" aria-controls="nav-contact" aria-selected="false">Actions</a>
                             </div>
@@ -181,7 +181,7 @@ class BetInfo extends Component {
                         </div>
                         <div style={{ marginTop: "15px" }}>
                             <Link to={"/Bet/" + this.props.bet} className="card-link">Link to the bet</Link>
-                            <a href="#" className="card-link">Another link</a>
+                         
                         </div>
                     </div>
                 </div>
