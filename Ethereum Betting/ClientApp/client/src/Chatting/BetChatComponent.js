@@ -1,6 +1,6 @@
 ﻿import React from 'react';
 import * as signalR from '@aspnet/signalr';
-import "./Chat.css"
+import "../Chatting/Chat.css"
 
 export default class BetChatComponent extends React.Component {
     constructor(props) {

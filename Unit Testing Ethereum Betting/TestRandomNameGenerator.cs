@@ -1,4 +1,5 @@
 ﻿using InteractorLayer.NameGenerator;
+using InteractorLayer.SlidingPuzzleBet;
 using System;
 using System.Collections.Generic;
 using System.Text;

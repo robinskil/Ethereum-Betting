@@ -19,6 +19,7 @@ import LoginIndex from "../Pages/LoginIndex";
 import JoinBetPage from "../Pages/JoinBetPage";
 import { RegisterPage } from "./RegisterPage.js";
 import { ProfilePage } from "./ProfilePage.js";
+import ViewAllBets  from "./ViewAllBetsPage";
 
 
 class Wrapper extends Component {
@@ -89,6 +90,7 @@ class Wrapper extends Component {
                         <Route path="/JoinBet" component={() => { return (<JoinBetPage web3={this.state.web3} />) }} />
                         <Route path="/Register" component={() => { return (<RegisterPage web3={this.state.web3} />) }} />
                         <Route path="/Profile" component={() => { return (<ProfilePage web3={this.state.web3} />) }} />
+                        <Route path="/ViewAllBets" component={() => { return (<ViewAllBets web3={this.state.web3} />) }} />
 
                     </div>
                 </Router>
