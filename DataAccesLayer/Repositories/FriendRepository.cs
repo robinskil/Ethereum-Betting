@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DataAccesLayer.EF;
@@ -18,7 +19,10 @@ namespace DataAccesLayer.Repositories
         }
         public bool AddFriend(Friend friend)
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException
+            Context.Friends.Add(friend);
+            Context.SaveChanges();
+            return true;
         }
 
         public Task<bool> AddFriendAsync(Friend friend)
@@ -26,19 +30,23 @@ namespace DataAccesLayer.Repositories
             throw new NotImplementedException();
         }
 
-        public IEnumerable<Friend> GetFriends(Guid userId)
+        public IEnumerable<Friend> GetFriends(string userId)
         {
-            throw new NotImplementedException();
+            var u = Context.Users.Find(userId);
+
+            return u.Friends.ToArray();
         }
 
-        public Task<IEnumerable<Friend>> GetFriendsAsync(Guid userId)
+        public Task<IEnumerable<Friend>> GetFriendsAsync(string userId)
         {
             throw new NotImplementedException();
         }
 
         public bool RemoveFriend(Friend friend)
         {
-            throw new NotImplementedException();
+            Context.Friends.Remove(friend);
+            Context.SaveChanges();
+            return true;
         }
 
         public Task<bool> RemoveFriendAsync(Friend friend)

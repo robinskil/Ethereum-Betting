@@ -14,6 +14,7 @@ import { ExportedBetHistoryLayout } from "../Components/Layouts/BetHistoryLayout
 import { ExportedAchievementsLayout } from "../Components/Layouts/AchievementsLayout.js";
 import { ExportedUserSettingsLayout } from "../Components/Layouts/UserSettingsLayout";
 import { type } from "os";
+import { ExportedFriendsLayout } from "../Components/Layouts/FriendsLayout.js";
 
 
 export class ProfilePage extends Component{
@@ -37,6 +38,12 @@ export class ProfilePage extends Component{
         {
             this.setState({
                 layout: <ExportedBetHistoryLayout/>
+            })
+        }
+        else if (event.target.getAttribute('href') == "#friends")
+        {
+            this.setState({
+                layout: <ExportedFriendsLayout />
             })
         }
         else if (event.target.getAttribute('href') == "#achievements")
@@ -64,7 +71,7 @@ export class ProfilePage extends Component{
                         <a href="#profile" class="list-group-item list-group-item-action" onClick={this.handleClick}>Profile</a>
                         <a href="#bethistory" class="list-group-item list-group-item-action" onClick={this.handleClick}>Bet History</a>
                         <a href="#achievements" class="list-group-item list-group-item-action disabled" onClick={this.handleClick} >Achievements</a>
-                        <a href="#friends" class="list-group-item list-group-item-action disabled" onClick={this.handleClick} >Friends</a>
+                        <a href="#friends" class="list-group-item list-group-item-action" onClick={this.handleClick} >Friends</a>
                         <a href="#usersettings" class="list-group-item list-group-item-action" onClick={this.handleClick}>User Settings</a>
                 </div>
                 </div>
