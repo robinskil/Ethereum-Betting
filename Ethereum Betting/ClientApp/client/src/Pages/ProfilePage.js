@@ -8,7 +8,7 @@ import {
     Route,
     Link
 } from 'react-router-dom'
-import MenuBar from "../Components/MenuBar";   
+import { ExportedMenuBar } from "../Components/MenuBar";   
 import { ExportedProfileLayout } from "../Components/Layouts/ProfileLayout";
 import { ExportedBetHistoryLayout } from "../Components/Layouts/BetHistoryLayout";
 import { ExportedAchievementsLayout } from "../Components/Layouts/AchievementsLayout.js";

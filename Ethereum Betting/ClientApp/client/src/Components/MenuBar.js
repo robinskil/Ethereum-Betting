@@ -1,10 +1,17 @@
 ﻿import React, { Component } from "react";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Link, withRouter } from "react-router-dom";
 import * as userApi from "./../helpers/UserApi";
 import { StateContext } from "../state";
-import { login } from "../reducers/auth";
+import { login, logout } from "../reducers/auth";
 
-export default class MenuBar extends Component {
+class MenuBar extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+    }
+    this.handleLogOut = this.handleLogOut.bind(this);
+  }
+
   static contextType = StateContext;
 
   componentDidMount() {
@@ -13,6 +20,16 @@ export default class MenuBar extends Component {
     if (userApi.IsAuthenticated()) {
       dispatch(login());
     }
+  }
+
+  handleLogOut(event) {
+    const [_, dispatch] = this.context;
+
+    event.preventDefault();
+    dispatch(logout());
+    userApi.setLoggedOut();
+    this.props.history.push("/");
+    window.location.reload();
   }
 
   render() {
@@ -106,6 +123,13 @@ export default class MenuBar extends Component {
                 </Link>
               </div>
             </li>
+            {isAuthenticated && (
+              <li className="nav-item">
+                <Link className="nav-link" onClick={this.handleLogOut}>
+                  Logout
+                </Link>
+              </li>
+            )}
           </ul>
         </div>
       </nav>
@@ -115,3 +139,5 @@ export default class MenuBar extends Component {
 
 //<Link className="dropdown-item" to="/JoinBet">Join a bet</Link>
 //    <Link className="dropdown-item" to="/ViewBets">View your bets</Link>
+
+export const ExportedMenuBar = withRouter(MenuBar)
