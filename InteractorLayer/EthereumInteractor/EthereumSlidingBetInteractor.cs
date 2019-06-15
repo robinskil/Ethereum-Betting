@@ -19,24 +19,24 @@ namespace InteractorLayer.EthereumInteractor
         public int[,] GetPuzzle(string addressUser, string betAddress)
         {
             //Check if p
-            if (!BetsWithPuzzles.ContainsKey(betAddress))
+            if (!BetsWithPuzzles.ContainsKey(betAddress.ToLower()))
             {
                 //Check if bet exists in eth network
-                //check if it started
                 //check if bet finished
                 //check if user joined bet
-                if (true)
+                if (BetRepository.UserJoinedBet(addressUser, betAddress).GetAwaiter().GetResult() && BetRepository.BetFinished(betAddress).GetAwaiter().GetResult())
                 {
                     //create new bet
-                    BetsWithPuzzles.TryAdd(betAddress, new PuzzleBet());
+                    BetsWithPuzzles.TryAdd(betAddress.ToLower(), new PuzzleBet());
                 }
             }
             //throw new NotImplementedException();
-            return BetsWithPuzzles[betAddress].GetPuzzleLayout(addressUser);
+            return BetsWithPuzzles[betAddress.ToLower()].GetPuzzleLayout(addressUser);
         }
 
         public string GetWinners(string betAddress)
         {
+            betAddress = betAddress.ToLower();
             if (BetsWithPuzzles.ContainsKey(betAddress) && BetsWithPuzzles[betAddress].BetFinished)
             {
                 return string.Join("@", BetsWithPuzzles[betAddress].GetFastest());
@@ -44,9 +44,13 @@ namespace InteractorLayer.EthereumInteractor
             throw new Exception("Bet doesnt exist or hasnt finished yet");
         }
 
-        public SlidingPuzzleMoveResponse Move(string addressUser, string betAddress, SlidingPuzzleMoveModel moveModel)
+        public bool Move(string addressUser, string betAddress, SlidingPuzzleMoveModel moveModel)
         {
-            throw new NotImplementedException();
+            if (BetsWithPuzzles.ContainsKey(betAddress.ToLower()))
+            {
+                return BetsWithPuzzles[betAddress.ToLower()].DoMove(addressUser, moveModel);
+            }
+            else return false;
         }
     }
 }

@@ -20,5 +20,10 @@ namespace InteractorLayer.EthereumInteractor
         {
             return await BetRepository.UserJoinedBet(addressUser, addressBetContract);
         }
+
+        public async Task<bool> BetFinished(string addressBetContract)
+        {
+            return await BetRepository.BetFinished(addressBetContract);
+        }
     }
 }

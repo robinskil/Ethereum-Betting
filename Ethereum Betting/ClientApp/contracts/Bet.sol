@@ -40,7 +40,7 @@ contract Bet is usingOraclize {
         require(userAlreadyJoined(msg.sender) == true,"You have to join this bet first.");
         _;
     }
-    
+
     //todo check if user is already in list....
     function join() public payable{
         require(msg.value == bet.betAmount * 1 ether,"Requires Ether.");
