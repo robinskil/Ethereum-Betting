@@ -3,7 +3,7 @@ pragma solidity ^0.5.0;
 import "./Bet.sol";
 
 contract PuzzleBet is Bet {
-    address selfAddress;
+    address public selfAddress;
     string apiCallAddress;
 
     constructor (address _owner, uint _amount, uint _maxParticipators, bool _open, bool _friendsOnly, uint _betLength ) public  {
@@ -68,6 +68,7 @@ contract PuzzleBet is Bet {
                 splitAmount = 0;
             }
         }
+        divideWinnings();
         emit Winners(bet.winners);
     }
 

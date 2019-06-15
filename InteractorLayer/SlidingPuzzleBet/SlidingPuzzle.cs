@@ -15,7 +15,7 @@ namespace InteractorLayer.SlidingPuzzleBet
         public SlidingPuzzleMoveModel Black { get; set; }
 
         private Random Random { get; }
-
+        public bool Finished { get; private set; }
         public List<int> Numbers { get; }
         public Stopwatch Time { get; }
         public double CompletedTime { get; }
@@ -29,7 +29,7 @@ namespace InteractorLayer.SlidingPuzzleBet
             Answer = new int[Puzzle.GetLength(0), Puzzle.GetLength(1)];
             Numbers = new List<int>();
             GenerateRandomPuzzle();
-            
+
             Time = new Stopwatch();
             Time.Start();
         }
@@ -41,10 +41,10 @@ namespace InteractorLayer.SlidingPuzzleBet
             return a;
         }
 
-        
+
         public bool DoMove(SlidingPuzzleMoveModel moveModel)
         {
-            if ((FindDifference(Black.X, moveModel.X) == 1) && (FindDifference(Black.Y, moveModel.Y) == 0) || 
+            if ((FindDifference(Black.X, moveModel.X) == 1) && (FindDifference(Black.Y, moveModel.Y) == 0) ||
                 (FindDifference(Black.Y, moveModel.Y) == 1) && (FindDifference(Black.X, moveModel.X) == 0))
             {
 
@@ -58,7 +58,9 @@ namespace InteractorLayer.SlidingPuzzleBet
 
                 return true;
 
-            }else{
+            }
+            else
+            {
 
                 return false;
             }
@@ -75,14 +77,14 @@ namespace InteractorLayer.SlidingPuzzleBet
             if (equal == true)
             {
                 Time.Stop();
-
+                Finished = true;
                 return true;
             }
             else
             {
                 return false;
             }
-            
+
             //throw new NotImplementedException();
         }
 
@@ -120,21 +122,21 @@ namespace InteractorLayer.SlidingPuzzleBet
                 for (int x = 0; x < Puzzle.GetLength(0); x++)
                 {
 
-                    Puzzle[x,y] = Numbers[cnt];
+                    Puzzle[x, y] = Numbers[cnt];
 
                     if (Numbers[cnt] == 0)
                     {
                         Black.X = x;
                         Black.Y = y;
                     }
-                    Answer[x,y] = cnt2;
+                    Answer[x, y] = cnt2;
 
                     cnt++;
                     cnt2++;
-                    
+
                 }
             }
-            Answer[(Puzzle.GetLength(0)-1), (Puzzle.GetLength(1)-1)] = 0;
+            Answer[(Puzzle.GetLength(0) - 1), (Puzzle.GetLength(1) - 1)] = 0;
 
 
             //throw new NotImplementedException();

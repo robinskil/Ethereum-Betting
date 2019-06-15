@@ -7,13 +7,33 @@ using System.Threading.Tasks;
 
 namespace DataAccesLayer.EthereumConnector
 {
-    public class EthereumBetRepository : EthereumRepository , IEthereumBetRepository
+    public class EthereumBetRepository : EthereumRepository, IEthereumBetRepository
     {
         public EthereumBetRepository() : base()
         {
 
         }
         public async Task<bool> UserJoinedBet(string addressUser, string addressBetContract)
+        {
+            var joinedFunction = new UserAlreadyJoinedFunction()
+            {
+                Address = addressUser
+            };
+            var joinedHandler = Web3.Eth.GetContractQueryHandler<UserAlreadyJoinedFunction>();
+            bool joined = await joinedHandler.QueryAsync<bool>(addressBetContract, joinedFunction);
+            return joined;
+        }
+        public async Task<bool> BetStarted(string addressUser, string addressBetContract)
+        {
+            var joinedFunction = new UserAlreadyJoinedFunction()
+            {
+                Address = addressUser
+            };
+            var joinedHandler = Web3.Eth.GetContractQueryHandler<UserAlreadyJoinedFunction>();
+            bool joined = await joinedHandler.QueryAsync<bool>(addressBetContract, joinedFunction);
+            return joined;
+        }
+        public async Task<bool> BetFinished(string addressUser, string addressBetContract)
         {
             var joinedFunction = new UserAlreadyJoinedFunction()
             {
