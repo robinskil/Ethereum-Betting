@@ -118,6 +118,9 @@ class MenuBar extends Component {
                 <Link className="dropdown-item" to = "/ViewAllBets">
                  View All bets
                 </Link>
+                <Link className="dropdown-item" to="/JoinedBets">
+                                My joined bets
+                </Link>
                 <Link className="dropdown-item" to="/JoinBet">
                   Join a bet
                 </Link>
