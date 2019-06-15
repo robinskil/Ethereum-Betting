@@ -49,7 +49,7 @@ contract Bet is usingOraclize {
         bet.participators.push(msg.sender);
     }
 
-    function userAlreadyJoined(address userAddress) internal view returns (bool) {
+    function userAlreadyJoined(address userAddress) public view returns (bool) {
         for (uint index = 0 ; index < bet.participators.length; index++) {
             if(bet.participators[index] == userAddress) return true;
         }
@@ -109,7 +109,10 @@ contract Bet is usingOraclize {
         return (bet.creationTime - now) / (bet.betLength * 1 minutes);
     }
 
+    event WithdrawBy(address withdrawer);
+    event Test(string console);
     function withdraw() public {
+        emit WithdrawBy(msg.sender);
         uint amount = pendingWithdrawals[msg.sender];
         // Remember to zero the pending refund before
         // sending to prevent re-entrancy attacks

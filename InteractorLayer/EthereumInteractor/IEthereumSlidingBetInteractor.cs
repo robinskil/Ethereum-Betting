@@ -8,8 +8,8 @@ namespace InteractorLayer.EthereumInteractor
 {
     public interface IEthereumSlidingBetInteractor : IEthereumBetInteractor
     {
-        SlidingPuzzle StartPuzzleBet(string addressUser);
-        SlidingPuzzle GetPuzzle(string addressUser);
-        SlidingPuzzleMoveResponse Move(SlidingPuzzleMoveModel moveModel);
+        int[,] GetPuzzle(string addressUser, string betAddress);
+        string GetWinners(string betAddress);
+        SlidingPuzzleMoveResponse Move(string addressUser, string betAddress, SlidingPuzzleMoveModel moveModel);
     }
 }
