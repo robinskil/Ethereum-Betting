@@ -5,13 +5,19 @@ import {
     Link,
     withRouter
 } from 'react-router-dom'
-import * as userApi from '../../helpers/UserApi'
+import * as userApi from '../ApiHelpers/UserApi'
 import Web3 from 'web3'
+import * as betFactory from '../../helpers/BettingFactory'
+import BettingFactory from '../../contracts/BettingFactory.json'
+
 
 class BetHistoryLayout extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            accounts: null,
+            factoryContract: null,
+            bets: null,
             rows: [            
                 { betID: 1, created: '01-Jun-2019', end: '01-Jun-2019', stake: '1000',  result: "Won"},
                 { betID: 2, created: '01-Jun-2019', end: '02-Jun-2019', stake: '1000', result: "Loss" },
@@ -21,6 +27,30 @@ class BetHistoryLayout extends React.Component {
         }
 
         this.renderTableBody = this.renderTableBody.bind(this);
+    }
+
+    componentDidMount(){
+        this.getBets()
+    }
+
+    getBets = async () => {
+        try {
+            const web3 = this.props.web3;
+            const accounts = await web3.eth.getAccounts();
+            const networkId = await web3.eth.net.getId();
+            const deployedNetwork = BettingFactory.networks[networkId];
+            const instance = new web3.eth.Contract(
+                BettingFactory.abi,
+                deployedNetwork && deployedNetwork.address,
+            );
+            this.setState({ accounts, factoryContract: instance });
+        }
+        catch (error) {
+            alert(error);
+        }
+        finally {
+            this.setState({ loading: false });
+        }
     }
 
     renderTableBody() {

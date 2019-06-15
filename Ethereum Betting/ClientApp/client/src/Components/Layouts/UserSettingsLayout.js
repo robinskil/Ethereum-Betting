@@ -5,7 +5,7 @@ import {
     Link,
     withRouter
 } from 'react-router-dom'
-import * as userApi from '../../helpers/UserApi'
+import * as userApi from '../ApiHelpers/UserApi'
 import Web3 from 'web3'
 
 class UserSettingsLayout extends React.Component {
@@ -71,7 +71,15 @@ class UserSettingsLayout extends React.Component {
     
     async onChangePasswordSubmit(event) {
         event.preventDefault()
-        if(this.state.oldPassword == this.state.newPassword)
+        if(this.state.oldPassword == "")
+        {
+            alert("Field(s) must not be empty!!")
+        }
+        else if(this.state.newPassword.length < 6)
+        {
+            alert("Password must be at least 6 characters long!")
+        }
+        else if(this.state.oldPassword == this.state.newPassword)
         {
             alert("Please use a new password!")
         }
@@ -87,7 +95,7 @@ class UserSettingsLayout extends React.Component {
             let ChangePassword = await userApi.ChangePassword(address, oldPassword, newPassword);
             if(ChangePassword.success)
             {
-                this.props.history.push('/Login');
+                this.props.history.push('/Profile');
                 alert(ChangePassword.msg)
             }
             else{
@@ -98,7 +106,11 @@ class UserSettingsLayout extends React.Component {
 
     async onDeleteSubmit(event) {
         event.preventDefault()
-        if(this.state.deletePassword != "")
+        if(this.state.deletePassword == "")
+        {
+            alert("Field must not be empty!")
+        } 
+        else
         {
             let address = this.state.accounts[0];
             let password = this.state.deletePassword;
@@ -112,7 +124,7 @@ class UserSettingsLayout extends React.Component {
             {
                 alert(DeleteUser.msg);  
             }
-        }
+        } 
     }
 
     render() {

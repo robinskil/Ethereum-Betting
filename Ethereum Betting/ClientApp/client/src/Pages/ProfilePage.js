@@ -1,14 +1,13 @@
 import React, { Component } from "react";
 import SimpleStorageContract from "../contracts/SimpleStorage.json";
-import {CreateUser} from "../helpers/UserApi";
-import * as userApi from "../helpers/UserApi";
+import * as userApi from "../Components/ApiHelpers/UserApi";
 import Web3 from "web3";
 import {
     BrowserRouter as Router,
     Route,
     Link
 } from 'react-router-dom'
-import MenuBar from "../Components/MenuBar";   
+import { ExportedMenuBar } from "../Components/MenuBar";   
 import { ExportedProfileLayout } from "../Components/Layouts/ProfileLayout";
 import { ExportedBetHistoryLayout } from "../Components/Layouts/BetHistoryLayout";
 import { ExportedAchievementsLayout } from "../Components/Layouts/AchievementsLayout.js";
@@ -37,7 +36,7 @@ export class ProfilePage extends Component{
         else if (event.target.getAttribute('href') == "#bethistory")
         {
             this.setState({
-                layout: <ExportedBetHistoryLayout/>
+                layout: <ExportedBetHistoryLayout web3={this.props.web3}/>
             })
         }
         else if (event.target.getAttribute('href') == "#friends")

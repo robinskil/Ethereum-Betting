@@ -55,7 +55,7 @@ namespace InteractorLayer.SlidingPuzzleBet
                 Puzzle[moveModel.X, moveModel.Y] = old_black;
 
 
-
+                TryFinish();
                 return true;
 
             }
