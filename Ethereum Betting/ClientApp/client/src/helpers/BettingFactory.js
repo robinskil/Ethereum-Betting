@@ -38,3 +38,7 @@ export async function getAllBets(contract){
 export async function getOwnedBets(contract, accountAddress) {
     return await contract.methods.getOwnedBets(accountAddress).call();
 }
+
+export async function getAllJoinedBets(contract, accountAddress) {
+    return await contract.methods.getAllJoinedBets(accountAddress).call();
+}
