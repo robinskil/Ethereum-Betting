@@ -2,16 +2,18 @@
 import React from "react";
 import Square from "../Components/Square";
 
+
+
 export default class Board extends React.Component {
+
     renderPuzzle(level) {
         var spaceCube = this.props.cubes.find(x => x.number === "");
-        let puzzle = [];
         for (let i = 0; i < level; i++) {
             let columns = [];
             for (let j = 0; j < level; j++) {
                 columns.push(this.renderSquare(spaceCube, i * level + j));
             }
-            puzzle.push(
+            this.state.puzzle.push(
                 <div className="row" key={"boardRow_" + i}>
                     {columns}
                 </div>
@@ -20,7 +22,7 @@ export default class Board extends React.Component {
         return (
 
             <div className="container">
-                {puzzle}
+                {this.state.puzzle}
             </div>
 
         );
@@ -48,3 +50,4 @@ export default class Board extends React.Component {
         );
     }
 }
+

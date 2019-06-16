@@ -11,7 +11,6 @@ import { ExportedMenuBar } from "../Components/MenuBar";
 import CreateBet from "../Pages/CreateBetPage";
 import BetChatComponent from "../Chatting/BetChatComponent";
 import PuzzlePage from "../Pages/PuzzlePage";
-import FriendChat from "../Chatting/FriendChat";
 import { ViewBetsPage } from "./ViewBetsPage.js";
 import { FriendPage } from "./FriendPage.js";
 
@@ -79,7 +78,7 @@ class Wrapper extends Component {
             <Route exact path="/" component={IndexPage} />
             <Route path="/about" component={null} />
             <Route path="/topics" component={null} />
-            <Route exact path="/PuzzlePage" component={PuzzlePage} />
+                    <Route exact path="/PuzzlePage" component={PuzzlePage} web3={this.state.web3} />
 
             <Route
               path="/CreateBet"
@@ -134,7 +133,6 @@ class Wrapper extends Component {
         </Router>
 
         <BetChatComponent betAddress={"123"} web3={this.state.web3} />
-        <FriendChat />
       </div>
     );
   }
