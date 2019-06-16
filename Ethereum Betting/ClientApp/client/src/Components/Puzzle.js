@@ -11,12 +11,26 @@ class Puzzle extends React.Component {
             height: props.height,
             width: props.width,
             cubes: initCubes(props.level),
+            puzzle:[]
       
             
         };
         this.onShuffleClick = this.onShuffleClick.bind(this)
     }
-
+    //public async componentDidMount() {
+    //    const result = await fetch('https://localhost:44348/api/');
+    //    const users = await result.json();
+    //    this.setState({ users });
+    //}
+    //componentDidMount = async () => {
+      
+    //    fetch('https://localhost:44318//api/SlidingPuzzleBet/GetPuzzle')
+    //        .then(res => res.json())
+    //        .then(puzzle =>
+    //            this.setState({ puzzle })
+    //        );
+    //    console.log(this.state);
+    //}
     onShuffleClick() {
         alert("shuffle");
         //let level = this.state.level;
