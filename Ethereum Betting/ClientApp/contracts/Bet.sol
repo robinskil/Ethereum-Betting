@@ -103,8 +103,8 @@ contract Bet is usingOraclize {
 
             bet.winners,
             bet.finished,
-            this.timeLeft(),
-            bet.creationTime
+            bet.creationTime,
+            this.getEndTime()
         );
     }
 
