@@ -6,7 +6,7 @@ namespace InteractorLayer.SlidingPuzzleBet
     public class PuzzleBet
     {
         public bool BetFinished { get; set; }
-        private Dictionary<string, SlidingPuzzle> ParticipatorsPuzzles { get; }
+        private Dictionary<string, SlidingPuzzle> ParticipatorsPuzzles { get; } = new Dictionary<string, SlidingPuzzle>();
         public bool DoMove(string userAddress, SlidingPuzzleMoveModel DoMove)
         {
             if (!ParticipatorsPuzzles.ContainsKey(userAddress))

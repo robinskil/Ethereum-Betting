@@ -5,48 +5,21 @@ import Square from "../Components/Square";
 
 
 export default class Board extends React.Component {
-
-    renderPuzzle(level) {
-        var spaceCube = this.props.cubes.find(x => x.number === "");
-        for (let i = 0; i < level; i++) {
-            let columns = [];
-            for (let j = 0; j < level; j++) {
-                columns.push(this.renderSquare(spaceCube, i * level + j));
-            }
-            this.state.puzzle.push(
-                <div className="row" key={"boardRow_" + i}>
-                    {columns}
-                </div>
-            );
-        }
-        return (
-
-            <div className="container">
-                {this.state.puzzle}
-            </div>
-
-        );
-    }
-
-    renderSquare(spaceCube, i) {
-        let level = this.props.level;
-
-
-        return (
-            <Square
-                key={"square_" + i}
-                cube={this.props.cubes[i]}
-                cubeSize={this.props.cubeSize}
-                level={level}
-                spaceCube={spaceCube}
-                onClick={() => this.props.onClick(i)}
-            />
-        );
-    }
-
     render() {
         return (
-            this.renderPuzzle(this.props.level)
+            <div className="row">
+                {this.props.cubes.map(cube => {
+                    //console.log(cube.number);
+                    return (
+                        <div class="col-3 col-sm-3" style={{ marginTop: "5px", paddingRight: "5px", height: "150px" }}>
+                            {cube.number == 0 ?
+                                null :
+                                <button className="btn btn-primary" style={{ width: "100%", height: "100%" }} onClick={() => this.props.callback(cube.x, cube.y)}>{cube.number}</button>
+                            }
+                        </div>
+                    )
+                })}
+            </div>
         );
     }
 }

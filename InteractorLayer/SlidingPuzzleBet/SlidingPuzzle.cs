@@ -53,8 +53,8 @@ namespace InteractorLayer.SlidingPuzzleBet
 
                 Puzzle[Black.X, Black.Y] = old_moveModel;
                 Puzzle[moveModel.X, moveModel.Y] = old_black;
-
-
+                Black.X = moveModel.X;
+                Black.Y = moveModel.Y;
                 TryFinish();
                 return true;
 

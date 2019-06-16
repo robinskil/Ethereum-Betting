@@ -82,6 +82,8 @@ contract PuzzleBet is Bet {
             }
         }
         divideWinnings();
+        bet.finished = true;
+        bet.open = false;
         // emit Winners(bet.winners);
     }
 
