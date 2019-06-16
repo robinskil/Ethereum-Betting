@@ -24,7 +24,7 @@ namespace Ethereum_Betting.Controllers
         {
             return Ok(SlidingBetInteractor.GetPuzzle(addressUser, addressBet));
         }
-        [HttpGet]
+        [HttpPost]
         [Route("MakeMove")]
         public async Task<IActionResult> MakeMove(string addressUser, string addressBet, SlidingPuzzleMoveModel moveModel)
         {
