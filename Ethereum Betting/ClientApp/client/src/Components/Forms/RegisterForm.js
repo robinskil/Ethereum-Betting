@@ -13,9 +13,9 @@ class RegisterForm extends Component {
         this.state = {
             isActive: false,
             userAdress: null,
-            userName: null,
-            password: null,
-            confirmPassword: null,
+            userName: "",
+            password: "",
+            confirmPassword: "",
             accounts: null
         }
 
@@ -74,7 +74,12 @@ class RegisterForm extends Component {
         let userName = this.state.userName;
         var charNumberRegex = /^[a-zA-Z0-9-]+$/;
 
-        if(this.state.confirmPassword != this.state.password || userPassword == null)
+        
+        if(this.state.confirmPassword == "" || this.state.password == "")
+        {
+            alert("Field(s) must not be empty!")
+        }
+        else if(this.state.confirmPassword != this.state.password || userPassword == null)
         {
             alert("Password should be the same in both fields!");
         } 
@@ -94,7 +99,7 @@ class RegisterForm extends Component {
         {
             if(userName != null && !userName.match(charNumberRegex))
             {
-                alert("Username and/or password should only exist of letters and numbers and '-'");
+                alert("Username should only exist of letters and numbers and '-'!");
             }
             else 
             {

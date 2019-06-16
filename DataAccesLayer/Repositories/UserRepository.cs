@@ -31,6 +31,12 @@ namespace DataAccesLayer.Repositories
             return Context.Users.Any(u => u.UserAddress == address);
         }
 
+        public string GetPassword(string address) 
+        {
+            User user = GetUser(address);
+            return user.Password;
+        }
+
         public bool CreateUser(User user)
         {
             // throw new NotImplementedException();

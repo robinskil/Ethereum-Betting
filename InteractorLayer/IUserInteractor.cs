@@ -13,6 +13,7 @@ namespace InteractorLayer
         bool Login(LoginRequestModel loginModel, out ClaimsIdentity claimsID);
         bool CheckIfNameExists(string name);
         bool CheckIfAddressExists(string address);
+        bool CheckPassword(string address, string password);
         bool ChangePassword(ChangePasswordRequestModel changePasswordModel);
         bool CreateUser(CreateUserRequestModel createModel);
         bool DeleteUser(DeleteUserRequestModel deleteModel);

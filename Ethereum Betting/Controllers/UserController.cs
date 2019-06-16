@@ -24,8 +24,6 @@ namespace Ethereum_Betting.Controllers
             UserInteractor = new UserInteractor(context);
         }
 
-
-
         /// <summary>
         /// Logs an user onto our server
         /// </summary>
@@ -37,7 +35,7 @@ namespace Ethereum_Betting.Controllers
         {
             if(!UserInteractor.CheckIfAddressExists(loginModel.Address))
             {
-                return BadRequest( new {success = false, msg = "Address does not exists!" });
+                return BadRequest( new {success = false, msg = "This address is not registered!" });
             }
             if(ModelState.IsValid && UserInteractor.Login(loginModel, out ClaimsIdentity claimsID))
             {
@@ -48,41 +46,54 @@ namespace Ethereum_Betting.Controllers
                     ExpiresUtc = DateTime.Now.AddHours(1)
                 };
                 await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsID), authenticationProperties);
-                return Ok(new {success = true, msg = "User is logged in!" });
+                return Ok(new {success = true, msg = "User succesfully logged in!" });
             } else {
-                return BadRequest( new {succes = false, msg = "Address/password is wrong!"});
+                return BadRequest( new {succes = false, msg = "Invalid password!"});
             }
         }
         [HttpPost]
         [Route("delete")]
         public async Task<IActionResult> DeleteUser(DeleteUserRequestModel deleteModel)
         {
-            if(!UserInteractor.CheckIfAddressExists(deleteModel.Address))
+            if(ModelState.IsValid)
             {
-                return BadRequest( new {success = false, msg = "Address does not exists!" });
+                if(!UserInteractor.CheckIfAddressExists(deleteModel.Address))
+                {
+                    return BadRequest( new {success = false, msg = "This address is not registered!" });
+                }
+                if(!UserInteractor.CheckPassword(deleteModel.Address, deleteModel.Password))
+                {
+                    return BadRequest( new {success = false, msg = "Invalid password!" });
+                }
+                if(UserInteractor.DeleteUser(deleteModel))
+                {
+                    return Ok(new {success = true, msg = "User succesfuly deleted!" });
+                }
             }
-            if(ModelState.IsValid && UserInteractor.DeleteUser(deleteModel))
-            {
-                return Ok(new {success = true, msg = "User succesfuly deleted!" });
-            } else {
-                return BadRequest( new {succes = false, msg = "User could not be deleted!"});
-            }
+            return BadRequest( new {succes = false, msg = "User could not be deleted! Model is not valid!"});
+
         }
 
         [HttpPost]
         [Route("changepassword")]
         public async Task<IActionResult> ChangePassword(ChangePasswordRequestModel changePasswordModel)
         {
-            if(!UserInteractor.CheckIfAddressExists(changePasswordModel.Address))
+            if(ModelState.IsValid)
             {
-                return BadRequest( new {success = false, msg = "Address does not exists!" });
+                if(!UserInteractor.CheckIfAddressExists(changePasswordModel.Address))
+                {
+                    return BadRequest( new {success = false, msg = "This address is not registered!" });
+                }
+                if(!UserInteractor.CheckPassword(changePasswordModel.Address, changePasswordModel.OldPassword))
+                {
+                    return BadRequest( new {success = false, msg = "Invalid password!" });
+                }
+                if(UserInteractor.ChangePassword(changePasswordModel))
+                {
+                    return Ok(new {success = true, msg = "Password succesfully changed" });
+                } 
             }
-            if(ModelState.IsValid && UserInteractor.ChangePassword(changePasswordModel))
-            {
-                return Ok(new {success = true, msg = "Password succesfully changed" });
-            } else {
-                return BadRequest( new {succes = false, msg = "Could not change password!"});
-            }
+            return BadRequest( new {succes = false, msg = "Could not change password! Model is not valid!"});
         }
 
 
@@ -123,6 +134,8 @@ namespace Ethereum_Betting.Controllers
         [Route("register")]
         public async Task<IActionResult> CreateUser(CreateUserRequestModel createModel)
         {
+            if(ModelState.IsValid )
+            {
                 if(UserInteractor.CheckIfAddressExists(createModel.Address))
                 {
                     return BadRequest( new {success = false, msg = "Address already exists!" });
@@ -131,11 +144,12 @@ namespace Ethereum_Betting.Controllers
                 {
                     return BadRequest( new {success = false, msg = "Username already exists!"});
                 }
-                else if (ModelState.IsValid && UserInteractor.CreateUser(createModel))
+                else if (UserInteractor.CreateUser(createModel))
                 {
                     return Ok( new {success = true, msg = "User succesfully created!"});
                 }
-                return Forbid();
+            }
+            return BadRequest( new {succes = false, msg = "User could not be created! Model is not valid!"});;
 
         }
         /// <summary>
