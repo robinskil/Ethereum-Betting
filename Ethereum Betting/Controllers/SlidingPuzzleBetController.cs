@@ -26,9 +26,9 @@ namespace Ethereum_Betting.Controllers
         }
         [HttpPost]
         [Route("MakeMove")]
-        public async Task<IActionResult> MakeMove(string addressUser, string addressBet, SlidingPuzzleMoveModel moveModel)
+        public async Task<IActionResult> MakeMove(SlidingPuzzleMoveModel model)
         {
-            if (SlidingBetInteractor.Move(addressUser, addressBet, moveModel))
+            if (SlidingBetInteractor.Move(model.AddressUser, model.AddressBet, model))
             {
                 return Ok();
             }

@@ -76,9 +76,9 @@ class AllJoinedBets extends Component {
     }
 
     componentDidMount = async () => {
-        const bets = await getAllJoinedBets( this.props.factoryContract, this.props.account);
+        const bets = await getAllJoinedBets(this.props.factoryContract, this.props.account);
         this.setState({ AllJoinedBets: bets, loading: false });
-      
+
         //const bets = await betApi.getMyBets();
         //this.setState({ bets, loading: false });
     }
@@ -129,7 +129,7 @@ class BetInfo extends Component {
         const instance = await instantiateContract(this.props.web3, PuzzleBet, this.props.bet);
         const betAmount = await getBetAmount(instance);
         const participators = await getParticipators(instance);
-
+        console.log(this.props.bet);
         this.setState({ contract: instance, betAmount: betAmount, participators: participators });
     }
 
@@ -139,19 +139,16 @@ class BetInfo extends Component {
             <div className="col-8" style={{ marginTop: "15px" }}>
                 <div className="card bg-light mb-3">
                     <div className="card-body">
-                      
-
                         <div className="tab-content" id="nav-tabContent">
                             <div className="tab-pane fade show active" id={"nav-main" + this.props.bet} role="tabpanel" aria-labelledby="nav-home-tab">
                                 <h6 className="card-subtitle mb-2 text-muted" style={{ marginTop: "0px" }}>Contract Address: {this.props.bet}</h6>
-                              
+
                             </div>
-                            
-                        
                         </div>
                         <div style={{ marginTop: "15px" }}>
-                            <a href="#">To the bet</a>
-
+                            <Link to={"/puzzle/" + this.props.bet} className="card-link">
+                                Link to the bet
+                            </Link>
                         </div>
                     </div>
                 </div>

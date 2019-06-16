@@ -24,7 +24,7 @@ namespace InteractorLayer.EthereumInteractor
                 //Check if bet exists in eth network
                 //check if bet finished
                 //check if user joined bet
-                if (BetRepository.UserJoinedBet(addressUser, betAddress).GetAwaiter().GetResult() && BetRepository.BetFinished(betAddress).GetAwaiter().GetResult())
+                if (BetRepository.UserJoinedBet(addressUser, betAddress).GetAwaiter().GetResult() && !BetRepository.BetFinished(betAddress).GetAwaiter().GetResult())
                 {
                     //create new bet
                     BetsWithPuzzles.TryAdd(betAddress.ToLower(), new PuzzleBet());

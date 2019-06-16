@@ -78,7 +78,7 @@ class Wrapper extends Component {
             <Route exact path="/" component={IndexPage} />
             <Route path="/about" component={null} />
             <Route path="/topics" component={null} />
-                    <Route exact path="/PuzzlePage" component={PuzzlePage} web3={this.state.web3} />
+            <Route exact path="/PuzzlePage" component={PuzzlePage} web3={this.state.web3} />
 
             <Route
               path="/CreateBet"
@@ -128,6 +128,10 @@ class Wrapper extends Component {
             <Route
               path="/bet/:betId"
               render={props => <BetPage {...props} web3={this.state.web3} />}
+            />
+            <Route
+              path="/puzzle/:betAddress"
+              render={props => <PuzzlePage {...props} web3={this.state.web3} />}
             />
           </div>
         </Router>
