@@ -122,8 +122,8 @@ contract Bet is usingOraclize {
     }
 
     //returns time left in seconds for bet to end
-    function timeLeft() public view returns(uint) {
-        return (bet.creationTime - now) / (bet.betLength * 1 minutes);
+    function getEndTime() public view returns(uint) {
+        return (bet.creationTime + (bet.betLength));
     }
 
     event WithdrawBy(address withdrawer);
