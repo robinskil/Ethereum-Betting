@@ -1,5 +1,6 @@
 pragma solidity ^0.5.0;
 
+
 //TODO import oracles through oraclize
 import "./oraclizeAPI.sol";
 
@@ -89,6 +90,22 @@ contract Bet is usingOraclize {
 
     function getOwner() public view returns (address) {
         return bet.owner;
+    }
+
+    function getBet() public view returns (address, uint, bool, bool, uint, address[] memory, address[] memory, bool, uint, uint) {
+        return (
+            bet.owner,
+            bet.betAmount,
+            bet.friendsOnly,
+            bet.open,
+            bet.maxParticipators,
+            bet.participators,
+
+            bet.winners,
+            bet.finished,
+            bet.betLength,
+            bet.creationTime
+        );
     }
 
     function getStoredBalance() public view returns (uint256) {
