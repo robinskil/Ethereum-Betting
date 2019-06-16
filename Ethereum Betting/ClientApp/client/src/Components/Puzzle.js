@@ -55,6 +55,7 @@ class Puzzle extends React.Component {
         //}
         console.log(this.state);
     }
+    C
 
     render() {
         const cubes = this.state.cubes;
@@ -88,6 +89,16 @@ class Puzzle extends React.Component {
             </div>
         );
     }
+}
+function initCubes(level) {
+    var cubes = [];
+    for (let i = 0; i < level * level; i++) {
+        cubes.push({
+            position: i + 1,
+            number: i + 1
+        });
+    }
+    return cubes;
 }
 
 export default Puzzle;
@@ -137,16 +148,6 @@ export default Puzzle;
 //    return !anyCubesLeft ? true : false;
 //}
 
-function initCubes(level) {
-    var cubes = [];
-    for (let i = 0; i < level * level; i++) {
-        cubes.push({
-            position: i + 1,
-            number: i + 1
-        });
-    }
-    return cubes;
-}
 
 //function swapCubes(cubes, level, cubePos) {
 //    var spaceCube = cubes.find(x => x.number === level * level);
