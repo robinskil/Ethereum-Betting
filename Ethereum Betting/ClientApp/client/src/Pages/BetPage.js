@@ -23,18 +23,17 @@ export class BetPage extends React.Component {
   };
 
   mapToBet = unfBet => {
-
     return {
       owner: unfBet[0],
-      betAmount: unfBet[1].toNumber(),
+      betAmount: unfBet[1],
       friendsOnly: unfBet[2],
       open: unfBet[3],
-      maxParticipators: unfBet[4].toNumber(),
+      maxParticipators: unfBet[4],
       participators: unfBet[5],
       winners: unfBet[6],
       finished: unfBet[7],
-      length: unfBet[8].toString(),
-      creationTime: dayjs.unix(unfBet[9].toNumber()).format('ddd MM, YYYY HH:MM')
+      length: parseInt(unfBet[8], 10),
+      creationTime: dayjs.unix(unfBet[9]).format("ddd MM, YYYY HH:MM")
     };
   };
 
@@ -75,6 +74,7 @@ export class BetPage extends React.Component {
           <p class="lead">Bet status: {bet.open ? "open" : "closed"}</p>
           <p class="lead">Bet amount: {bet.betAmount}</p>
           <p class="lead">Bet created at: {bet.creationTime}</p>
+          <p class="lead">Bet length: {bet.length} minutes</p>
           <p class="lead">Max participators: {bet.maxParticipators}</p>
           <p class="lead">Finished: {bet.finished ? "yes" : "no"}</p>
           <p class="lead">Friends only: {bet.friendsOnly ? "yes" : "no"}</p>

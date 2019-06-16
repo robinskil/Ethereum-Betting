@@ -109,6 +109,16 @@ namespace InteractorLayer
             return UserRepository.CheckIfAddressExists(address);
         }
 
+        public bool CheckPassword(string address, string password)
+        {
+            User user = UserRepository.GetUser(address);
+            if(user != null)
+            {
+                return Hashing.ValidateText(password, user.Password);
+            }
+            return false;
+        }
+
         /// <summary>
         /// Deletes a user from our database.
         /// </summary>

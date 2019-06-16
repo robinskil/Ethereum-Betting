@@ -17,6 +17,8 @@ namespace DataAccesLayer.Repositories
         /// <returns></returns>
         bool CreateUser(User user);
         User GetUser(string address);
+
+        string GetPassword(string address);
         IList<User> GetUserSuggestion(string user);
         IList<User> GetFriends(string address);
         bool DeleteUser(User user);

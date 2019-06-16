@@ -230,7 +230,8 @@ class BetInfo extends Component {
                 {this.state.betAmount != null ? (
                   <div>
                     <p className="card-text">
-                      Amount to join bet: {this.state.betAmount.toNumber()}
+                      Amount to join bet:
+                      {this.state.betAmount}
                       <img
                         style={{
                           position: "relative",

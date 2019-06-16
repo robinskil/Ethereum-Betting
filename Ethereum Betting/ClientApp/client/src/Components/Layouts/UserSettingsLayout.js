@@ -85,7 +85,7 @@ class UserSettingsLayout extends React.Component {
         }
         else if (this.state.newPassword != this.state.confirmNewPassword)
         {
-            alert("Please confirm that both new passwords are the same!")
+            alert("Passwords must match!")
         }
         else 
         {
