@@ -23,18 +23,17 @@ export class BetPage extends React.Component {
   };
 
   mapToBet = unfBet => {
-
     return {
       owner: unfBet[0],
-      betAmount: unfBet[1].toNumber(),
+      betAmount: unfBet[1],
       friendsOnly: unfBet[2],
       open: unfBet[3],
-      maxParticipators: unfBet[4].toNumber(),
+      maxParticipators: unfBet[4],
       participators: unfBet[5],
       winners: unfBet[6],
       finished: unfBet[7],
       length: unfBet[8].toString(),
-      creationTime: dayjs.unix(unfBet[9].toNumber()).format('ddd MM, YYYY HH:MM')
+      creationTime: dayjs.unix(unfBet[9]).format("ddd MM, YYYY HH:MM")
     };
   };
 
