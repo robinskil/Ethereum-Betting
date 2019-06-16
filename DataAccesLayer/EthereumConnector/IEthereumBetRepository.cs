@@ -8,5 +8,6 @@ namespace DataAccesLayer.EthereumConnector
     public interface IEthereumBetRepository
     {
         Task<bool> UserJoinedBet(string addressUser, string addressBetContract);
+        Task<bool> BetFinished(string addressBetContract);
     }
 }

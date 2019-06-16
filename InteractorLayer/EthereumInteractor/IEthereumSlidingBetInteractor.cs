@@ -10,6 +10,6 @@ namespace InteractorLayer.EthereumInteractor
     {
         int[,] GetPuzzle(string addressUser, string betAddress);
         string GetWinners(string betAddress);
-        SlidingPuzzleMoveResponse Move(string addressUser, string betAddress, SlidingPuzzleMoveModel moveModel);
+        bool Move(string addressUser, string betAddress, SlidingPuzzleMoveModel moveModel);
     }
 }

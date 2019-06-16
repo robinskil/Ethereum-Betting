@@ -18,6 +18,10 @@ contract BettingFactory {
         return bets;
     }
 
+    function getSingleBet(uint256 betidx) public view returns (address) {
+       return bets[betidx];
+    }
+
     //Gets all current bets that a user has.
     function getOwnedBets(address ownerAddress) public view returns (address[] memory) {
         address[] memory allBets = new address[](bets.length);
@@ -39,8 +43,7 @@ contract BettingFactory {
     event Log(string s);
 
     //gets all bets ure participating in
-    function getAllJoinedBets(address playerAddress) public returns (address[] memory) {
-        emit Log("Start getting");
+    function getAllJoinedBets(address playerAddress) public view returns (address[] memory) {
         address[] memory allBets = new address[](bets.length);
         uint256 currentIndice = 0;
         for (uint256 index = 0; index < bets.length; index++) {
@@ -54,7 +57,6 @@ contract BettingFactory {
         for (uint256 index = 0 ; index < currentIndice; index++) {
             joinedBets[index] = allBets[index];
         }
-        emit Log("End getting");
         return joinedBets;
     }
 }

@@ -1,5 +1,6 @@
 pragma solidity ^0.5.0;
 
+
 //TODO import oracles through oraclize
 import "./oraclizeAPI.sol";
 
@@ -40,7 +41,7 @@ contract Bet is usingOraclize {
         require(userAlreadyJoined(msg.sender) == true,"You have to join this bet first.");
         _;
     }
-    
+
     //todo check if user is already in list....
     function join() public payable{
         require(msg.value == bet.betAmount * 1 ether,"Requires Ether.");
@@ -89,6 +90,22 @@ contract Bet is usingOraclize {
 
     function getOwner() public view returns (address) {
         return bet.owner;
+    }
+
+    function getBet() public view returns (address, uint, bool, bool, uint, address[] memory, address[] memory, bool, uint, uint) {
+        return (
+            bet.owner,
+            bet.betAmount,
+            bet.friendsOnly,
+            bet.open,
+            bet.maxParticipators,
+            bet.participators,
+
+            bet.winners,
+            bet.finished,
+            bet.betLength,
+            bet.creationTime
+        );
     }
 
     function getStoredBalance() public view returns (uint256) {

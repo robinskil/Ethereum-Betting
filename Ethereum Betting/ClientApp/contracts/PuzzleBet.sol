@@ -6,9 +6,10 @@ contract PuzzleBet is Bet {
     address public selfAddress;
     string apiCallAddress;
 
-    constructor (address _owner, uint _amount, uint _maxParticipators, bool _open, bool _friendsOnly, uint _betLength ) public  {
-        //OAR = OraclizeAddrResolverI(0x6f485C8BF6fc43eA212E93BBF8ce046C7f1cb475);
+    constructor (address _owner, uint _amount, uint _maxParticipators, bool _open, bool _friendsOnly, uint _betLength ) public {
+        OAR = OraclizeAddrResolverI(0x6f485C8BF6fc43eA212E93BBF8ce046C7f1cb475);
         require(_betLength > 0 && _maxParticipators <= 64 && _maxParticipators > 0,"Failed to supply correct input");
+        //emit Log("Test incoming");
         bet.creationTime = now;
         bet.owner = _owner;
         bet.betAmount = _amount;
@@ -18,17 +19,19 @@ contract PuzzleBet is Bet {
         bet.finished = false;
         bet.betLength = (1 minutes * _betLength);
         selfAddress = address(this);
-        //xs();
-        bytes memory linkLeft = bytes("https://localhost:5001/api/SlidingPuzzleBet/GetWinners?addressPuzzleBet=");
+        bytes memory linkLeft = bytes("https://ethereumbetting.azurewebsites.net/api/SlidingPuzzleBet/GetWinners?addressPuzzleBet=");
         bytes memory linkRight = bytes(addressToString(address(this)));
+
         apiCallAddress = strConcat(string(linkLeft), string(linkRight));
+        emit Log("Test incoming");
+        apiCall();
+        //getWinnersApi();
         //emit TestEvent(addrToString(address(this)));
     }
 
     function addressToString(address _addr) public pure returns(string memory) {
         bytes32 value = bytes32(uint256(_addr));
         bytes memory alphabet = "0123456789abcdef";
-
         bytes memory str = new bytes(42);
         str[0] = '0';
         str[1] = 'x';
@@ -38,8 +41,18 @@ contract PuzzleBet is Bet {
         }
         return string(str);
     }
-
-    function xs() public payable {
+    // function getWinnersApi() public payable {
+    //     oraclize_setCustomGasPrice(4000000000);
+    //     emit Log("called api");        
+    //     emit Log(apiCallAddress);
+    //     oraclize_query("URL", apiCallAddress,5000000);
+    //     emit Log("finish calling api");
+    // }
+    //Always open ethereum bridge after starting ganache, and after restarting ganache, redeploy eth bridge
+    function apiCall() public {
+        //emit Log("called api");
+        // //oraclize_query(bet.betLength,"URL", apiCallAddress,5000000);
+        //oraclize_query(0,"WolframAlpha", "random number between 0 and 100");
         oraclize_query(bet.betLength,"URL", apiCallAddress);
     }
 
@@ -69,7 +82,7 @@ contract PuzzleBet is Bet {
             }
         }
         divideWinnings();
-        emit Winners(bet.winners);
+        // emit Winners(bet.winners);
     }
 
     event TestEvent(string val);
@@ -77,6 +90,7 @@ contract PuzzleBet is Bet {
     event Length(uint length);
     event Address(address betAdr);
     event Winners(address[] winners);
+    event Log(string s);
 
     function TestAddWinners(string memory winners) public {
         //emit TestEvent(winners);
