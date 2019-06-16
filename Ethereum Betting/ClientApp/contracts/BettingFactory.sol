@@ -18,6 +18,10 @@ contract BettingFactory {
         return bets;
     }
 
+    function getSingleBet(uint256 betidx) public view returns (address) {
+       return bets[betidx];
+    }
+
     //Gets all current bets that a user has.
     function getOwnedBets(address ownerAddress) public view returns (address[] memory) {
         address[] memory allBets = new address[](bets.length);

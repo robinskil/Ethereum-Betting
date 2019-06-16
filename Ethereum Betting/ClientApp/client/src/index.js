@@ -5,6 +5,10 @@ import * as serviceWorker from "./serviceWorker";
 import Wrapper from "./Pages/IndexPage";
 import { StateProvider } from "./state";
 import { mainReducer, initialState } from "./reducers";
+import dayjs from "dayjs";
+// import * as locale from 'dayjs/locale/nl';
+
+// dayjs.setLocale(locale)
 
 ReactDOM.render(
   <StateProvider initialState={initialState} reducer={mainReducer}>
