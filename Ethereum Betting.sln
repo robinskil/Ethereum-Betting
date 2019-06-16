@@ -1,17 +1,17 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.329
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29001.49
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ethereum Betting", "Ethereum Betting\Ethereum Betting.csproj", "{FFC04E2B-ECC1-4BD5-AAB6-709B2A5D744C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ethereum Betting", "Ethereum Betting\Ethereum Betting.csproj", "{FFC04E2B-ECC1-4BD5-AAB6-709B2A5D744C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unit Testing Ethereum Betting", "Unit Testing Ethereum Betting\Unit Testing Ethereum Betting.csproj", "{0CABB21C-5610-4D1C-8D0B-52D3138975B0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Unit Testing Ethereum Betting", "Unit Testing Ethereum Betting\Unit Testing Ethereum Betting.csproj", "{0CABB21C-5610-4D1C-8D0B-52D3138975B0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InteractorLayer", "InteractorLayer\InteractorLayer.csproj", "{1DE40FED-070D-4DF2-A724-DA82002F6A07}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InteractorLayer", "InteractorLayer\InteractorLayer.csproj", "{1DE40FED-070D-4DF2-A724-DA82002F6A07}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DomainLayer", "DomainLayer\DomainLayer.csproj", "{40F76363-EC6B-4B90-8F21-2E0966BF0222}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DomainLayer", "DomainLayer\DomainLayer.csproj", "{40F76363-EC6B-4B90-8F21-2E0966BF0222}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccesLayer", "DataAccesLayer\DataAccesLayer.csproj", "{E6765BEC-C840-48D6-8449-7847455E971B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataAccesLayer", "DataAccesLayer\DataAccesLayer.csproj", "{E6765BEC-C840-48D6-8449-7847455E971B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

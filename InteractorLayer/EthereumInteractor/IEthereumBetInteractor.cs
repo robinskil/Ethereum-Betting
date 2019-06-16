@@ -8,5 +8,6 @@ namespace InteractorLayer.EthereumInteractor
     public interface IEthereumBetInteractor
     {
         Task<bool> JoinedBet(string addressUser, string addressBetContract);
+        Task<bool> BetFinished(string addressBetContract);
     }
 }

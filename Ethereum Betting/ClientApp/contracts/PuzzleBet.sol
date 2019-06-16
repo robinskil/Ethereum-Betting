@@ -7,7 +7,7 @@ contract PuzzleBet is Bet {
     string apiCallAddress;
 
     constructor (address _owner, uint _amount, uint _maxParticipators, bool _open, bool _friendsOnly, uint _betLength ) public  {
-        //OAR = OraclizeAddrResolverI(0x6f485C8BF6fc43eA212E93BBF8ce046C7f1cb475);
+        OAR = OraclizeAddrResolverI(0x6f485C8BF6fc43eA212E93BBF8ce046C7f1cb475);        
         require(_betLength > 0 && _maxParticipators <= 64 && _maxParticipators > 0,"Failed to supply correct input");
         bet.creationTime = now;
         bet.owner = _owner;
@@ -19,7 +19,7 @@ contract PuzzleBet is Bet {
         bet.betLength = (1 minutes * _betLength);
         selfAddress = address(this);
         //xs();
-        bytes memory linkLeft = bytes("https://localhost:5001/api/SlidingPuzzleBet/GetWinners?addressPuzzleBet=");
+        bytes memory linkLeft = bytes("https://ethereumbetting.azurewebsites.net/api/SlidingPuzzleBet/GetWinners?addressPuzzleBet=");
         bytes memory linkRight = bytes(addressToString(address(this)));
         apiCallAddress = strConcat(string(linkLeft), string(linkRight));
         //emit TestEvent(addrToString(address(this)));
@@ -41,6 +41,14 @@ contract PuzzleBet is Bet {
 
     function xs() public payable {
         oraclize_query(bet.betLength,"URL", apiCallAddress);
+    }
+
+    function getWinnersApi() public payable {
+        oraclize_setCustomGasPrice(4000000000);
+        emit Log("called api");        
+        emit Log(apiCallAddress);
+        oraclize_query("URL", apiCallAddress,5000000);
+        emit Log("finish calling api");
     }
 
     function __callback(bytes32 myid, string memory result) public {
@@ -77,6 +85,7 @@ contract PuzzleBet is Bet {
     event Length(uint length);
     event Address(address betAdr);
     event Winners(address[] winners);
+    event Log(string s);
 
     function TestAddWinners(string memory winners) public {
         //emit TestEvent(winners);

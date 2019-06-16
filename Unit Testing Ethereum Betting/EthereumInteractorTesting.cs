@@ -10,22 +10,22 @@ namespace Unit_Testing_Ethereum_Betting
     {
         IEthereumBetInteractor BetInteractor { get; } = new EthereumBetInteractor();
         /// <summary>
-        /// Test Joined Bet is false
-        /// </summary>
-        [Fact]
-        public async void TestNotJoined()
-        {
-            var result = await BetInteractor.JoinedBet("0x96f6a741a2119B871700e935A5ad2Eb0F30AC333", "");
-            Assert.False(result);
-        }
-        /// <summary>
-        /// Test joined bet is true
+        /// Test Joined Bet is true
         /// </summary>
         [Fact]
         public async void TestJoined()
         {
-            var result = await BetInteractor.JoinedBet("", "");
+            var result = await BetInteractor.JoinedBet("0x341b9290f9083D7f08882b0d311006564D2a35E7", "0x9A55c321FAfe8904Ebc52Ab7f33dfF1F426ab361");
             Assert.True(result);
+        }
+        /// <summary>
+        /// Test bet finished is false
+        /// </summary>
+        [Fact]
+        public async void TestFinished()
+        {
+            var result = await BetInteractor.BetFinished("0x9A55c321FAfe8904Ebc52Ab7f33dfF1F426ab361");
+            Assert.False(result);
         }
     }
 }
