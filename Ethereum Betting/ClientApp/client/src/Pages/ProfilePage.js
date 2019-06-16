@@ -20,7 +20,7 @@ export class ProfilePage extends Component{
         constructor(props) {
         super(props);
         this.state = {
-            layout: <ExportedProfileLayout/>
+            layout: <ExportedProfileLayout web3={this.props.web3}/>
         }
 
         this.handleClick = this.handleClick.bind(this);
@@ -30,7 +30,7 @@ export class ProfilePage extends Component{
         if(event.target.getAttribute('href') == "#profile")
         {
             this.setState({
-                layout: <ExportedProfileLayout/>
+                layout: <ExportedProfileLayout web3={this.props.web3}/>
             })
         }
         else if (event.target.getAttribute('href') == "#bethistory")
@@ -70,7 +70,7 @@ export class ProfilePage extends Component{
                         <a href="#profile" class="list-group-item list-group-item-action" onClick={this.handleClick}>Profile</a>
                         <a href="#bethistory" class="list-group-item list-group-item-action" onClick={this.handleClick}>Bet History</a>
                         <a href="#achievements" class="list-group-item list-group-item-action disabled" onClick={this.handleClick} >Achievements</a>
-                        <a href="#friends" class="list-group-item list-group-item-action" onClick={this.handleClick} >Friends</a>
+                        <a href="#friends" class="list-group-item list-group-item-action disabled" onClick={this.handleClick} >Friends</a>
                         <a href="#usersettings" class="list-group-item list-group-item-action" onClick={this.handleClick}>User Settings</a>
                 </div>
                 </div>

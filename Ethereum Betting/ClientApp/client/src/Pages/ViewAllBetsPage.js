@@ -26,6 +26,7 @@ class ViewAllBets extends Component {
   componentDidMount = async () => {
     this.loadingAccountDetails();
   };
+  
   loadingAccountDetails = async () => {
     try {
       const web3 = this.props.web3;
