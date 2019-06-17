@@ -96,6 +96,17 @@ namespace Ethereum_Betting.Controllers
             return BadRequest( new {succes = false, msg = "Could not change password! Model is not valid!"});
         }
 
+        [HttpGet]
+        [Route("GetUserName")]
+        public async Task<IActionResult> GetUser(string userAddress)
+        {
+            if(UserInteractor.CheckIfAddressExists(userAddress))
+            {
+                string userName = UserInteractor.GetUserName(userAddress);
+                return Ok(new {succes = true, msg = "User succesfully fetched!", data = userName});
+            }
+            return BadRequest( new {succes = false, msg = "Could not fetch user!"});
+        }
 
         [HttpGet]
         [Route("isAuthenticated")]

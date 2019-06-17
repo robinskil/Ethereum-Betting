@@ -18,6 +18,16 @@ export async function CreateUser(Address, Password, Username){
     .catch((err)=>console.log(err))
 }
 
+export async function GetUserName(Address){
+    return fetch(`api/user/GetUserName?userAddress=${Address}`, {
+        method: 'GET',
+        headers: {
+            'Content-type': 'application/json'
+        }
+    })
+    .then(handleResponse)
+    .catch((err)=>console.log(err))
+}
 
 export function setLoggedIn() {
     localStorage.setItem("loggedIn", "true");

@@ -119,6 +119,12 @@ namespace InteractorLayer
             return false;
         }
 
+        public string GetUserName(string address)
+        {
+            User user = UserRepository.GetUser(address);
+            return user.GeneratedName;
+        }
+
         /// <summary>
         /// Deletes a user from our database.
         /// </summary>

@@ -24,6 +24,9 @@ class ProfileLayout extends React.Component {
             totalBets: null,
             wonBets: null,
             lostBets: null,
+            totalWon: null,
+            totalLost: null,
+            WLRatio: null,
             loading: true,
             
 
@@ -47,7 +50,6 @@ class ProfileLayout extends React.Component {
 
       const joinedBets = await betFactory.getAllJoinedBets(instance, accounts[0]);
       const ownedBets = await betFactory.getOwnedBets(instance, accounts[0]);
-      const totalBets = joinedBets.length;
 
       this.getJoinedBetsInfo(joinedBets, accounts[0])
   
@@ -56,7 +58,6 @@ class ProfileLayout extends React.Component {
         factoryContract: instance, 
         joinedBets,
         ownedBets,
-        totalBets,
     });
         } catch (error) {
         alert(error);
@@ -67,10 +68,12 @@ class ProfileLayout extends React.Component {
 
     async getJoinedBetsInfo(joinedBets, address)
     {
-        console.log("joinedbets: ")
-        console.log(joinedBets)
         var wonBets = 0;
         var lostBets = 0;
+        var totalBets = 0;
+        var totalWon = 0;
+        var totalAmountStaked = 0;
+        var WLRatio = 0;
         for(const bet in joinedBets)
         {
             const betInstance = await betApi.instantiateContract(this.props.web3, PuzzleBet, joinedBets[bet])
@@ -79,20 +82,36 @@ class ProfileLayout extends React.Component {
             if(finished)
             {
                 const winner = await betApi.getWinners(betInstance)
+                var prisePool = await betApi.getPrizePool(betInstance) 
+                var amountstaked = await betApi.getBetAmount(betInstance)
                 console.log("winner; ")
                 console.log(winner)
                 if (winner == address)
                 {
                     wonBets += 1
+                    totalWon += parseInt(prisePool)
                 }
+                totalBets += 1 
+                totalAmountStaked += parseInt(amountstaked)
+                console.log(totalAmountStaked)
             }
         }
 
-        lostBets = joinedBets.length - wonBets;
+        lostBets = totalBets - wonBets
+
+        if(totalBets != 0)
+        {
+            WLRatio = parseFloat(wonBets / lostBets).toFixed(2);
+        } 
 
         this.setState({
+            totalBets,
             wonBets,
-            lostBets
+            lostBets,
+            totalWon,
+            totalLost: totalAmountStaked - totalWon,
+            WLRatio
+            
         })
     }
 
@@ -132,7 +151,7 @@ class ProfileLayout extends React.Component {
                     <h3 className="card-title">Bet Win/Lose Ratio</h3>
                     </div>
                     <div className="card-body">
-                        <h5 className="card-title">{this.state.wonBets / this.state.lostBets}</h5>
+                        <h5 className="card-title">{this.state.WLRatio}</h5>
                     </div>
                     </div>
 
@@ -141,7 +160,7 @@ class ProfileLayout extends React.Component {
                     <h3 className="card-title">Total amount won</h3>
                     </div>
                     <div className="card-body">
-                        <h5 className="card-title">13000</h5>
+                        <h5 className="card-title">{this.state.totalWon}</h5>
                     </div>
                     </div>
 
@@ -150,7 +169,7 @@ class ProfileLayout extends React.Component {
                     <h3 className="card-title">Total amount lost</h3>
                     </div>
                     <div className="card-body">
-                        <h5 className="card-title">400</h5>
+                        <h5 className="card-title">{this.state.totalLost}</h5>
                     </div>
                     </div>
                 </div>
