@@ -79,9 +79,13 @@ class RegisterForm extends Component {
         {
             alert("Field(s) must not be empty!")
         }
+        else if (userPassword.length < 6)
+        {
+            alert("Password should be at least 6 characters long!")
+        }
         else if(this.state.confirmPassword != this.state.password || userPassword == null)
         {
-            alert("Password should be the same in both fields!");
+            alert("Passwords must match!");
         } 
         else if(this.state.isActive == true && userAdress != null && userPassword != null)
         {
@@ -100,6 +104,10 @@ class RegisterForm extends Component {
             if(userName != null && !userName.match(charNumberRegex))
             {
                 alert("Username should only exist of letters and numbers and '-'!");
+            }
+            else if(userName.length < 4)
+            {
+                alert("Username should be at least 4 characters long!")
             }
             else 
             {

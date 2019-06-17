@@ -6,6 +6,8 @@ import {
     withRouter
 } from 'react-router-dom'
 import * as userApi from '../ApiHelpers/UserApi'
+import { StateContext } from "../../state";
+import { login, logout } from "../../reducers/auth";
 import Web3 from 'web3'
 
 class UserSettingsLayout extends React.Component {
@@ -25,9 +27,17 @@ class UserSettingsLayout extends React.Component {
         this.handleDeletePasswordChange = this.handleDeletePasswordChange.bind(this);
         this.onChangePasswordSubmit = this.onChangePasswordSubmit.bind(this);
         this.onDeleteSubmit = this.onDeleteSubmit.bind(this);
+        this.handleLogOut = this.handleLogOut.bind(this);
     }
 
+    static contextType = StateContext;
+
     componentDidMount = async () => {
+        const [_, dispatch] = this.context;
+
+        if (userApi.IsAuthenticated()) {
+          dispatch(login());
+        }
         this.loadingAccountDetails();
     }
 
@@ -67,6 +77,15 @@ class UserSettingsLayout extends React.Component {
         this.setState({
             deletePassword: event.target.value
         })
+    }
+
+    handleLogOut() {
+        const [_, dispatch] = this.context;
+
+        dispatch(logout());
+        userApi.setLoggedOut();
+        this.props.history.push("/");
+        this.render();
     }
     
     async onChangePasswordSubmit(event) {
@@ -117,8 +136,8 @@ class UserSettingsLayout extends React.Component {
             let DeleteUser = await userApi.DeleteUser(address, password);
             if(DeleteUser.success)
             {
-                this.props.history.push('/');
-                alert(DeleteUser.msg);  
+                alert(DeleteUser.msg);
+                this.handleLogOut();  
             }
             else
             {

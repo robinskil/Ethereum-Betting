@@ -45,7 +45,6 @@ class LoginForm extends React.Component {
   }
 
   async handleSubmit(event) {
-    console.log("licck");
     event.preventDefault();
 
     let userPassword = this.state.inputPassword;
@@ -58,7 +57,7 @@ class LoginForm extends React.Component {
       userApi.setLoggedIn();
       dispatch(loginType());
       this.props.history.push("/");
-      this.render();
+      window.location.reload();
     } else {
       alert(login.msg);
     }

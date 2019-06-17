@@ -3,14 +3,17 @@ import { BrowserRouter as Router, Route, Link, withRouter } from "react-router-d
 import * as userApi from "../Components/ApiHelpers/UserApi";
 import { StateContext } from "../state";
 import { login, logout } from "../reducers/auth";
+import Web3 from "web3";
 
 class MenuBar extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
+    constructor(props) {
+      super(props);
+      this.state = {
+        accounts: null,
+        username: null
+      }
+      this.handleLogOut = this.handleLogOut.bind(this);
     }
-    this.handleLogOut = this.handleLogOut.bind(this);
-  }
 
   static contextType = StateContext;
 
@@ -20,6 +23,31 @@ class MenuBar extends Component {
     if (userApi.IsAuthenticated()) {
       dispatch(login());
     }
+    this.loadingAccountDetails()
+  }
+
+  loadingAccountDetails = async () => {
+      try {
+          const web3 = new Web3(Web3.givenProvider, null);
+          const accounts = await web3.eth.getAccounts();
+          this.setState({ accounts });
+
+          this.getUsername(accounts[0])
+      }
+      catch (error) {
+          alert(error);
+      }
+      finally {
+          this.setState({ loading: false });
+      }
+  }
+
+  async getUsername(address) {
+    const user = await userApi.GetUserName(address)
+    console.log("user: ")
+    this.setState({
+      username: user.data
+    })
   }
 
   handleLogOut(event) {
@@ -71,18 +99,11 @@ class MenuBar extends Component {
           id="navbarNavDropdown"
         >
           <ul className="navbar-nav">
-            <li className="nav-item">
+            {/* <li className="nav-item">
               <Link className="nav-link" to="/GettinStarted">
                 Getting Started
               </Link>
-            </li>
-            {isAuthenticated && (
-              <li className="nav-item">
-                <Link className="nav-link" to="/Profile">
-                  Profile
-                </Link>
-              </li>
-            )}
+            </li> */}
             {!isAuthenticated && (
               <li className="nav-item">
                 <Link className="nav-link" to="/Login">
@@ -94,6 +115,13 @@ class MenuBar extends Component {
               <li className="nav-item">
                 <Link className="nav-link" to="/Register">
                   Register
+                </Link>
+              </li>
+            )}
+            {isAuthenticated && (
+              <li className="nav-item">
+                <Link className="nav-link" to="/Profile">
+                  {this.state.username}
                 </Link>
               </li>
             )}
@@ -115,14 +143,17 @@ class MenuBar extends Component {
                 <Link className="dropdown-item" to="/CreateBet">
                   Create a bet
                 </Link>
-                <Link className="dropdown-item" to="/ViewAllBets">
-                  View All bets
+                <Link className="dropdown-item" to = "/ViewAllBets">
+                 View All bets
                 </Link>
                 <Link className="dropdown-item" to="/JoinedBets">
                   My joined bets
                 </Link>
                 <Link className="dropdown-item" to="/JoinBet">
                   Join a bet
+                </Link>
+                <Link className="dropdown-item" to="/PuzzlePage">
+                  Puzzle
                 </Link>
               </div>
             </li>

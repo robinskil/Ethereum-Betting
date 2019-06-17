@@ -17,6 +17,7 @@ namespace InteractorLayer
         bool ChangePassword(ChangePasswordRequestModel changePasswordModel);
         bool CreateUser(CreateUserRequestModel createModel);
         bool DeleteUser(DeleteUserRequestModel deleteModel);
+        string GetUserName(string adress);
         Task<IEnumerable<string>> AddressesToName(IEnumerable<string> addresses);
     }
 }
