@@ -1,7 +1,7 @@
 ﻿import React, { Component } from "react";
 import { Link } from 'react-router-dom'
 import BettingFactory from "../contracts/BettingFactory.json";
-import { instantiateContract, getBetAmount, getParticipators, joinBet } from "../helpers/Bet";
+import { instantiateContract, getBetAmount, getParticipators, joinBet, getWinnings } from "../helpers/Bet";
 import { getAllJoinedBets } from "../helpers/BettingFactory";
 import PuzzleBet from "../contracts/PuzzleBet.json";
 
@@ -133,12 +133,18 @@ class BetInfo extends Component {
         this.setState({ contract: instance, betAmount: betAmount, participators: participators });
     }
 
+    withdrawMoney = async () => {
+        const accounts = await this.props.web3.eth.getAccounts();
+        await getWinnings(this.state.contract, accounts[0]);
+        //await getWinnings(this.state.contract, await this.props.web3.eth.getAccounts()[0]);
+    }
 
     render() {
         return (
             <div className="col-8" style={{ marginTop: "15px" }}>
                 <div className="card bg-light mb-3">
                     <div className="card-body">
+                        <h5 class="card-title">Puzzle Bet</h5>
                         <div className="tab-content" id="nav-tabContent">
                             <div className="tab-pane fade show active" id={"nav-main" + this.props.bet} role="tabpanel" aria-labelledby="nav-home-tab">
                                 <h6 className="card-subtitle mb-2 text-muted" style={{ marginTop: "0px" }}>Contract Address: {this.props.bet}</h6>
@@ -146,9 +152,12 @@ class BetInfo extends Component {
                             </div>
                         </div>
                         <div style={{ marginTop: "15px" }}>
-                            <Link to={"/puzzle/" + this.props.bet} className="card-link">
-                                Link to the bet
+                            <Link to={"/puzzle/" + this.props.bet} className="btn btn-primary">
+                                Go puzzle!
                             </Link>
+                            <button className="btn btn-primary" onClick={this.withdrawMoney} style={{ marginLeft: "15px" }}>
+                                Try to withdraw winnings
+                            </button>
                         </div>
                     </div>
                 </div>

@@ -65,7 +65,8 @@ contract PuzzleBet is Bet {
         uint splitAmount = 0;
         bytes memory winnerAddress = new bytes(42);
         bool skipCharacter = false;
-        emit Length(byteString.length);
+        //emit Length(byteString.length);
+        //bet.finished = true;
         for(uint i = 0; i < byteString.length; i++){
             if(skipCharacter == true){
                 skipCharacter = false;
@@ -82,8 +83,6 @@ contract PuzzleBet is Bet {
             }
         }
         divideWinnings();
-        bet.finished = true;
-        bet.open = false;
         // emit Winners(bet.winners);
     }
 

@@ -14,6 +14,8 @@ class MenuBar extends Component {
       }
       this.handleLogOut = this.handleLogOut.bind(this);
     }
+    this.handleLogOut = this.handleLogOut.bind(this);
+  }
 
   static contextType = StateContext;
 
@@ -143,17 +145,14 @@ class MenuBar extends Component {
                 <Link className="dropdown-item" to="/CreateBet">
                   Create a bet
                 </Link>
-                <Link className="dropdown-item" to = "/ViewAllBets">
-                 View All bets
+                <Link className="dropdown-item" to="/ViewAllBets">
+                  View All bets
                 </Link>
                 <Link className="dropdown-item" to="/JoinedBets">
                   My joined bets
                 </Link>
                 <Link className="dropdown-item" to="/JoinBet">
                   Join a bet
-                </Link>
-                <Link className="dropdown-item" to="/PuzzlePage">
-                  Puzzle
                 </Link>
               </div>
             </li>

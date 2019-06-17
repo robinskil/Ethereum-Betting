@@ -9,7 +9,6 @@ import {
 } from "react-router-dom";
 import { ExportedMenuBar } from "../Components/MenuBar";
 import CreateBet from "../Pages/CreateBetPage";
-import BetChatComponent from "../Chatting/BetChatComponent";
 import PuzzlePage from "../Pages/PuzzlePage";
 import { ViewBetsPage } from "./ViewBetsPage.js";
 import { FriendPage } from "./FriendPage.js";
@@ -136,7 +135,6 @@ class Wrapper extends Component {
           </div>
         </Router>
 
-        <BetChatComponent betAddress={"123"} web3={this.state.web3} />
       </div>
     );
   }
