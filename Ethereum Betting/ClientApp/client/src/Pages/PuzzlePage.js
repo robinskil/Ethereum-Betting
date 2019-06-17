@@ -2,6 +2,7 @@
 import React from "react";
 import Board from "../Components/Board";
 import "../css/Board.css";
+import BetChatComponent from "../Chatting/BetChatComponent";
 
 class PuzzlePage extends React.Component {
     constructor(props) {
@@ -110,6 +111,7 @@ class Puzzle extends React.Component {
                         </div>
                     </div>
                 }
+                {this.props.web3 != null ? <BetChatComponent betAddress={this.props.betAddress} web3={this.props.web3} /> : null}
 
             </div>
         );

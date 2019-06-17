@@ -8,11 +8,11 @@
  * @param {*} betAddress 
  * @returns An instantiated betting contract. 
  */
-export async function instantiateContract(web3 , betJson , betAddress){
+export async function instantiateContract(web3, betJson, betAddress) {
     return new web3.eth.Contract(
         betJson.abi,
         betAddress
-        )
+    )
 }
 
 /**
@@ -22,15 +22,15 @@ export async function instantiateContract(web3 , betJson , betAddress){
  * @param {*} amount 
  * @param {*} web3 
  */
-export async function joinBet(contract , account , amount , web3){
-    return await contract.methods.join().send({ from: account , value: web3.utils.toWei( amount.toString() , 'ether')});
+export async function joinBet(contract, account, amount, web3) {
+    return await contract.methods.join().send({ from: account, value: web3.utils.toWei(amount.toString(), 'ether') });
 }
 
 /**
  * gets the amount to join the bet.
  * @param {*} contract 
  */
-export async function getBetAmount(contract){
+export async function getBetAmount(contract) {
     return await contract.methods.getBetAmount().call();
 }
 
@@ -38,7 +38,7 @@ export async function getBetAmount(contract){
  * Gets the type of a bet , EX: RandomNumberBet
  * @param {*} contract 
  */
-export async function getBetType(contract){
+export async function getBetType(contract) {
     return await contract.methods.betType().call();
 }
 
@@ -47,8 +47,16 @@ export async function getBetType(contract){
  * @param {*} contract 
  * @returns {[]} returns an array of partipators
  */
-export async function getParticipators(contract){
+export async function getParticipators(contract) {
     return await contract.methods.getParticipators().call();
+}
+/**
+ * get winnings of contract.
+ * @param {*} contract 
+ * 
+ */
+export async function getWinnings(contract, account) {
+    return await contract.methods.withdraw().send({ from: account });
 }
 
 /**
@@ -57,7 +65,7 @@ export async function getParticipators(contract){
  * @returns {true} if bet is open to join
  * @returns {false} if bet is closed
  */
-export async function isOpen(contract){
+export async function isOpen(contract) {
     return await contract.methods.isOpen().call();
 }
 
@@ -68,7 +76,7 @@ export async function isOpen(contract){
  * @returns {true} if the bets is only open to friends.
  * @returns {false} if the bets is open to all.
  */
-export async function friendsOnly(contract){
+export async function friendsOnly(contract) {
     return await contract.methods.friendsOnly().call();
 }
 
@@ -78,7 +86,7 @@ export async function friendsOnly(contract){
  * @returns {true} true if the bet has finished.
  * @returns {false} false if the bet hasnt finished yet.
  */
-export async function finished(contract){
+export async function finished(contract) {
     return await contract.methods.finished().call();
 }
 
@@ -89,7 +97,7 @@ export async function finished(contract){
  * @param {*} contract 
  * @returns price pool of the bet in ??????
  */
-export async function getPrizePool(contract){
+export async function getPrizePool(contract) {
     return await contract.methods.getStoredBalance().call();
 }
 
@@ -99,7 +107,7 @@ export async function getPrizePool(contract){
  * @param {*} contract
  * @returns {[]} returns an array of the addresses that contain the winners 
  */
-export async function getWinners(contract){
+export async function getWinners(contract) {
     return await contract.methods.getWinners().call();
 }
 
@@ -108,7 +116,7 @@ export async function getWinners(contract){
  * @param {*} contract 
  * @returns the creation time of the bet in seconds from 1970 =>
  */
-export async function getCreationTime(contract){
+export async function getCreationTime(contract) {
     return await contract.methods.getCreationTime().call();
 }
 
@@ -117,7 +125,7 @@ export async function getCreationTime(contract){
  * @param {*} contract 
  * @returns time in seconds left.
  */
-export async function getTimeLeft(contract){
+export async function getTimeLeft(contract) {
     return await contract.methods.timeLeft().call();
 }
 
@@ -125,6 +133,6 @@ export async function getTimeLeft(contract){
  * Gets the owner of a bet.
  * @param {*} contract 
  */
-export async function getOwner(contract){
+export async function getOwner(contract) {
     return await contract.methods.getOwner().call();
 }

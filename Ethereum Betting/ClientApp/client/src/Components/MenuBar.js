@@ -5,12 +5,12 @@ import { StateContext } from "../state";
 import { login, logout } from "../reducers/auth";
 
 class MenuBar extends Component {
-    constructor(props) {
-      super(props);
-      this.state = {
-      }
-      this.handleLogOut = this.handleLogOut.bind(this);
+  constructor(props) {
+    super(props);
+    this.state = {
     }
+    this.handleLogOut = this.handleLogOut.bind(this);
+  }
 
   static contextType = StateContext;
 
@@ -115,17 +115,14 @@ class MenuBar extends Component {
                 <Link className="dropdown-item" to="/CreateBet">
                   Create a bet
                 </Link>
-                <Link className="dropdown-item" to = "/ViewAllBets">
-                 View All bets
+                <Link className="dropdown-item" to="/ViewAllBets">
+                  View All bets
                 </Link>
                 <Link className="dropdown-item" to="/JoinedBets">
-                                My joined bets
+                  My joined bets
                 </Link>
                 <Link className="dropdown-item" to="/JoinBet">
                   Join a bet
-                </Link>
-                <Link className="dropdown-item" to="/PuzzlePage">
-                  Puzzle
                 </Link>
               </div>
             </li>
