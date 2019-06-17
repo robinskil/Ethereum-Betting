@@ -1,7 +1,7 @@
 ﻿import React, { Component } from "react";
 import { Link } from 'react-router-dom'
 import BettingFactory from "../contracts/BettingFactory.json";
-import { instantiateContract, getBetAmount, getParticipators, joinBet, getWinnings } from "../helpers/Bet";
+import { instantiateContract, getBetAmount, getParticipators, joinBet, getWinnings, getWinners } from "../helpers/Bet";
 import { getAllJoinedBets } from "../helpers/BettingFactory";
 import PuzzleBet from "../contracts/PuzzleBet.json";
 
@@ -119,7 +119,8 @@ class BetInfo extends Component {
         this.state = {
             betAmount: null,
             participators: null,
-            contract: null
+            contract: null,
+            canWithdraw: false
         }
         this.loadData = this.loadData.bind(this);
         this.loadData();
@@ -130,7 +131,14 @@ class BetInfo extends Component {
         const betAmount = await getBetAmount(instance);
         const participators = await getParticipators(instance);
         console.log(this.props.bet);
-        this.setState({ contract: instance, betAmount: betAmount, participators: participators });
+        const winners = await getWinners(instance);
+        let canWithdraw = false;
+        //check if winners contains urself...
+        console.log(winners);
+        winners.forEach(element => {
+            if (element == this.props.account) canWithdraw = true;
+        });
+        this.setState({ contract: instance, betAmount: betAmount, participators: participators, canWithdraw: canWithdraw });
     }
 
     withdrawMoney = async () => {
@@ -155,9 +163,10 @@ class BetInfo extends Component {
                             <Link to={"/puzzle/" + this.props.bet} className="btn btn-primary">
                                 Go puzzle!
                             </Link>
-                            <button className="btn btn-primary" onClick={this.withdrawMoney} style={{ marginLeft: "15px" }}>
+                            {this.state.canWithdraw == true ? <button className="btn btn-primary" onClick={this.withdrawMoney} style={{ marginLeft: "15px" }}>
                                 Try to withdraw winnings
-                            </button>
+                            </button> : null}
+
                         </div>
                     </div>
                 </div>
